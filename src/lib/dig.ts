@@ -56,7 +56,7 @@ interface Draft extends Omit<Lead, "coveredBy" | "novelty" | "score"> {
 
 const DAY = 86_400_000;
 const TIMEOUT = 10_000;
-const API_KEY = () => process.env.DATA_GOV_API_KEY ?? "DEMO_KEY";
+const API_KEY = () => process.env.DATA_GOV_API_KEY?.trim() || "DEMO_KEY";
 const UA = "Mozilla/5.0 (compatible; RockLeakDig/0.1; +https://github.com/JuniorSua/rockleak)";
 
 type Json = Record<string, unknown>;
