@@ -11,6 +11,8 @@ const nextConfig: NextConfig = {
       },
     },
   },
+  // Share-image fonts are read from disk at request time for new stories
+  outputFileTracingIncludes: { "/story/[slug]/opengraph-image": ["./assets/fonts/**"] },
   // Old routes from the first prototype
   async redirects() {
     return [
