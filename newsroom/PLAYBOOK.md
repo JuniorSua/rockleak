@@ -209,6 +209,15 @@ Also append the same lines to `newsroom/desk/log.md` with the date and edition.
   3. Push.
   4. Run `scripts/deploy.sh --content-only`.
 
+## Cleanup (last step of every run)
+T3 may start a scheduled run in a fresh worktree under `~/.t3/worktrees/rockleak/`, which you then leave.
+Before your final reply, remove the worktree you started in, but only if all of these are true:
+- it's under `~/.t3/worktrees/rockleak/`
+- `git -C <path> status --porcelain` prints nothing
+- its branch starts with `t3/`
+
+Run `git worktree remove <path> && git branch -d <branch>` from the main checkout. Never touch any other worktree.
+
 ## Practice runs
 A practice run follows the evening steps with `practice` as the edition:
 - `pnpm newsroom brief practice` writes its brief to `newsroom/desk/<date>/practice/`, and `<dir>` is that folder.
