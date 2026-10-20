@@ -171,9 +171,11 @@ function formatLedger(l: Ledger) {
 }
 
 /** Share of (persona x fact) pairs accepted, minus a penalty for each challenge. */
-function scoreAgreement(ledger: Ledger, turns: { acceptsFacts: number[]; challenges: unknown[] }[]) {
+// Same formula as `pnpm newsroom agreement`: only challenges to "confirmed" facts cost points;
+// challenging a fact already rated likely/unverified just repeats a known caveat.
+function scoreAgreement(ledger: Ledger, turns: { acceptsFacts: number[]; challenges: { factIndex: number }[] }[]) {
   const n = ledger.coreFacts.length || 1;
   const accepted = turns.reduce((sum, t) => sum + new Set(t.acceptsFacts.filter((i) => i >= 0 && i < n)).size, 0);
-  const challenges = turns.reduce((sum, t) => sum + t.challenges.length, 0);
+  const challenges = turns.reduce((sum, t) => sum + t.challenges.filter((c) => ledger.coreFacts[c.factIndex]?.verdict === "confirmed").length, 0);
   return Math.max(0, Math.min(100, Math.round((accepted / (n * turns.length)) * 100 - challenges * 3)));
 }

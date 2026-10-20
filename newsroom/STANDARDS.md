@@ -7,9 +7,13 @@ accurate?** When in doubt, don't approve.
 ## What to check
 
 1. **Every claim is sourced.**
-   - Every factual statement in the headline, dek, stat, tldr, body, newAngle, SEO and social copy must trace to a
-     `coreFact` or `claim` that has a source.
+   - Every factual statement anywhere a reader can see it must trace to a `coreFact` or `claim` that has a source. That includes:
+     - `headline`, `dek`, `stat`, `tldr`, `body`, `bottomLine`, `consensus`, `newAngle`
+     - each `debate` turn (position, argument, concedes)
+     - `claims[].explanation` and `coverage[].framing`
+     - `seo` (title, description, FAQ answers) and `social` (xPost, thread, video hook, share card)
    - Anything that doesn't trace is a required fix.
+   - A fact attributed to an outlet or official must say only what that source says. The desk's own caveats don't belong inside it.
 2. **The sources say it.**
    - Open (WebFetch) the source behind the headline, the stat, and every `confirmed` fact.
    - Confirm the page actually says it, and that the numbers, dates and names match exactly.
@@ -43,20 +47,40 @@ accurate?** When in doubt, don't approve.
     - Use `developing` if key facts could still change.
     - Use `contested` if the record itself is disputed.
 
+## Length limits (the site rejects anything longer)
+
+| Field | Max characters |
+|---|---|
+| headline | 120 |
+| dek | 320 |
+| kicker | 40 |
+| stat value | 14 |
+| stat label | 160 |
+| seo title | 60 |
+| seo description | 160 |
+| xPost | 270 |
+| each thread post | 280 |
+
+Every replacement text you require must fit these limits. Count before you write it.
+
 ## Verdict (reply with ONLY this JSON)
 
 ```json
 {
-  "decision": "APPROVE | REVISE | REJECT",
+  "decision": "APPROVE | APPROVE_WITH_EDITS | REVISE | REJECT",
   "summary": "One plain sentence for the owner.",
   "checkedSources": [{ "url": "...", "supports": true, "note": "..." }],
   "symmetryTest": "pass | fail: why",
-  "requiredFixes": ["Exact change: field, the current text, and the replacement."],
+  "requiredFixes": ["Exact change: file (ledger.json or article.json), field, the current text, and the replacement."],
   "reasons": ["Why REJECT, if rejected."]
 }
 ```
 
 How to decide:
-- **APPROVE**: no required fixes.
-- **REVISE**: fixable with specific edits, such as wording, a downgraded verdict or a missing source.
+- **APPROVE**: nothing needs to change.
+- **APPROVE_WITH_EDITS**: the facts and the frame hold. Only wording needs exact fixes: precision, attribution, tone, labels, a broken sentence. The desk applies your fixes and publishes without another review, so use this only when every fix is fully specified and changes no fact.
+- **REVISE**: there's a substance problem: a wrong or unsupported fact, a misleading headline or frame, a missing side, or a verdict that needs downgrading. It gets one more review.
 - **REJECT**: the core of the story doesn't hold, it's a repeat, or the legal risk can't be fixed by editing.
+
+**Round 2** (you'll be given round 1's verdict and what changed): check that round 1's fixes were made correctly and
+didn't break anything, then review the whole draft again. You must decide APPROVE, APPROVE_WITH_EDITS or REJECT.

@@ -1,7 +1,8 @@
 import { z } from "zod";
 import type { Story } from "./types";
 
-// Runtime check for stories written by the newsroom (scripts/newsroom.mts). A story that
+// Runtime check for stories written by the newsroom (scripts/newsroom.mts). The limits here are
+// the ones newsroom/PLAYBOOK.md and STANDARDS.md quote; change them together. A story that
 // fails this never reaches content/stories.json, so a bad draft can't break the site.
 // Plain relative imports only: Node runs the newsroom script directly.
 
@@ -27,11 +28,11 @@ export const StorySchema = z.object({
   status: z.enum(["developing", "verified", "contested"]),
   agreementScore: z.number().min(0).max(100),
   bottomLine: text,
-  coreFacts: z.array(z.object({ text, verdict: Verdict, sources: z.array(Source).min(1) })).min(3),
+  coreFacts: z.array(z.object({ text, verdict: Verdict, sources: z.array(Source).min(1) })).min(4).max(10),
   claims: z.array(
     z.object({ claim: text, claimant: text, verdict: Verdict, explanation: text, sources: z.array(Source).min(1) }),
-  ),
-  coverage: z.array(z.object({ outlet: text, lean: Lean, headline: text, url, framing: z.string() })).min(2),
+  ).min(1).max(6),
+  coverage: z.array(z.object({ outlet: text, lean: Lean, headline: text, url, framing: z.string() })).min(3).max(10),
   xPulse: z.object({ summary: text, trending: z.array(z.string()), communityNote: z.string().optional() }),
   markets: z.array(
     z.object({
@@ -45,23 +46,23 @@ export const StorySchema = z.object({
   debate: z.array(z.object({ persona: z.enum(["Grant", "Rosa", "Mercer", "Vex"]), position: text, argument: text, concedes: text })).length(4),
   consensus: text,
   stillUnknown: z.array(text),
-  body: z.array(text).min(3),
+  body: z.array(text).min(3).max(10),
   stat: z.object({ value: text.max(14), label: text.max(160) }).optional(),
   tldr: z.object({ what: text, why: text, truth: text }).optional(),
   newAngle: text.optional(),
   seo: z
     .object({
-      title: text.max(70),
-      description: text.max(170),
+      title: text.max(60),
+      description: text.max(160),
       keywords: z.array(text),
-      faq: z.array(z.object({ q: text, a: text })),
+      faq: z.array(z.object({ q: text, a: text })).min(3).max(6),
     })
     .optional(),
   social: z
     .object({
-      headlineVariants: z.array(z.object({ text, score: z.number(), rationale: z.string() })),
-      xPost: text.max(280),
-      thread: z.array(text.max(280)),
+      headlineVariants: z.array(z.object({ text, score: z.number(), rationale: z.string() })).min(3).max(8),
+      xPost: text.max(270),
+      thread: z.array(text.max(280)).min(3).max(7),
       shortVideoHook: z.string(),
       shareCardText: z.string(),
     })

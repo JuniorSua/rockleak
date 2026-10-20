@@ -1,10 +1,13 @@
 // RockLeak newsroom desk tool. The scheduled Claude Code runs (newsroom/PLAYBOOK.md) use it to
 // gather the day's news, validate drafts, and publish/unpublish. Runs on plain Node (24+):
 //
-//   node scripts/newsroom.mts brief <morning|evening|night>   news brief -> stdout + desk file
-//   node scripts/newsroom.mts agreement <debate.json> <factCount>
+//   node scripts/newsroom.mts brief <morning|evening|night|practice>  news brief -> stdout + desk file
+//   node scripts/newsroom.mts prompt <Grant|Rosa|Mercer|Vex> <ledger.json>  full debater prompt, facts numbered
+//   node scripts/newsroom.mts agreement <debate.json> <ledger.json>
+//   node scripts/newsroom.mts assemble <story dir>            ledger.json + debate.json + article.json -> draft.json
 //   node scripts/newsroom.mts check <draft.json>              schema + newsroom rules
-//   node scripts/newsroom.mts publish <draft.json>            check, require Plumb's approval, add to content/stories.json
+//   node scripts/newsroom.mts review <draft.json> <review.json> <edition>  attach Plumb's approval
+//   node scripts/newsroom.mts publish <draft.json>            check, require Plumb's approval, stamp time, add to content/stories.json
 //   node scripts/newsroom.mts unpublish <slug> "<reason>"     take a story down (kept in the desk)
 //   node scripts/newsroom.mts list                            published stories
 //   node scripts/newsroom.mts fec <path> [key=value ...]      OpenFEC via the site's key, e.g.
@@ -13,8 +16,9 @@
 import { existsSync, mkdirSync, readFileSync, renameSync, writeFileSync } from "node:fs";
 import { basename, dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
+import { DEBATERS } from "../src/lib/agents/personas.ts";
 import { StorySchema } from "../src/lib/story-schema.ts";
-import type { Story, WireCluster } from "../src/lib/types.ts";
+import type { CoreFact, Story, WireCluster } from "../src/lib/types.ts";
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
 const STORIES = join(ROOT, "content/stories.json");
@@ -66,7 +70,7 @@ interface Market {
 }
 
 async function brief(edition: string) {
-  if (!["morning", "evening", "night"].includes(edition)) fail("edition must be morning, evening or night");
+  if (!["morning", "evening", "night", "practice"].includes(edition)) fail("edition must be morning, evening, night or practice");
   const [wire, dig, odds] = await Promise.all([
     getJson<WireCluster[]>("/api/wire"),
     getJson<{ leads: Lead[] }>("/api/dig"),
@@ -102,20 +106,103 @@ async function brief(edition: string) {
   for (const m of (odds ?? []).slice(0, 24)) out.push(`- ${m.platform} · ${m.question} · ${m.outcome}: ${Math.round(m.probability * 100)}% <${m.url}>`);
 
   const text = out.join("\n") + "\n";
-  const dir = join(DESK, today());
-  mkdirSync(dir, { recursive: true });
-  writeFileSync(join(dir, `brief-${edition}.md`), text);
+  // Practice runs keep their brief inside their own folder so real runs never mistake it for theirs.
+  const file = edition === "practice" ? join(DESK, today(), "practice", "brief.md") : join(DESK, today(), `brief-${edition}.md`);
+  mkdirSync(dirname(file), { recursive: true });
+  writeFileSync(file, text);
   console.log(text);
-  console.log(`(saved to ${join(dir, `brief-${edition}.md`)})`);
+  console.log(`(saved to ${file})`);
 }
 
-/** Same formula as the API pipeline: share of facts each analyst accepts, minus 3 per challenge. */
-function agreement(file: string, factCount: string) {
-  const turns: { acceptsFacts: number[]; challenges: unknown[] }[] = JSON.parse(readFileSync(file, "utf8"));
-  const n = Number(factCount) || 1;
+type Ledger = Pick<Story, "coreFacts" | "claims" | "coverage" | "xPulse" | "markets" | "stillUnknown">;
+type Turn = { position: string; argument: string; concedes: string; acceptsFacts: number[]; challenges: { factIndex: number; reason: string }[] };
+const readJson = <T,>(file: string): T => {
+  if (!existsSync(file)) fail(`no such file: ${file}`);
+  try {
+    return JSON.parse(readFileSync(file, "utf8")) as T;
+  } catch (e) {
+    return fail(`${basename(file)} is not valid JSON: ${(e as Error).message}`);
+  }
+};
+
+/** The exact prompt for one debater sub-agent: persona + numbered ledger + reply format. */
+function prompt(name: string, ledgerFile: string) {
+  const p = DEBATERS.find((d) => d.id.toLowerCase() === (name ?? "").toLowerCase()) ?? fail(`debater must be one of ${DEBATERS.map((d) => d.id).join(", ")}`);
+  const l = readJson<Ledger>(ledgerFile);
+  const facts = l.coreFacts.map((f: CoreFact, i) => `[${i}] (${f.verdict}) ${f.text}`).join("\n");
+  const claims = l.claims.map((c) => `- "${c.claim}" (${c.claimant}): rated ${c.verdict}. ${c.explanation}`).join("\n");
+  const coverage = l.coverage.map((c) => `- ${c.outlet} (${c.lean}): ${c.headline}. ${c.framing}`).join("\n");
+  console.log(`${p.system}
+
+THE FACT LEDGER (numbered; argue only from these):
+${facts}
+
+CLAIMS GOING AROUND:
+${claims || "(none)"}
+
+HOW OUTLETS FRAMED IT:
+${coverage}
+
+STILL UNKNOWN:
+${l.stillUnknown.map((u) => `- ${u}`).join("\n") || "(none)"}
+
+Reply with ONLY this JSON, no prose around it:
+{"position": "your one-sentence take, in your voice",
+ "argument": "3-5 sentences making your case from the ledger",
+ "concedes": "the strongest point for the other side, stated fairly",
+ "acceptsFacts": [indexes of ledger facts you accept as true],
+ "challenges": [{"factIndex": n, "reason": "why this fact is overstated or wrong"}]}
+Write position/argument/concedes as plain prose for readers: never write "fact 3" or "[3]". Only challenge a fact if you think its verdict is wrong, not to repeat a caveat already in it.`);
+}
+
+/** Share of facts each analyst accepts, minus 3 per challenge to a fact rated "confirmed".
+ *  Challenges to facts already rated likely/unverified repeat a known caveat and don't count. */
+function agreement(debateFile: string, ledgerFile: string) {
+  console.log(agreementScore(readJson<Turn[]>(debateFile), readJson<Ledger>(ledgerFile)));
+}
+function agreementScore(turns: Turn[], ledger: Ledger) {
+  const n = ledger.coreFacts.length || 1;
   const accepted = turns.reduce((sum, t) => sum + new Set(t.acceptsFacts.filter((i) => i >= 0 && i < n)).size, 0);
-  const challenges = turns.reduce((sum, t) => sum + t.challenges.length, 0);
-  console.log(Math.max(0, Math.min(100, Math.round((accepted / (n * turns.length)) * 100 - challenges * 3))));
+  const challenges = turns.reduce((sum, t) => sum + t.challenges.filter((c) => ledger.coreFacts[c.factIndex]?.verdict === "confirmed").length, 0);
+  return Math.max(0, Math.min(100, Math.round((accepted / (n * turns.length)) * 100 - challenges * 3)));
+}
+
+/** draft.json = the ledger + Quill's article + the debate, with the agreement score computed. */
+function assemble(dir: string) {
+  const ledger = readJson<Ledger>(join(dir, "ledger.json"));
+  const turns = readJson<Turn[]>(join(dir, "debate.json"));
+  const article = readJson<Partial<Story>>(join(dir, "article.json"));
+  if (turns.length !== 4) fail("debate.json must hold 4 turns in order: Grant, Rosa, Mercer, Vex");
+  const order = ["Grant", "Rosa", "Mercer", "Vex"] as const;
+  const debate =
+    article.debate ?? turns.map((t, i) => ({ persona: order[i], position: t.position, argument: t.argument, concedes: t.concedes }));
+  const draft = {
+    ...article,
+    publishedAt: article.publishedAt ?? new Date().toISOString(), // replaced with the real time by publish
+    agreementScore: agreementScore(turns, ledger),
+    coreFacts: ledger.coreFacts,
+    claims: ledger.claims,
+    coverage: ledger.coverage,
+    xPulse: ledger.xPulse,
+    markets: ledger.markets,
+    stillUnknown: ledger.stillUnknown,
+    debate,
+  };
+  writeFileSync(join(dir, "draft.json"), JSON.stringify(draft, null, 2) + "\n");
+  console.log(`✓ wrote ${join(dir, "draft.json")} (agreement ${draft.agreementScore})`);
+  check(join(dir, "draft.json"));
+}
+
+/** Attach Plumb's sign-off. Only an APPROVE or APPROVE_WITH_EDITS verdict can be attached. */
+function review(draftFile: string, reviewFile: string, edition: string) {
+  if (!["morning", "evening", "night", "manual"].includes(edition)) fail("edition must be evening, night or manual");
+  const r = readJson<{ decision: string; summary: string }>(reviewFile);
+  if (!["APPROVE", "APPROVE_WITH_EDITS"].includes(r.decision)) fail(`Plumb's decision is ${r.decision}; only APPROVE or APPROVE_WITH_EDITS can be attached`);
+  const draft = readJson<Story>(draftFile);
+  draft.review = { approvedBy: "Plumb", approvedAt: new Date().toISOString(), notes: r.summary, edition: edition as NonNullable<Story["review"]>["edition"] };
+  writeFileSync(draftFile, JSON.stringify(draft, null, 2) + "\n");
+  console.log(`✓ Plumb's approval attached to ${basename(draftFile)}`);
+  check(draftFile);
 }
 
 function check(file: string, { forPublish = false } = {}): Story {
@@ -162,7 +249,7 @@ function check(file: string, { forPublish = false } = {}): Story {
 }
 
 function publish(file: string) {
-  const story = check(file, { forPublish: true });
+  const story = { ...check(file, { forPublish: true }), publishedAt: new Date().toISOString() };
   writeStories([story, ...readStories()]);
   const dir = join(DESK, today(), "published");
   mkdirSync(dir, { recursive: true });
@@ -205,12 +292,22 @@ async function fec(path: string, pairs: string[]) {
 }
 
 const [cmd, a, b, ...rest] = process.argv.slice(2);
+const [c] = rest;
 switch (cmd) {
   case "brief":
     await brief(a);
     break;
+  case "prompt":
+    prompt(a, b);
+    break;
   case "agreement":
     agreement(a, b);
+    break;
+  case "assemble":
+    assemble(a);
+    break;
+  case "review":
+    review(a, b, c);
     break;
   case "check":
     check(a);

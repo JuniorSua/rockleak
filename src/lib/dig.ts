@@ -317,7 +317,8 @@ async function fecIndependentExpenditures(): Promise<Draft[]> {
     const senate = str(top.candidate_office) === "S";
     const race = senate ? `${stateName} Senate` : `${st}-${str(top.candidate_office_district).replace(/^0/, "")} House`;
     const verb = str(top.support_oppose_indicator) === "O" ? "opposing" : "supporting";
-    const dates = rs.map((r) => str(r.expenditure_date)).filter(Boolean).toSorted();
+    // When the ad first ran (dissemination) is what readers care about; the payment date can postdate the filing.
+    const dates = rs.map((r) => str(r.dissemination_date).slice(0, 10) || str(r.expenditure_date)).filter(Boolean).toSorted();
     const filed = rs.map((r) => str(r.filing_date)).filter(Boolean).toSorted().at(-1) ?? dates.at(-1) ?? null;
     const span = dates.length > 1 && dates[0] !== dates.at(-1) ? `${shortDate(dates[0])}-${shortDate(dates.at(-1) ?? null)}` : shortDate(dates[0] ?? null);
     const purpose = str(top.expenditure_description).toLowerCase();
@@ -331,7 +332,7 @@ async function fecIndependentExpenditures(): Promise<Draft[]> {
       kind: "Independent expenditure",
       title: `${committee} spent ${money(total)} ${verb} ${cand.full}${party ? ` (${party})` : ""} in the ${race} race`,
       detail:
-        `${rs.length === 1 ? "One independent expenditure" : `${rs.length} independent expenditures`} dated ${span}${filed ? `, filed with the FEC ${shortDate(filed)}` : " reported to the FEC"}${rs.length === 1 ? ":" : "; the largest is"} ${money(num(top.expenditure_amount))}` +
+        `${rs.length === 1 ? "One independent expenditure" : `${rs.length} independent expenditures`} first distributed ${span}${filed ? ` and filed with the FEC ${shortDate(filed)}` : ", reported to the FEC"}${rs.length === 1 ? ":" : "; the largest is"} ${money(num(top.expenditure_amount))}` +
         `${purpose ? ` for "${purpose}"` : ""}${payee ? ` paid to ${payee}` : ""}.` +
         (ytd > total ? ` The committee reports ${money(ytd)} spent on this race so far this year.` : ""),
       url: str(top.pdf_url) || `https://www.fec.gov/data/independent-expenditures/?committee_id=${str(top.committee_id)}&cycle=2026`,
