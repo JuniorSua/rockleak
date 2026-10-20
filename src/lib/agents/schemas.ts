@@ -57,3 +57,30 @@ export const RedTeamSchema = z.object({
   notes: z.string(),
 });
 export type RedTeamOut = z.infer<typeof RedTeamSchema>;
+
+export const ViralSchema = z.object({
+  stat: z.object({ value: z.string(), label: z.string() }),
+  tldr: z.object({ what: z.string(), why: z.string(), truth: z.string() }),
+  newAngle: z.string(),
+  seo: z.object({
+    title: z.string(),
+    description: z.string(),
+    keywords: z.array(z.string()),
+    faq: z.array(z.object({ q: z.string(), a: z.string() })),
+  }),
+  social: z.object({
+    headlineVariants: z.array(z.object({ text: z.string(), score: z.number(), rationale: z.string() })),
+    xPost: z.string(),
+    thread: z.array(z.string()),
+    shortVideoHook: z.string(),
+    shareCardText: z.string(),
+  }),
+  bestHeadline: z.string(),
+});
+export type ViralOut = z.infer<typeof ViralSchema>;
+
+export const ViralCheckSchema = z.object({
+  pass: z.boolean(),
+  rejected: z.array(z.object({ field: z.string(), text: z.string(), problem: z.string() })),
+  safeHeadline: z.string(),
+});

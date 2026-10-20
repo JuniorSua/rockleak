@@ -1,13 +1,14 @@
 import { claudeConfigured, research, structured } from "@/lib/agents/claude";
 import { DEBATERS, persona } from "@/lib/agents/personas";
 import { pulseConfigured, xPulse } from "@/lib/agents/pulse";
+import { viralDesk } from "@/lib/agents/viral";
 import { ArticleSchema, DebateTurnSchema, LedgerSchema, RedTeamSchema, type Ledger } from "@/lib/agents/schemas";
 import { getWireClusters } from "@/lib/feeds";
 import { getMidtermMarkets } from "@/lib/markets";
 import type { DebateTurn, Story, WireCluster } from "@/lib/types";
 
 // The RockLeak newsroom, end to end:
-//   Wire -> Pulse -> Odds -> Record (ledger) -> Panel -> Quill -> Red Team -> human review
+//   Wire -> Pulse -> Odds -> Record (ledger) -> Panel -> Quill -> Red Team -> Viral Desk -> human review
 // Each stage is a plain async function so it can later move to a queue/workflow runner.
 
 export interface PipelineResult {
@@ -138,7 +139,7 @@ share, and 4-7 short, punchy, neutral paragraphs.`,
     }),
   );
 
-  const story: Story = {
+  const draft: Story = {
     ...article,
     publishedAt: new Date().toISOString(),
     agreementScore,
@@ -156,6 +157,9 @@ share, and 4-7 short, punchy, neutral paragraphs.`,
     })),
     debate: turns.map(({ persona, position, argument, concedes }): DebateTurn => ({ persona, position, argument, concedes })),
   };
+
+  // 8. Viral Desk: plain-English summary, shareable stat, SEO and social copy, with its own accuracy check.
+  const story = await timed(stages, "viral-desk", () => viralDesk(draft));
 
   return { cluster, story, redTeam, stages };
 }

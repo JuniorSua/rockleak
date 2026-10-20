@@ -1,7 +1,6 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
   cacheComponents: true,
   partialPrefetching: true,
   turbopack: {
@@ -11,6 +10,14 @@ const nextConfig: NextConfig = {
         as: "*.css",
       },
     },
+  },
+  // Old routes from the first prototype
+  async redirects() {
+    return [
+      { source: "/panel", destination: "/about", permanent: true },
+      { source: "/method", destination: "/about", permanent: true },
+      { source: "/odds", destination: "/midterms", permanent: true },
+    ];
   },
 };
 

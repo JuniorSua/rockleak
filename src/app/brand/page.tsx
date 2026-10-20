@@ -7,7 +7,7 @@ export const metadata: Metadata = { title: "Brand lab" };
 export default function BrandPage() {
   return (
     <div className="mx-auto max-w-7xl px-5 py-12">
-      <p className="kicker text-signal">Brand lab</p>
+      <p className="kicker text-accent">Brand lab</p>
       <h1 className="headline mt-3 text-5xl">Five ways to be RockLeak</h1>
       <p className="mt-4 max-w-3xl text-lg text-ink/75">
         Each concept blends bedrock (hard facts), the leak (truth breaking through), politics and world news. Each one is

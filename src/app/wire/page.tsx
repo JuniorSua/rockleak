@@ -10,8 +10,8 @@ export const metadata: Metadata = { title: "The Wire" };
 export default function WirePage() {
   return (
     <div className="mx-auto max-w-7xl px-5 py-12">
-      <p className="kicker text-signal">The Wire · live</p>
-      <h1 className="headline mt-3 text-5xl">What every side is covering right now</h1>
+      <p className="kicker text-accent">The Wire · live</p>
+      <h1 className="headline mt-3 text-[2.6rem] md:text-[3.2rem]">What every side is covering right now</h1>
       <p className="mt-4 max-w-3xl text-lg text-ink/75">
         Our Wire agent reads the political feeds of {OUTLETS.length} outlets from left to right and groups headlines about
         the same event. Coverage from both sides is a signal a story matters. One-sided coverage gets flagged as a{" "}
@@ -50,7 +50,7 @@ async function WireBoard() {
             <section key={c.id} className="rounded-xl border border-rule bg-white p-5">
               <div className="flex items-center justify-between kicker text-[0.6rem]! text-muted">
                 <span>{c.items.length} outlets</span>
-                {bs && <span className="text-amber">⚠ {bs}</span>}
+                {bs && <span className="text-amber">{bs}</span>}
               </div>
               <h2 className="headline mt-2 text-xl leading-snug">{c.label}</h2>
               <ul className="mt-4 space-y-2">
