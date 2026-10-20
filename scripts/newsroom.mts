@@ -199,7 +199,7 @@ async function fec(path: string, pairs: string[]) {
     if (i > 0) url.searchParams.append(p.slice(0, i), p.slice(i + 1));
   }
   const r = await fetch(url, { headers: { authorization: `Bearer ${secret}` }, signal: AbortSignal.timeout(60_000) });
-  console.error(`HTTP ${r.status} · FEC calls left this hour: ${r.headers.get("x-ratelimit-remaining") || "?"}/${r.headers.get("x-ratelimit-limit") || "?"}`);
+  console.error(`HTTP ${r.status} · FEC rate limit remaining: ${r.headers.get("x-ratelimit-remaining") || "?"}/${r.headers.get("x-ratelimit-limit") || "?"}`);
   console.log(await r.text());
   if (!r.ok) process.exit(1);
 }

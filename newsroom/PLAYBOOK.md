@@ -64,7 +64,7 @@ FEC tips:
 - Query the FEC API through the site, which holds the data.gov key:
   `pnpm newsroom fec schedules/schedule_e/ committee_id=C00901223 sort=-expenditure_date per_page=20`
   Other paths that work: `committee/<id>/`, `schedules/schedule_a/`, `filings/`, `candidate/<id>/`. It prints
-  the calls left this hour, out of 1,000.
+  how many calls remain this minute (the limit is 60 a minute). If it nears 0, wait a minute.
 - An FEC record you can't open isn't confirmed. Pick a candidate you can verify instead.
 
 Then outlets on the left, center and right. Write `ledger.json`:
