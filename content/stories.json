@@ -1,5 +1,458 @@
 [
   {
+    "slug": "dhs-california-noncitizen-voter-list-189-discrepancies-17000-more",
+    "category": "courts",
+    "kicker": "VOTER ROLLS · CALIFORNIA",
+    "headline": "DHS Swore About 189 Entries on Its California Voter List Had 'Minor Data Discrepancies'; LA County Calls List Unreliable",
+    "dek": "Sworn filings in DOJ's suit to make California set aside mail ballots also describe 17,000 more records in review. In a 200-record sample, LA County found 42.9% were canceled registrations. California says its elections office never got the list. DOJ has charged 28 people on it.",
+    "publishedAt": "2026-10-20T21:36:22.351Z",
+    "status": "developing",
+    "agreementScore": 80,
+    "bottomLine": "DHS's sworn filings flag about 189 entries on its 20,000-name California list for data discrepancies and describe 17,000 more records in review. LA County's preliminary sample check found many canceled registrations and U.S. birthplaces, and California says its elections office never received the list. Twenty-eight people on the list have been charged. Whether the rest are noncitizens, and whether any ballots get set aside, is up to a judge who hasn't been assigned yet.",
+    "coreFacts": [
+      {
+        "text": "The Justice Department announced on Oct. 19, 2026, that it had charged 28 people in California with election-related crimes. All 28 are lawful permanent residents (green-card holders), 11 were arrested that day, and the department says all 28 appear on its list of \"more than 20,000 likely noncitizen registrants\" given to California officials. The release notes that charges are accusations and defendants are presumed innocent.",
+        "verdict": "confirmed",
+        "sources": [
+          {
+            "label": "DOJ press release 26-1222 (Oct. 19, 2026)",
+            "url": "https://www.justice.gov/opa/pr/justice-department-charges-28-foreign-nationals-california-election-crimes",
+            "tier": "primary"
+          },
+          {
+            "label": "NPR",
+            "url": "https://www.npr.org/2026/10/19/nx-s1-6007908/election-tensions-escalate-in-california-as-doj-charges-28-people-with-voting-crimes",
+            "tier": "outlet"
+          }
+        ]
+      },
+      {
+        "text": "In the DOJ release's own descriptions of the 28 defendants, 22 are described as having voted, 1 as having submitted a provisional ballot and 5 as having registered without voting. Most face felony charges with a five-year maximum, such as false statements on naturalization papers or fraudulent registration. Six in the Eastern District face a misdemeanor charge of voting by an alien in a federal election, which carries a one-year maximum.",
+        "verdict": "confirmed",
+        "sources": [
+          {
+            "label": "DOJ press release 26-1222 (Oct. 19, 2026)",
+            "url": "https://www.justice.gov/opa/pr/justice-department-charges-28-foreign-nationals-california-election-crimes",
+            "tier": "primary"
+          },
+          {
+            "label": "Newsmax (via Yahoo News)",
+            "url": "https://yahoo.com/news/politics/articles/doj-charges-28-noncitizens-calif-230731721.html",
+            "tier": "outlet"
+          }
+        ]
+      },
+      {
+        "text": "In sworn declarations filed in federal court on Oct. 19, an HSI official (Eric McLoughlin) and a USCIS official (Nicolas Bartell) each said that USCIS \"identified approximately 189 records with minor data discrepancies\" on the list of over 20,000 individuals sent to California on Oct. 13, and alerted HSI. The declarations do not describe the discrepancies.",
+        "verdict": "confirmed",
+        "sources": [
+          {
+            "label": "Declaration of Eric McLoughlin, HSI (U.S. v. California, C.D. Cal. 2:26-cv-12025, Dkt. 22-3)",
+            "url": "https://storage.courtlistener.com/recap/gov.uscourts.cacd.1043513/gov.uscourts.cacd.1043513.22.3_1.pdf",
+            "tier": "primary"
+          },
+          {
+            "label": "Declaration of Nicolas Bartell, USCIS (Dkt. 22-4)",
+            "url": "https://storage.courtlistener.com/recap/gov.uscourts.cacd.1043513/gov.uscourts.cacd.1043513.22.4_1.pdf",
+            "tier": "primary"
+          }
+        ]
+      },
+      {
+        "text": "Bartell swore that USCIS \"has identified a separate batch of more than 17,000 voting records potentially tied to noncitizens after an initial review of voter rolls,\" and that \"historically speaking, most voters in this initially flagged population will end up being referred to HSI.\" DOJ's court brief calls the 20,000 list \"the floor\" of potential noncitizen California voters.",
+        "verdict": "confirmed",
+        "sources": [
+          {
+            "label": "Declaration of Nicolas Bartell, USCIS (Dkt. 22-4)",
+            "url": "https://storage.courtlistener.com/recap/gov.uscourts.cacd.1043513/gov.uscourts.cacd.1043513.22.4_1.pdf",
+            "tier": "primary"
+          },
+          {
+            "label": "DOJ memorandum supporting a temporary restraining order (Dkt. 22-2)",
+            "url": "https://storage.courtlistener.com/recap/gov.uscourts.cacd.1043513/gov.uscourts.cacd.1043513.22.2.pdf",
+            "tier": "primary"
+          }
+        ]
+      },
+      {
+        "text": "Bartell's declaration says USCIS \"enhances\" voter data \"through a reliable third-party data analytics and investigative platform,\" pairs records with USCIS alien numbers, screens out people State Department and Social Security data identify as citizens or deceased, and then has investigators manually review the matches, with a second-level review. It says this process \"is distinct from\" the federal SAVE citizenship-check program.",
+        "verdict": "confirmed",
+        "sources": [
+          {
+            "label": "Declaration of Nicolas Bartell, USCIS (Dkt. 22-4)",
+            "url": "https://storage.courtlistener.com/recap/gov.uscourts.cacd.1043513/gov.uscourts.cacd.1043513.22.4_1.pdf",
+            "tier": "primary"
+          }
+        ]
+      },
+      {
+        "text": "According to DOJ's court brief, DHS Secretary Mullin wrote to California's secretary of state in July 2026 that a \"preliminary review\" showed there \"may be as many as 190,832 noncitizens\" registered to vote in California, including 81,336 registrants whose name, date of birth, address and Social Security number matched a noncitizen in DHS files. DHS told Newsweek the 190,000 remains its estimate and that the 20,000 are a manually verified subset.",
+        "verdict": "confirmed",
+        "sources": [
+          {
+            "label": "DOJ memorandum supporting a temporary restraining order (Dkt. 22-2), p. 23",
+            "url": "https://storage.courtlistener.com/recap/gov.uscourts.cacd.1043513/gov.uscourts.cacd.1043513.22.2.pdf",
+            "tier": "primary"
+          },
+          {
+            "label": "Newsweek",
+            "url": "https://www.newsweek.com/trump-doj-california-voters-methodology-lawsuit-12576337",
+            "tier": "outlet"
+          }
+        ]
+      },
+      {
+        "text": "California filed its opposition to DOJ's request for a temporary restraining order on Oct. 20. In a sworn declaration, state elections chief Jana Lean said California has more than 23 million active registered voters, that counties began mailing every active voter a ballot no later than Oct. 5, that no federal or state law requires officials to affirmatively verify a voter's citizenship, and that setting ballots aside \"creates a substantial risk that a validly registered voter's cast ballot would be disqualified.\"",
+        "verdict": "confirmed",
+        "sources": [
+          {
+            "label": "Declaration of Jana M. Lean, California Secretary of State's Office (Dkt. 31-3)",
+            "url": "https://storage.courtlistener.com/recap/gov.uscourts.cacd.1043513/gov.uscourts.cacd.1043513.31.3.pdf",
+            "tier": "primary"
+          },
+          {
+            "label": "Docket, U.S. v. California, 2:26-cv-12025 (CourtListener)",
+            "url": "https://www.courtlistener.com/docket/74967108/america-v-california-state-of/",
+            "tier": "primary"
+          }
+        ]
+      },
+      {
+        "text": "California's Oct. 20 court filing lists the judge as \"Not Yet Assigned\" and the hearing date as \"Not Set.\" Los Angeles County Registrar Dean Logan also filed an opposition on Oct. 20, and two groups of civil rights and immigrant organizations have asked to join the case on California's side.",
+        "verdict": "confirmed",
+        "sources": [
+          {
+            "label": "California's request for judicial notice (Dkt. 31-4), caption",
+            "url": "https://storage.courtlistener.com/recap/gov.uscourts.cacd.1043513/gov.uscourts.cacd.1043513.31.4.pdf",
+            "tier": "primary"
+          },
+          {
+            "label": "Docket, U.S. v. California, 2:26-cv-12025 (CourtListener)",
+            "url": "https://www.courtlistener.com/docket/74967108/america-v-california-state-of/",
+            "tier": "primary"
+          }
+        ]
+      },
+      {
+        "text": "In its Oct. 20 filings, LA County said 7,035 of the list's records have county addresses. In a preliminary check of 200, 42.9% were canceled registrations, 112 had not been mailed ballots because their records were canceled or inactive, and 71.2% had never voted. Among records with usable birthplace data, 38.9% listed a U.S. birthplace. The county's brief says the figures describe the records, not each person's citizenship.",
+        "verdict": "confirmed",
+        "sources": [
+          {
+            "label": "Declaration of Aman Bhullar, LA County Registrar-Recorder (Dkt. 32-3)",
+            "url": "https://storage.courtlistener.com/recap/gov.uscourts.cacd.1043513/gov.uscourts.cacd.1043513.32.3.pdf",
+            "tier": "primary"
+          },
+          {
+            "label": "Declaration of Monica Flores, LA County Registrar-Recorder (Dkt. 32-4)",
+            "url": "https://storage.courtlistener.com/recap/gov.uscourts.cacd.1043513/gov.uscourts.cacd.1043513.32.4.pdf",
+            "tier": "primary"
+          },
+          {
+            "label": "LA County registrar's opposition to the TRO (Dkt. 32-1)",
+            "url": "https://storage.courtlistener.com/recap/gov.uscourts.cacd.1043513/gov.uscourts.cacd.1043513.32.1.pdf",
+            "tier": "primary"
+          }
+        ]
+      },
+      {
+        "text": "A lawyer in the California secretary of state's office, Rachel Evans, swore on Oct. 20 that the office has not received the list referenced in DOJ's Oct. 13 letter, and that it has received federal grand jury subpoenas for voter records on about 300 people since August 2026.",
+        "verdict": "confirmed",
+        "sources": [
+          {
+            "label": "Declaration of Rachel Evans, California Secretary of State's Office (Dkt. 31-2)",
+            "url": "https://storage.courtlistener.com/recap/gov.uscourts.cacd.1043513/gov.uscourts.cacd.1043513.31.2.pdf",
+            "tier": "primary"
+          }
+        ]
+      }
+    ],
+    "claims": [
+      {
+        "claim": "California \"refused to look at that list\" and \"must verify the citizenship of those more than 20,000 registrants before mail-in ballots are counted.\"",
+        "claimant": "Trent McCotter, Acting Deputy Attorney General",
+        "verdict": "unverified",
+        "explanation": "No state or county official has set ballots aside. But the secretary of state's office swore Oct. 20 that it never received the list, and LA County, which did, checked a sample against its records. Secretary of State Shirley Weber said the list lacked \"both the detail and function to be of any investigative use.\" Whether California \"must\" verify the names is the legal question before the court. Lean's sworn declaration says no law or policy requires officials to affirmatively verify citizenship at registration or voting, and that voters attest to citizenship under penalty of perjury.",
+        "sources": [
+          {
+            "label": "DOJ press release 26-1222",
+            "url": "https://www.justice.gov/opa/pr/justice-department-charges-28-foreign-nationals-california-election-crimes",
+            "tier": "primary"
+          },
+          {
+            "label": "Newsweek",
+            "url": "https://www.newsweek.com/trump-doj-california-voters-methodology-lawsuit-12576337",
+            "tier": "outlet"
+          },
+          {
+            "label": "Declaration of Jana M. Lean (Dkt. 31-3)",
+            "url": "https://storage.courtlistener.com/recap/gov.uscourts.cacd.1043513/gov.uscourts.cacd.1043513.31.3.pdf",
+            "tier": "primary"
+          },
+          {
+            "label": "Declaration of Rachel Evans, California Secretary of State's Office (Dkt. 31-2)",
+            "url": "https://storage.courtlistener.com/recap/gov.uscourts.cacd.1043513/gov.uscourts.cacd.1043513.31.2.pdf",
+            "tier": "primary"
+          }
+        ]
+      },
+      {
+        "claim": "The 28 charged are \"a drop in the bucket\" among California's more than 23 million registered voters.",
+        "claimant": "Rob Bonta, California Attorney General",
+        "verdict": "confirmed",
+        "explanation": "The arithmetic holds: 28 is about 0.0001% of 23 million active registered voters, and about 0.14% of the 20,000-name list. But the list is a separate claim from the charges, and DOJ says more records are under review, so the 28 don't measure how many people on the list are noncitizens.",
+        "sources": [
+          {
+            "label": "ABC10 (KXTV)",
+            "url": "https://www.abc10.com/article/news/politics/federal-officials-charge-28-in-california-noncitizen-voting-investigation/103-5b1b7f3c-2469-4834-93f3-283ec12eae60",
+            "tier": "outlet"
+          },
+          {
+            "label": "Declaration of Jana M. Lean (Dkt. 31-3)",
+            "url": "https://storage.courtlistener.com/recap/gov.uscourts.cacd.1043513/gov.uscourts.cacd.1043513.31.3.pdf",
+            "tier": "primary"
+          }
+        ]
+      },
+      {
+        "claim": "Federal agencies' detailed declarations explaining how they compiled the list are \"more than enough to overcome the officials' skepticism.\"",
+        "claimant": "U.S. Department of Justice, court brief (Oct. 19)",
+        "verdict": "unverified",
+        "explanation": "The declarations describe the matching steps but do not disclose the third-party platform, the match thresholds or an error rate, and they note 189 entries with data discrepancies. California says it still hasn't received the methodology. A judge has not yet ruled.",
+        "sources": [
+          {
+            "label": "DOJ memorandum supporting a TRO (Dkt. 22-2)",
+            "url": "https://storage.courtlistener.com/recap/gov.uscourts.cacd.1043513/gov.uscourts.cacd.1043513.22.2.pdf",
+            "tier": "primary"
+          },
+          {
+            "label": "Declaration of Nicolas Bartell (Dkt. 22-4)",
+            "url": "https://storage.courtlistener.com/recap/gov.uscourts.cacd.1043513/gov.uscourts.cacd.1043513.22.4_1.pdf",
+            "tier": "primary"
+          },
+          {
+            "label": "NPR",
+            "url": "https://www.npr.org/2026/10/19/nx-s1-6007908/election-tensions-escalate-in-california-as-doj-charges-28-people-with-voting-crimes",
+            "tier": "outlet"
+          }
+        ]
+      },
+      {
+        "claim": "DHS \"disputed the characterization that USCIS used third-party software to conduct the analysis.\"",
+        "claimant": "DHS, as reported by Newsweek (Oct. 15–16)",
+        "verdict": "unverified",
+        "explanation": "In the same Newsweek report, a DHS spokesperson said, in Newsweek's paraphrase, that commercial third-party data and other government data were used to supplement the public records. A USCIS official later swore that USCIS \"enhances\" voter data through a third-party platform before scoring matches and reviewing them by hand. The record doesn't show whether that platform does more than supply data, and it isn't named.",
+        "sources": [
+          {
+            "label": "Newsweek",
+            "url": "https://www.newsweek.com/trump-doj-california-voters-methodology-lawsuit-12576337",
+            "tier": "outlet"
+          },
+          {
+            "label": "Declaration of Nicolas Bartell (Dkt. 22-4)",
+            "url": "https://storage.courtlistener.com/recap/gov.uscourts.cacd.1043513/gov.uscourts.cacd.1043513.22.4_1.pdf",
+            "tier": "primary"
+          }
+        ]
+      },
+      {
+        "claim": "A similar federal list in Nevada failed to show that a single noncitizen was on the rolls.",
+        "claimant": "Shirley Weber, California Secretary of State (as reported by Newsweek)",
+        "verdict": "likely",
+        "explanation": "In Nevada, federal officials lowered an estimate of up to 16,000 to 185 names. The state wrote that \"our records indicate that they were citizens.\" Nevada's secretary of state acknowledged that, because DHS provided only voter case numbers, the state may not have been looking at the same people.",
+        "sources": [
+          {
+            "label": "The Nevada Independent",
+            "url": "https://thenevadaindependent.com/article/185-noncitizen-voters-flagged-by-trump-admin-in-nevada-are-likely-citizens-state-says",
+            "tier": "outlet"
+          },
+          {
+            "label": "Newsweek",
+            "url": "https://www.newsweek.com/trump-doj-california-voters-methodology-lawsuit-12576337",
+            "tier": "outlet"
+          }
+        ]
+      }
+    ],
+    "coverage": [
+      {
+        "outlet": "NPR",
+        "lean": "lean-left",
+        "headline": "DOJ charges 28 in California with voting crimes as election tensions escalate",
+        "url": "https://www.npr.org/2026/10/19/nx-s1-6007908/election-tensions-escalate-in-california-as-doj-charges-28-people-with-voting-crimes",
+        "framing": "Frames the charges as an escalation in the administration's feud with California. Notes some of the 28 don't appear to have voted, and quotes UCLA's Rick Hasen calling the charges \"a drop in the bucket\" and warning about disenfranchisement and ballot seizures."
+      },
+      {
+        "outlet": "Newsweek",
+        "lean": "center",
+        "headline": "Trump DOJ Reveals How It Flagged 20,000 California Voters",
+        "url": "https://www.newsweek.com/trump-doj-california-voters-methodology-lawsuit-12576337",
+        "framing": "Walks through the matching method described in DOJ's complaint and gives space to both DHS (the 190,000 figure stands) and California (Bonta: \"What happened to those 170,000?\"). Reports that DHS disputed that USCIS used third-party software for the analysis, while a spokesperson said commercial third-party data supplemented the records."
+      },
+      {
+        "outlet": "ABC10 (KXTV, Sacramento)",
+        "lean": "center",
+        "headline": "Federal officials charge 28 in California noncitizen voting investigation",
+        "url": "https://www.abc10.com/article/news/politics/federal-officials-charge-28-in-california-noncitizen-voting-investigation/103-5b1b7f3c-2469-4834-93f3-283ec12eae60",
+        "framing": "A straight local account of the charges and the deterrence goal (\"We want other people to see there are actual consequences\"), with Bonta's \"drop in the bucket\" response and experts questioning the timing."
+      },
+      {
+        "outlet": "Newsmax",
+        "lean": "right",
+        "headline": "DOJ Charges 28 Noncitizens in Calif. Voting Cases",
+        "url": "https://yahoo.com/news/politics/articles/doj-charges-28-noncitizens-calif-230731721.html",
+        "framing": "Leads with prosecutors (\"This is not a conspiracy theory\"), stresses that at least 22 allegedly voted and some voted more than once, and puts the state's rebuttal later."
+      },
+      {
+        "outlet": "RedState",
+        "lean": "right",
+        "headline": "DOJ Details How It Found 20,000 Likely Noncitizens on CA Voter Rolls, Seeks Emergency Court Order",
+        "url": "https://redstate.com/jenvanlaar/2026/10/19/doj-explains-20000-suspected-noncitizens-ca-voter-roll-emergency-motion-n2208341",
+        "framing": "Presents DOJ's method as thorough and dismisses California's objections (\"We all know that's bunk\"). Mentions that McCotter expects the list to grow but gives no figure."
+      },
+      {
+        "outlet": "Democracy Docket",
+        "lean": "left",
+        "headline": "LA County checked a sample of voters on DOJ's 'noncitizen' list. 1 in 4 were born in the U.S.",
+        "url": "https://www.democracydocket.com/news-alerts/la-county-checked-a-sample-of-voters-on-dojs-noncitizen-list-1-in-4-were-born-in-the-u-s/",
+        "framing": "Presents LA County's sample review as evidence the list is unreliable, stressing U.S. birthplaces and canceled or inactive records, while noting the county's caveat that the sample doesn't settle any individual's citizenship. Doesn't mention the 189 or the 17,000."
+      }
+    ],
+    "xPulse": {
+      "summary": "No notable X reaction beyond the outlets above. Per NPR, President Trump wrote on Truth Social (not X) on Oct. 16 that California officials \"will all go to jail for a long period of time!!!\"",
+      "trending": []
+    },
+    "markets": [],
+    "debate": [
+      {
+        "persona": "Grant",
+        "position": "Washington is trying to protect the integrity of the ballot, and California's answer so far is to say that no law makes it check, which should worry every voter, not comfort them.",
+        "argument": "Twenty-eight green-card holders are now charged, and the DOJ's own descriptions say 22 voted and one cast a provisional ballot. All 28 appear on the list DOJ says it delivered on Oct. 13, and no ballots have been set aside. California's own elections chief swore that no law or policy requires officials to affirmatively verify a voter's citizenship at registration or voting; the check rests on each voter's sworn attestation. That is the problem. USCIS also swore to a layered process of data matching, then manual investigator review, then a second-level review. That is a serious process, not a guess. DHS's public wording about third-party software was muddled, though, and I will not defend that. The method details are still unverified, so the court should force disclosure fast, and the state should not simply decline to look.",
+        "concedes": "The strongest point for the other side is the risk to legitimate voters. The methodology is undisclosed, with no named platform, no match threshold and no error rate. USCIS itself found 189 records with data discrepancies, and California ballots are already in the mail. The 28 charged are a tiny share of 23 million voters and do not show how many of the 20,000 names are really noncitizens. Setting ballots aside could disqualify a validly registered voter, and a list with an unknown error rate is a weak basis for that."
+      },
+      {
+        "persona": "Rosa",
+        "position": "Prosecuting 28 green-card holders is real law enforcement, but it is not proof of a 20,000-name problem, and nobody should throw out valid ballots on a list whose method the government still won't fully show.",
+        "argument": "The government's own release says 22 of the 28 voted, 1 cast a provisional ballot, and 5 only registered. Six face a misdemeanor, and these are accusations, not convictions. The list is a different claim from the charges. DOJ calls 20,000 'the floor', yet USCIS swore to 189 records with unexplained data discrepancies, and the sworn declarations name no platform, no match threshold and no error rate. Nevada's list shrank from up to 16,000 to 185 names, and the state says its records indicate those people were citizens. California has 23 million active voters, ballots have been mailing since early October, and the state's elections chief swore that setting ballots aside risks disqualifying validly registered voters. A court should not order that on a method nobody has tested.",
+        "concedes": "The charges are real and serious. Someone who is not a citizen and votes in a federal election breaks the law, and 22 alleged votes is not nothing. DOJ also did describe a multi-step process with manual and second-level review, and California has not set any ballots aside. If the 20,000 holds up, that is a legitimate public concern."
+      },
+      {
+        "persona": "Mercer",
+        "position": "The charges are real but small, the list is unproven, and California's refusal to look at it is a weaker position than its officials admit.",
+        "argument": "Start with what the primary record shows. DOJ charged 28 green-card holders, and its own release describes 22 as having voted, one as casting a provisional ballot and five as registering without voting. Those are accusations, and the presumption of innocence applies. The list is a separate claim. Sworn declarations show 189 entries with unexplained data discrepancies, no disclosed error rate, and a third-party platform that is not named. Nevada's list shrank from up to 16,000 to 185 names, and Nevada said its records indicate those were citizens, though a case-number mismatch means the state may not have checked the same people. So Bonta is right on arithmetic, but 28 cases do not measure the list. DOJ is also wrong to say its declarations are 'more than enough', since they leave out the methodology California asked for.",
+        "concedes": "DOJ's strongest point is that California has not set any ballots aside. Sworn federal declarations describe manual review and a second-level review, and a USCIS official swore that most voters in a first-pass flagged batch historically end up referred to HSI. A state that declines to check 20,000 names, while the sworn record says no law requires it to, is leaving a real question unanswered. Weber's complaint about missing detail is fair, but it does not show the names are wrong."
+      },
+      {
+        "persona": "Vex",
+        "position": "Washington says the list is 'the floor' and Sacramento says 'drop in the bucket', but neither side has shown the public the one thing that settles it: how the list was built and how often it is wrong.",
+        "argument": "The charges are real, but they are 28 green-card holders, and 5 of them only registered without voting. If the charges hold up, they show some noncitizens voted. They don't prove the 20,000-name list is clean. DHS told Newsweek commercial third-party data supplemented the records, and a USCIS official swore USCIS runs voter data through a third-party platform it doesn't name. DOJ calls its declarations 'more than enough', yet they don't name the platform, the match threshold or an error rate, and USCIS admits 189 records with data discrepancies. DHS still stands by its estimate of as many as 190,832, but its court list has 20,000 manually reviewed names, and a separate batch of 17,000+ is still in review. Citizens deserve a full account from both agencies and from Sacramento, which says no law requires its officials to verify citizenship beyond each voter's sworn attestation.",
+        "concedes": "California's strongest point is the risk to legitimate voters. Its 23 million active voters were mailed ballots starting by Oct. 5. The state's elections chief swore that setting ballots aside risks disqualifying a validly registered voter's ballot. A list with unexplained discrepancies and no disclosed error rate is a weak basis for emergency action this close to Election Day. Also, the 28 charged are accusations, and the Nevada list shrank from up to 16,000 to 185 names."
+      }
+    ],
+    "consensus": "All four analysts accepted every fact they debated: the 28 charges, the 189 flagged entries, the 17,000-record batch, the third-party platform and California's sworn warning about valid voters. LA County's sample check and the secretary of state's denial that it received the list were added to the record after the debate. All four agree the charges don't measure how accurate the list is and that the sworn filings disclose no error rate. They split on whether that should stop a court from acting or push California to check the names.",
+    "stillUnknown": [
+      "What the 189 \"minor data discrepancies\" are, and whether those names were taken off the list. The declarations don't say.",
+      "Whether DOJ will send California the separate batch of 17,000+ records before Election Day, and how many will survive manual review.",
+      "Which third-party data platform USCIS used, and what match threshold and error rate it has.",
+      "How many of the 20,000+ people on the list have actually returned a 2026 ballot.",
+      "When a judge will be assigned and rule on DOJ's emergency request. Most California mail ballots are already out.",
+      "Whether LA County's sample findings hold across the full list. The county called its check preliminary.",
+      "Whether the 28 charged will be convicted. Charges are accusations.",
+      "Whether the secretary of state's office received the list, which DOJ and California dispute."
+    ],
+    "body": [
+      "The federal government's list of more than 20,000 California voters it calls likely noncitizens has about 189 entries with \"minor data discrepancies,\" according to sworn declarations filed Oct. 19. The same filings say a separate batch of more than 17,000 voting records has been flagged. RockLeak found no news coverage of either number.",
+      "The list is at the center of United States v. California, filed Oct. 15 in federal court in Los Angeles. The Justice Department wants a judge to order the state to set aside mail ballots returned by anyone on the list until their citizenship is confirmed. California filed its opposition on Oct. 20, and so did Los Angeles County's registrar. In a sworn declaration, Rachel Evans, a lawyer in the secretary of state's office, says the office has not received the list. An HSI official says he understands DOJ made it available to the office on Oct. 13. California's filing lists the judge as \"Not Yet Assigned\" and the hearing date as \"Not Set.\"",
+      "Here is how the list was built, according to Nicolas Bartell of U.S. Citizenship and Immigration Services. USCIS \"enhances\" voter data \"through a reliable third-party data analytics and investigative platform\" and matches it to immigration records. It then screens out people State Department and Social Security data identify as citizens or deceased, and investigators review the remaining matches by hand, followed by a second review. Bartell says this is separate from SAVE, the federal citizenship-check system. The filings don't name the platform or give a match threshold or an error rate.",
+      "A footnote in Bartell's declaration, and the same note in a declaration from Eric McLoughlin of Homeland Security Investigations, says USCIS \"identified approximately 189 records with minor data discrepancies\" on the list sent to California on Oct. 13, and alerted HSI. Neither says what the discrepancies are or whether those names were removed.",
+      "Los Angeles County, which received the list on Oct. 13, tested it against county records. Its Oct. 20 filings say 7,035 of the records carry county addresses. In a preliminary check of 200 of them, 42.9% were canceled registrations, 112 had not been mailed ballots because their records were canceled or inactive, and 71.2% had never voted. Among records with usable birthplace data, 38.9% listed a U.S. birthplace, which a county elections official called \"strong evidence of citizenship.\" The county says the figures describe the records, not each person's citizenship. Its brief also cites the 189 discrepancies and the 17,000 batch.",
+      "DHS's public description is worded differently. Newsweek reported on Oct. 16 that DHS \"disputed the characterization that USCIS used third-party software to conduct the analysis,\" while a DHS spokesperson said, in Newsweek's paraphrase, that commercial third-party data and other government data were used to supplement the public records. Bartell's Oct. 19 declaration says USCIS \"enhances\" the voter data through a third-party platform, then scores the matches and has investigators review them by hand. Neither names the platform.",
+      "The numbers have moved. In July, DHS Secretary Mullin wrote that there \"may be as many as 190,832 noncitizens\" registered in California, including 81,336 whose name, birth date, address and Social Security number matched DHS files. DHS told Newsweek the 190,000 is still its estimate and the 20,000 are a manually verified subset. DOJ's brief calls the 20,000 \"the floor.\" Bartell swore that, historically, most people in a first-pass batch like the 17,000 end up referred to HSI.",
+      "On Oct. 19, DOJ charged 28 green-card holders in California and said all 28 are on the list. By DOJ's own descriptions, 22 voted, 1 cast a provisional ballot and 5 only registered. Most face felony charges, such as lying on naturalization papers. Six in the Eastern District face a misdemeanor charge of voting as a noncitizen. These are accusations, and the defendants are presumed innocent.",
+      "The two sides read this differently. Acting Deputy Attorney General Trent McCotter says California \"refused to look at that list,\" and DOJ's brief says its declarations are \"more than enough\" to answer the state's doubts. The secretary of state's office swore it never received the list, and LA County, which did, checked a sample of it. California Attorney General Rob Bonta calls the 28 \"a drop in the bucket\" among more than 23 million voters. The state's elections chief, Jana Lean, swore that setting ballots aside \"creates a substantial risk that a validly registered voter's cast ballot would be disqualified.\"",
+      "California also points to Nevada. There, federal officials cut an estimate of up to 16,000 noncitizens to 185 names, and the state wrote that \"our records indicate that they were citizens.\" Nevada's secretary of state acknowledged that, because DHS sent only voter case numbers, the state may not have been checking the same people."
+    ],
+    "stat": {
+      "value": "189",
+      "label": "Entries on the 20,000-name California list that USCIS flagged for \"minor data discrepancies,\" per sworn Oct. 19 filings"
+    },
+    "tldr": {
+      "what": "In sworn court filings, DHS officials say about 189 entries on their list of 20,000+ California voters they call likely noncitizens had \"minor data discrepancies,\" and that a separate batch of 17,000+ records is in review.",
+      "why": "DOJ wants a judge to order California to set aside mail ballots from everyone on that list until their citizenship is confirmed. Counties began mailing ballots by Oct. 5, and Election Day is Nov. 3.",
+      "truth": "DOJ has charged 28 people on the list, but the list itself hasn't been tested in court. The filings don't say what the discrepancies are, name the data platform or give an error rate. LA County's check of a 200-record sample found many canceled registrations and U.S. birthplaces."
+    },
+    "newAngle": "Coverage so far has focused on the 28 charges, the 20,000 figure and LA County's sample check. No outlet RockLeak found has reported the sworn footnotes about 189 entries with data discrepancies or the separate 17,000-record batch, though LA County's Oct. 20 brief cites both.",
+    "seo": {
+      "title": "DHS Filings: 189 Discrepancies in 20,000 California List",
+      "description": "Sworn DHS filings: about 189 entries had 'minor data discrepancies,' and 17,000 more records are in review. LA County calls the list unreliable.",
+      "keywords": [
+        "DOJ lawsuit California noncitizen voters",
+        "20,000 likely noncitizens California list",
+        "California mail ballots noncitizen list",
+        "United States v. California 2026",
+        "DOJ charges 28 California voting",
+        "USCIS voter roll matching third-party",
+        "noncitizen voting California"
+      ],
+      "faq": [
+        {
+          "q": "What is the 20,000-name California voter list?",
+          "a": "A list of just over 20,000 registered California voters that DHS believes are likely noncitizens and says were sent mail ballots. An HSI agent delivered it to Los Angeles County on Oct. 13, 2026. DOJ says it made the list available to the secretary of state; her office says it never received it."
+        },
+        {
+          "q": "What are the 189 'minor data discrepancies'?",
+          "a": "Sworn declarations from USCIS and HSI officials say USCIS found about 189 records with minor data discrepancies on the list that was sent and alerted HSI. The filings don't describe them or say whether those names were removed."
+        },
+        {
+          "q": "How did DHS build the list?",
+          "a": "USCIS says it enhanced voter data through a third-party data analytics platform, matched it to immigration records, screened out people State Department and Social Security data show as citizens or deceased, then reviewed matches by hand. It says this is separate from SAVE."
+        },
+        {
+          "q": "How many people has DOJ charged?",
+          "a": "On Oct. 19, DOJ charged 28 green-card holders in California and said all are on the list. By DOJ's descriptions, 22 voted, 1 cast a provisional ballot and 5 only registered. Charges are accusations, not convictions."
+        },
+        {
+          "q": "Will California set aside mail ballots?",
+          "a": "Not unless a court orders it. California and Los Angeles County filed oppositions on Oct. 20. California's filing says no judge had been assigned and no hearing set."
+        }
+      ]
+    },
+    "social": {
+      "headlineVariants": [
+        {
+          "text": "DHS Swore About 189 Entries on Its California Voter List Had 'Minor Data Discrepancies'; LA County Calls List Unreliable",
+          "score": 8,
+          "rationale": "Pairs the unreported sworn DHS footnote with LA County's sworn finding, so both sides of the record are in the headline. Keeps DHS's own word 'minor.' Chosen as the headline."
+        },
+        {
+          "text": "DOJ Has Charged 28 People on Its 20,000-Name California List. Its Own Filings Flag 189 Entries With Data Discrepancies.",
+          "score": 7,
+          "rationale": "Ties the charges to the list without implying the list produced the cases, but leaves out LA County's check."
+        },
+        {
+          "text": "The Sworn Record Behind DOJ's 20,000 California 'Likely Noncitizens': 189 Discrepancies, 17,000 More, 28 Charged",
+          "score": 7,
+          "rationale": "Complete and neutral, but less punchy."
+        }
+      ],
+      "xPost": "New in DOJ's suit vs. California: sworn DHS filings say ~189 entries on its 20,000-name 'likely noncitizen' list had 'minor data discrepancies'; 17,000+ more records are in review. LA County says 42.9% of a sample it checked were canceled registrations.",
+      "thread": [
+        "1/ DOJ wants a judge to make California set aside mail ballots from 20,000+ voters it calls likely noncitizens. The sworn declarations behind that list, filed Oct. 19, include two numbers we found in no news coverage.",
+        "2/ USCIS and HSI officials each swore that USCIS found about 189 records with \"minor data discrepancies\" on the list sent to California on Oct. 13. They don't say what the discrepancies are or whether the names were pulled.",
+        "3/ USCIS also swore it has flagged a separate batch of 17,000+ voting records, and that historically most of a first-pass batch ends up referred to investigators. DOJ calls the 20,000 \"the floor.\"",
+        "4/ Method: USCIS says it ran voter data through \"a reliable third-party data analytics and investigative platform,\" then manual review. DHS told Newsweek that commercial third-party data supplemented the records. The platform isn't named, and no error rate is disclosed.",
+        "5/ DOJ has charged 28 green-card holders on the list (22 described as voting). These are accusations. LA County's preliminary check of 200 listed records found 71.2% had never voted. California's secretary of state says her office never received the list."
+      ],
+      "shortVideoHook": "The feds want California to hold back 20,000 mail ballots. Their own sworn paperwork says 189 of those entries had data problems, and 17,000 more records are under review.",
+      "shareCardText": "189 entries flagged. 17,000 more in review. 28 charged. What DHS swore about its California voter list."
+    },
+    "review": {
+      "approvedBy": "Plumb",
+      "approvedAt": "2026-10-20T21:36:17.988Z",
+      "notes": "Round 1's fixes were made and hold up: every figure (189, 17,000, 28, LA County's 7,035, 200-record sample, 42.9%, 112, 71.2% and 38.9%) matches the sworn filings, and the desk was right to use the sworn 38.9% birthplace figure instead of the brief's 25.8%. What's left is wording: a Newsweek paraphrase is shown as a direct DHS quote in three places, there is one garbled thread post, one thread post overstates what we know, and one headline variant is over the length limit.",
+      "edition": "evening"
+    }
+  },
+  {
     "slug": "ohio-senate-new-pac-1-2-million-libertarian-redpath-husted",
     "category": "midterms",
     "kicker": "OHIO SENATE",
