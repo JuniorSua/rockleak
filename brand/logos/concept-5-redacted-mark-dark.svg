@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512" role="img" aria-label="RockLeak - Redacted mark (dark)">
+<title>RockLeak - Redacted mark (dark)</title>
+<rect x="56" y="70" width="176" height="176" fill="#2E6FF2"/>
+<path d="M144,104 L158.11,144.58 L201.06,145.46 L166.83,171.42 L179.27,212.54 L144,188 L108.73,212.54 L121.17,171.42 L86.94,145.46 L129.89,144.58 Z" fill="#FFFFFF"/>
+<rect x="254" y="70" width="202" height="44" fill="#F4F2ED"/>
+<rect x="254" y="136" width="202" height="44" fill="#F4F2ED"/>
+<rect x="254" y="202" width="202" height="44" fill="#F4F2ED"/>
+<path d="M254,268 L270,250 L278,268 L256,312 L240,330 L232,312 Z" fill="#E5252A"/>
+<path d="M56,268 L254,268 L232,312 L56,312 Z" fill="#F4F2ED"/>
+<path d="M278,268 L456,268 L456,312 L256,312 Z" fill="#F4F2ED" transform="rotate(-1.6 456 312)"/>
+<rect x="56" y="334" width="400" height="44" fill="#F4F2ED"/>
+<rect x="56" y="400" width="286" height="44" fill="#F4F2ED"/>
+</svg>
