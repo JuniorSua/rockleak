@@ -18,7 +18,8 @@ Working files go in `newsroom/desk/<YYYY-MM-DD>/` (gitignored, so they stay on t
 
 ## 0. Before anything (every run)
 
-1. `cd` to the repo root. Run `git status -sb`.
+1. **Work only in `/home/junior/.t3/projects/rockleak`.** If you started anywhere else, such as a T3 worktree under
+   `~/.t3/worktrees/`, `cd` there and stay there. Don't create worktrees or branches. Run `git status -sb`.
    - If the branch is **not** `foundation`, stop. Someone is working on another branch. Report it and do nothing else.
    - Uncommitted changes outside `content/` and `newsroom/` are someone else's work in progress. Don't touch, stage, stash or commit them.
 2. Run `git pull --ff-only origin foundation`. If that fails because of local changes, carry on. Publishing only commits `content/stories.json`.
@@ -57,6 +58,13 @@ Read `plan.md`, if there is one, and the fresh brief. Pick the single best candi
 Research with WebSearch and WebFetch. Go to primary records first:
 - FEC, congress.gov, Senate and House roll calls, court dockets (CourtListener)
 - the Federal Register, agency releases, official statements and transcripts
+
+FEC tips:
+- `docquery.fec.gov` filing images block automated readers.
+- Use the FEC API instead: `https://api.open.fec.gov/v1/schedules/schedule_e/?committee_id=…&api_key=$KEY`.
+  Take `$KEY` from `DATA_GOV_API_KEY` in `.env.local`. If it's missing, run `npx vercel@latest env pull .env.local --yes`.
+  If it's still missing, use `DEMO_KEY`, which allows about 40 calls an hour, so spend them carefully.
+- An FEC record you can't open isn't confirmed. Pick a candidate you can verify instead.
 
 Then outlets on the left, center and right. Write `ledger.json`:
 - `coreFacts` (5–8): each with a verdict and at least 1 source. Use primary sources wherever they exist. Mark them `tier: "primary"`.
