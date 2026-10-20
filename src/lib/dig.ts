@@ -69,6 +69,11 @@ function cacheFailure() {
 async function getJson(url: string, timeout = TIMEOUT): Promise<Json | null> {
   try {
     const res = await fetch(url, { headers: { accept: "application/json", "user-agent": UA }, signal: AbortSignal.timeout(timeout) });
+    // A mistyped DATA_GOV_API_KEY shouldn't blank the FEC and Congress leads: retry once on the shared demo key.
+    if (res.status === 403 && url.includes("api_key=") && !url.includes("api_key=DEMO_KEY")) {
+      const demo = url.replace(/api_key=[^&]*/, "api_key=DEMO_KEY");
+      if ((await res.text()).includes("API_KEY_INVALID")) return getJson(demo, timeout);
+    }
     return res.ok ? ((await res.json()) as Json) : null;
   } catch {
     return null;

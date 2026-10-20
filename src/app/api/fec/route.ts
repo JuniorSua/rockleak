@@ -11,12 +11,16 @@ const ALLOWED = /^(schedules\/schedule_[abe]|committee|committees|candidate|cand
 export async function GET(req: Request) {
   if (!authorized(req)) return Response.json({ error: "unauthorized" }, { status: 401 });
   const params = new URL(req.url).searchParams;
+  const key = process.env.DATA_GOV_API_KEY?.trim() ?? "";
+  // Shape check that never reveals the key: real api.data.gov keys are 40 letters and digits.
+  if (params.get("path") === "keyinfo")
+    return Response.json({ set: key.length > 0, length: key.length, lettersAndDigitsOnly: /^[A-Za-z0-9]*$/.test(key), looksValid: /^[A-Za-z0-9]{40}$/.test(key) });
   const path = (params.get("path") ?? "").replace(/^\/+/, "");
   if (!ALLOWED.test(path) || path.includes("..")) return Response.json({ error: "path not allowed" }, { status: 400 });
 
   const target = new URL(path, FEC);
   for (const [k, v] of params) if (k !== "path" && k !== "api_key") target.searchParams.append(k, v);
-  target.searchParams.set("api_key", process.env.DATA_GOV_API_KEY?.trim() || "DEMO_KEY");
+  target.searchParams.set("api_key", key || "DEMO_KEY");
 
   const r = await fetch(target, { signal: AbortSignal.timeout(30_000) });
   return new Response(r.body, {
