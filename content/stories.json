@@ -450,6 +450,13 @@
       "approvedAt": "2026-10-20T21:36:17.988Z",
       "notes": "Round 1's fixes were made and hold up: every figure (189, 17,000, 28, LA County's 7,035, 200-record sample, 42.9%, 112, 71.2% and 38.9%) matches the sworn filings, and the desk was right to use the sworn 38.9% birthplace figure instead of the brief's 25.8%. What's left is wording: a Newsweek paraphrase is shown as a direct DHS quote in three places, there is one garbled thread post, one thread post overstates what we know, and one headline variant is over the length limit.",
       "edition": "evening"
+    },
+    "image": {
+      "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6a/2020_I_Voted_sticker%2C_Santa_Clara_County%2C_California.jpg/1920px-2020_I_Voted_sticker%2C_Santa_Clara_County%2C_California.jpg",
+      "alt": "An \"I Voted\" sticker from Santa Clara County, California",
+      "credit": "Santa Clara County Registrar of Voters / Wikimedia Commons",
+      "license": "Public domain",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:2020_I_Voted_sticker,_Santa_Clara_County,_California.jpg"
     }
   },
   {
@@ -909,6 +916,13 @@
       "approvedAt": "2026-10-20T16:22:40.244Z",
       "notes": "All of round 1's fixes went in correctly and the FEC facts, headline, frame and new angle still hold, but a Marist poll released today has Brown up 9 among registered voters, so every poll range needs to say it covers likely voters only. 270toWin now lists nine October polls, not eight.",
       "edition": "evening"
+    },
+    "image": {
+      "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b7/Sen._Jon_Husted_official_portrait%2C_119th_Congress.jpg/1920px-Sen._Jon_Husted_official_portrait%2C_119th_Congress.jpg",
+      "alt": "Official U.S. Senate portrait of Sen. Jon Husted of Ohio",
+      "credit": "United States Senate / Wikimedia Commons",
+      "license": "Public domain",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Sen._Jon_Husted_official_portrait,_119th_Congress.jpg"
     }
   },
   {
@@ -1329,6 +1343,14 @@
       ],
       "shortVideoHook": "Elon Musk isn't on the ballot in Texas. But federal filings show he gave a hundred and fifty-eight million dollars to the group helping Ken Paxton. Here's where it went.",
       "shareCardText": "Musk gave $158M to Paxton's side. Poll: Talarico 48, Paxton 46."
+    },
+    "image": {
+      "src": "https://upload.wikimedia.org/wikipedia/commons/3/34/Elon_Musk_Royal_Society_%28crop2%29.jpg",
+      "alt": "Elon Musk at the Royal Society in London",
+      "credit": "Debbie Rowe / Wikimedia Commons",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Elon_Musk_Royal_Society_(crop2).jpg"
     }
   },
   {
@@ -1766,6 +1788,13 @@
       ],
       "shortVideoHook": "In September, Trump signed a law allowing tariffs of up to five hundred percent on Russian goods. Four weeks later, he waived most of it. And it's legal.",
       "shareCardText": "Senate: 86-11 for Russia sanctions. Trump: signed it, then waived most."
+    },
+    "image": {
+      "src": "https://upload.wikimedia.org/wikipedia/commons/1/16/Official_Presidential_Portrait_of_President_Donald_J._Trump_%282025%29.jpg",
+      "alt": "Official 2025 presidential portrait of Donald Trump",
+      "credit": "Daniel Torok / Wikimedia Commons",
+      "license": "Public domain",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Official_Presidential_Portrait_of_President_Donald_J._Trump_(2025).jpg"
     }
   },
   {
@@ -2193,6 +2222,13 @@
       ],
       "shortVideoHook": "Federal agents searched Congresswoman Ilhan Omar's home three weeks before the election. Eight days later? Zero charges. So what do we actually know?",
       "shareCardText": "Ilhan Omar's home searched Oct. 12. Charges filed so far: zero."
+    },
+    "image": {
+      "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/64/Ilhan_Omar%2C_official_portrait%2C_116th_Congress.jpg/1920px-Ilhan_Omar%2C_official_portrait%2C_116th_Congress.jpg",
+      "alt": "Official U.S. House portrait of Rep. Ilhan Omar",
+      "credit": "Kristie Boyd; U.S. House Office of Photoraphy / Wikimedia Commons",
+      "license": "Public domain",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Ilhan_Omar,_official_portrait,_116th_Congress.jpg"
     }
   }
 ]
