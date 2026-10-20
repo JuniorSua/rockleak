@@ -19,7 +19,7 @@ import type { WireItem } from "@/lib/types";
 //   gets a longer timeout than the other sources.
 //
 // Every source returns [] on failure, and failures are cached briefly so a rate
-// limit or outage is retried within minutes instead of hours.
+// limit or outage is retried in 15 minutes instead of hours.
 
 export interface Lead {
   id: string;
@@ -37,11 +37,16 @@ export interface Lead {
 }
 
 /**
- * A lead before the coverage check. `keys` are the distinctive entities (a wire item
- * must mention one), `specifics` are second names that pin the story down (key +
- * specific = clearly covered), `topics` are looser words (key + topic = probably covered).
+ * A lead before the coverage check. Two matching modes:
+ * - "entity" (FEC, courts): `keys` are names (a wire item must mention one),
+ *   `specifics` pin the story down (key + specific = clearly covered), `topics` are
+ *   looser words (key + topic = probably covered).
+ * - "words" (rules, bills, votes, whose only handle is their title): `keys` are the
+ *   title's distinctive words; a wire item must share 2+ of them (a kind word like
+ *   "executive order" in `topics` can stand in for one).
  */
 interface Draft extends Omit<Lead, "coveredBy" | "novelty" | "score"> {
+  match: "entity" | "words";
   keys: string[];
   specifics: string[];
   topics: string[];
@@ -58,7 +63,7 @@ type Json = Record<string, unknown>;
 
 /** Short retry window for a failed source so we don't cache an outage for an hour. */
 function cacheFailure() {
-  cacheLife({ stale: 60, revalidate: 300, expire: 3600 });
+  cacheLife({ stale: 60, revalidate: 900, expire: 3600 });
 }
 
 async function getJson(url: string, timeout = TIMEOUT): Promise<Json | null> {
@@ -85,6 +90,9 @@ const isoDay = (ms: number) => new Date(ms).toISOString().slice(0, 10);
 const str = (v: unknown) => (typeof v === "string" ? v.trim() : typeof v === "number" ? String(v) : "");
 const num = (v: unknown) => (typeof v === "number" && Number.isFinite(v) ? v : Number.parseFloat(str(v)) || 0);
 const clamp = (n: number, lo = 0, hi = 1) => Math.min(hi, Math.max(lo, n));
+const article = (noun: string) => `${/^[aeiou]/i.test(noun) ? "an" : "a"} ${noun}`;
+/** Names ending in "Inc." shouldn't leave "Inc.." at the end of a sentence. */
+const tidy = (s: string) => s.replace(/([^.])\.\.(?!\.)/g, "$1.").replace(/\s+/g, " ").trim();
 
 function money(n: number) {
   if (n >= 1e6) return `$${(n / 1e6).toFixed(n >= 1e7 ? 0 : 1).replace(/\.0$/, "")}M`;
@@ -103,7 +111,9 @@ const LOWER = new Set("of for the and a an to in on at by with or".split(" "));
 
 /** "LONE STAR LIBERTY PAC" -> "Lone Star Liberty PAC". Leaves mixed-case text alone. */
 function titleCase(s: string) {
-  if (/[a-z]/.test(s) && /[A-Z]/.test(s) && s !== s.toUpperCase()) return s.replace(/\s+/g, " ").trim();
+  const letters = s.replace(/[^A-Za-z]/g, "");
+  const upper = letters.replace(/[^A-Z]/g, "").length;
+  if (letters.length && upper / letters.length < 0.7) return s.replace(/\s+/g, " ").trim();
   return s
     .toLowerCase()
     .replace(/\s+/g, " ")
@@ -115,6 +125,9 @@ function titleCase(s: string) {
       return w.replace(/(^|[-'(/.])([a-z])/g, (_, p: string, c: string) => p + c.toUpperCase());
     })
     .join(" ")
+    .replace(/'S\b/g, "'s")
+    .replace(/\bV\. /g, "v. ")
+    .replace(/\bSuperpac\b/g, "SuperPAC")
     .replace(/\bInc\.?$/, "Inc.")
     .replace(/\bMc([a-z])/g, (_, c: string) => `Mc${c.toUpperCase()}`);
 }
@@ -179,16 +192,45 @@ function distinctWords(title: string) {
   return [...new Set(words.filter((w) => w.length > 2 && !STOP.has(w) && !GENERIC.has(w) && !/^\d+$/.test(w)))];
 }
 
-function checkCoverage(d: Draft, wire: { item: WireItem; text: string }[]) {
+interface WireIndex {
+  docs: { item: WireItem; text: string }[];
+  /** True for single words in more than 8% of wire items ("red", "trump", "senate"): too common to tie a story to a record. */
+  common: (term: string) => boolean;
+  /** Stricter cut (3%) for words that are meant to pin a story down ("washington" isn't). */
+  vague: (term: string) => boolean;
+}
+
+function indexWire(items: WireItem[]): WireIndex {
+  const docs = items.map((item) => ({ item, text: norm(`${item.title} ${item.summary}`) }));
+  const df = new Map<string, number>();
+  for (const { text } of docs) for (const w of new Set(text.trim().split(" "))) df.set(w, (df.get(w) ?? 0) + 1);
+  const over = (share: number) => (term: string) => {
+    const t = norm(term).trim();
+    return !t.includes(" ") && (df.get(t) ?? 0) > Math.max(2, docs.length * share);
+  };
+  return { docs, common: over(0.08), vague: over(0.03) };
+}
+
+function checkCoverage(d: Draft, wire: WireIndex) {
   const strong = new Set<string>();
   const weak = new Set<string>();
   const coveredBy: Lead["coveredBy"] = [];
-  for (const { item, text } of wire) {
-    const key = d.keys.find((k) => has(text, k));
-    if (!key) continue;
-    const other = (t: string) => norm(t) !== norm(key) && !norm(key).includes(norm(t)) && has(text, t);
-    const isStrong = d.specifics.some(other);
-    if (!isStrong && !d.topics.some(other)) continue;
+  const keyWords = new Set(d.keys.flatMap((k) => norm(k).trim().split(" ")));
+  const words = d.match === "words" ? d.keys.filter((k) => !wire.common(k)) : [];
+  const specifics = d.specifics.filter((t) => !wire.vague(t) && !norm(t).trim().split(" ").every((w) => keyWords.has(w)));
+  const topics = d.topics.filter((t) => !norm(t).trim().split(" ").every((w) => keyWords.has(w)));
+  for (const { item, text } of wire.docs) {
+    let isStrong: boolean;
+    if (d.match === "words") {
+      const hits = words.filter((w) => has(text, w)).length;
+      const topic = topics.some((t) => has(text, t));
+      if (hits === 0 || hits + (topic ? 1 : 0) < 2) continue;
+      isStrong = hits >= 3 || (hits >= 2 && topic);
+    } else {
+      if (!d.keys.some((k) => has(text, k))) continue;
+      isStrong = specifics.some((t) => has(text, t));
+      if (!isStrong && !topics.some((t) => has(text, t))) continue;
+    }
     (isStrong ? strong : weak).add(item.outletId);
     if (coveredBy.length < 6 && !coveredBy.some((c) => c.url === item.url)) {
       coveredBy.push({ outlet: item.outlet, title: item.title, url: item.url });
@@ -233,7 +275,6 @@ async function fecIndependentExpenditures(): Promise<Draft[]> {
     max_date: isoDay(now),
     sort: "-expenditure_date",
     per_page: "100",
-    most_recent: "true",
   });
   const data = await getJson(`${FEC}/schedules/schedule_e/?${q}`);
   const rows = (data?.results ?? null) as Json[] | null;
@@ -246,7 +287,8 @@ async function fecIndependentExpenditures(): Promise<Draft[]> {
   // Amended filings repeat the same transaction; keep the latest filing of each.
   const byTxn = new Map<string, Json>();
   for (const r of rows) {
-    if (!["S", "H"].includes(str(r.candidate_office)) || !r.candidate_name) continue;
+    if (!["S", "H"].includes(str(r.candidate_office)) || !r.candidate_name || str(r.memo_code) === "X") continue;
+    if (str(r.expenditure_date) > isoDay(now)) continue; // typo'd future dates
     const k = `${str(r.committee_id)}|${str(r.transaction_id) || str(r.sub_id)}`;
     const prev = byTxn.get(k);
     if (!prev || str(r.filing_date) > str(prev.filing_date)) byTxn.set(k, r);
@@ -284,13 +326,14 @@ async function fecIndependentExpenditures(): Promise<Draft[]> {
       kind: "Independent expenditure",
       title: `${committee} spent ${money(total)} ${verb} ${cand.full}${party ? ` (${party})` : ""} in the ${race} race`,
       detail:
-        `${rs.length === 1 ? "An independent expenditure" : `${rs.length} independent expenditures`} dated ${span} reported to the FEC; the largest is ${money(num(top.expenditure_amount))}` +
+        `${rs.length === 1 ? "One independent expenditure" : `${rs.length} independent expenditures`} dated ${span} reported to the FEC${rs.length === 1 ? ":" : "; the largest is"} ${money(num(top.expenditure_amount))}` +
         `${purpose ? ` for "${purpose}"` : ""}${payee ? ` paid to ${payee}` : ""}.` +
         (ytd > total ? ` The committee reports ${money(ytd)} spent on this race so far this year.` : ""),
       url: str(top.pdf_url) || `https://www.fec.gov/data/independent-expenditures/?committee_id=${str(top.committee_id)}&cycle=2026`,
       date: filed,
       amount: Math.round(total),
       entities: [cand.full, committee, stateName],
+      match: "entity",
       keys: [cand.last, cand.full],
       specifics: [committee, ...(committeeCore.split(" ").length >= 2 ? [committeeCore] : [])],
       topics: MONEY_TOPICS,
@@ -356,12 +399,13 @@ async function fecBigMoney(): Promise<Draft[]> {
       title: `${donor.full} gave ${money(amount)} to ${recipientDesc}`,
       detail:
         `Itemized receipt dated ${shortDate(str(r.contribution_receipt_date))} on ${recipient}'s ${report ? `${report} ` : ""}report, made public ${shortDate(loaded)}. ` +
-        `Donor listed as ${individual ? "an individual" : `${str(r.entity_type_desc).toLowerCase() || "an organization"}`}${where ? ` in ${where}` : ""}${job ? ` (${job})` : ""}` +
+        `Donor listed as ${individual ? "an individual" : article(str(r.entity_type_desc).toLowerCase() || "organization")}${where ? ` in ${where}` : ""}${job ? ` (${job})` : ""}` +
         `${ytd > amount ? `, ${money(ytd)} given to this committee so far this cycle` : ""}.`,
       url: str(r.pdf_url) || `https://www.fec.gov/data/receipts/?committee_id=${str(r.committee_id)}&two_year_transaction_period=2026`,
       date: loaded ?? (str(r.contribution_receipt_date) || null),
       amount: Math.round(amount),
       entities: [donor.full, recipient],
+      match: "entity",
       keys: individual ? [donor.last, donor.full] : [donor.full],
       specifics: [recipient],
       topics: [...MONEY_TOPICS, "gave", "give", "gives", "donation", "donated", "contribution", "check", "bankroll", "bankrolled", "bankrolling"],
@@ -418,7 +462,7 @@ function frDraft(r: Json): Draft | null {
     const agency = agencies[0] ?? "Federal";
     kind = proposed ? "Significant proposed rule" : "Significant rule";
     label = `${agency} ${proposed ? "proposed rule" : /delay/i.test(str(r.action)) ? "rule delay" : "final rule"}`;
-    size = proposed ? 0.45 : 0.55;
+    size = proposed ? 0.3 : 0.4;
   }
   const signed = str(r.signing_date);
   const published = str(r.publication_date) || null;
@@ -427,7 +471,7 @@ function frDraft(r: Json): Draft | null {
     .filter(Boolean)
     .join(", ");
   const detail = `${abstract ? `${firstSentences(abstract)} ` : ""}${when.charAt(0).toUpperCase()}${when.slice(1)}.`;
-  const kindTopics = presidential ? ["executive order", "order", "proclamation", "memo", "memorandum", "trump", "white house", "president"] : ["rule", "regulation", "regulations", "agency", ...agencies];
+  const kindTopics = presidential ? ["executive order", "proclamation", "memo", "memorandum"] : ["rule", "regulation", "regulations"];
   return {
     id: `fr-${str(r.document_number)}`,
     source: "Federal Register",
@@ -437,11 +481,12 @@ function frDraft(r: Json): Draft | null {
     url: str(r.html_url),
     date: published,
     entities: [...words.slice(0, 6), ...agencies.slice(0, 2)],
+    match: "words",
     keys: words,
-    specifics: words,
+    specifics: [],
     topics: kindTopics,
     size: hot ? Math.min(1, size + 0.15) : size,
-    relevance: /\b(election|voter|voting|ballot|census|redistrict)/i.test(`${title} ${abstract}`) ? 1 : hot ? 0.8 : 0.55,
+    relevance: /\b(election|voter|voting|ballot|census|redistrict)/i.test(`${title} ${abstract}`) ? 1 : hot ? 0.8 : presidential ? 0.6 : 0.45,
   };
 }
 
@@ -500,10 +545,11 @@ async function congressBills(): Promise<Draft[]> {
       if (num(b.congress) !== congress || actionDate < since || !path) return null;
       const title = str(b.title);
       let [kind, phrase, size] = ["Bill introduced", "was introduced", 0.2];
-      if (/became public law|signed by president/i.test(text)) [kind, phrase, size] = ["Bill signed into law", "was signed into law", 0.95];
-      else if (/presented to president/i.test(text)) [kind, phrase, size] = ["Bill sent to the president", "was sent to the president", 0.85];
-      else if (/vetoed/i.test(text)) [kind, phrase, size] = ["Bill vetoed", "was vetoed", 0.95];
-      else if (/passed|agreed to/i.test(text)) [kind, phrase, size] = ["Bill passed", "passed a chamber", 0.7];
+      // Signing a noncontroversial bill isn't news on its own; HOT titles add 0.3 below.
+      if (/vetoed/i.test(text)) [kind, phrase, size] = ["Bill vetoed", "was vetoed", 0.9];
+      else if (/became public law|signed by president/i.test(text)) [kind, phrase, size] = ["Bill signed into law", "was signed into law", 0.5];
+      else if (/presented to president/i.test(text)) [kind, phrase, size] = ["Bill sent to the president", "was sent to the president", 0.5];
+      else if (/passed|agreed to/i.test(text)) [kind, phrase, size] = ["Bill passed", "passed a chamber", 0.45];
       else if (/reported|ordered to be reported/i.test(text)) [kind, phrase, size] = ["Bill advanced", "advanced out of committee", 0.4];
       else if (/calendar/i.test(text)) [kind, phrase, size] = ["Bill placed on calendar", "was placed on the calendar", 0.3];
       const hot = HOT.test(title);
@@ -520,9 +566,10 @@ async function congressBills(): Promise<Draft[]> {
         url: `https://www.congress.gov/bill/${congress}th-congress/${path[0]}/${str(b.number)}`,
         date: actionDate || null,
         entities: [label, ...words.slice(0, 5)],
-        keys: words,
-        specifics: [...words, label],
-        topics: ["bill", "legislation", "senate", "house", "lawmakers", "senator", "congress", "introduce", "introduced", "introduces"],
+        match: "words",
+        keys: [...words, label],
+        specifics: [],
+        topics: ["bill", "legislation", "introduce", "introduced", "introduces"],
         size,
         relevance: hot ? 0.75 : 0.5,
       };
@@ -583,9 +630,10 @@ async function senateVotes(): Promise<Draft[]> {
       url: `https://www.senate.gov/legislative/LIS/roll_call_votes/vote${congress}${session}/vote_${congress}_${session}_${n.padStart(5, "0")}.htm`,
       date: v.date,
       entities: [str(v.issue), ...words.slice(0, 5)],
-      keys: words,
-      specifics: words,
-      topics: ["senate", "vote", "votes", "voted", "confirm", "confirmed", "confirms", "cloture", "senators"],
+      match: "words",
+      keys: [...words, str(v.issue)],
+      specifics: [],
+      topics: ["vote", "votes", "voted", "confirm", "confirmed", "confirms", "confirmation", "cloture"],
       size: (final ? 0.65 : 0.4) + (close ? 0.2 : 0),
       relevance: HOT.test(title) ? 0.8 : 0.6,
     };
@@ -613,37 +661,57 @@ function watchHit(text: string) {
   });
 }
 
+// Place names say where a case is, not which story it is.
+const PLACE_WORDS = new Set([...Object.values(STATES).flatMap((n) => n.toLowerCase().split(" ")), "york", "city", "county"]);
+
+// Parties that identify nothing on their own.
+const GENERIC_PARTY = /^(united states( of america)?|usa|state of |.*\b(a minor|deceased|does? \d|et al)\b|unknown|john doe)/i;
+const LEGAL_TOPICS = ["court", "lawsuit", "lawsuits", "sue", "sues", "sued", "suing", "judge", "warrant", "search", "searched", "raid", "filing", "complaint", "case", "fbi", "investigation", "investigators", "probe", "subpoena", "indicted", "indictment", "charged", "doj", "justice department"];
+
+/** "Ken Paxton, in his official capacity as Attorney General" -> "Ken Paxton" */
+function cleanParty(p: string) {
+  return titleCase(p.replace(/,?\s+(in (his|her|their|the|its) (official|individual) capacit(y|ies)|as |individually).*$/i, "").trim());
+}
+
 function courtDraft(r: Json, watch: string | undefined): Draft {
-  const parties = ((r.party ?? []) as unknown[]).map((p) => titleCase(str(p))).filter(Boolean);
+  const parties = [...new Set(((r.party ?? []) as unknown[]).map((p) => cleanParty(str(p))).filter(Boolean))];
   const caseName = titleCase(str(r.caseName) || str(r.case_name_full) || "Untitled case");
   const cite = str(r.court_citation_string) || str(r.court_id);
   const court = str(r.court);
   const filed = str(r.dateFiled) || null;
-  const nature = str(r.suitNature) || str(r.cause);
-  const doc = ((r.recap_documents ?? []) as Json[])[0];
-  const docLabel = doc ? str(doc.short_description) || str(doc.description).slice(0, 120) : "";
-  const blob = `${caseName} ${nature} ${docLabel} ${str(doc?.description)}`;
-  const alarm = ALARM.test(blob);
-  const routine = /habeas|prisoner|social security|foreclosure|bankruptcy/i.test(nature);
-  const others = parties.filter((p) => !watch || !norm(p).includes(norm(watch.split(" ").at(-1) ?? "").trim()));
-  const surname = watch?.split(" ").at(-1);
-  const caseWords = distinctWords(caseName).filter((w) => !["matter", "application", "united", "america", "residence"].includes(w));
+  const nature = (str(r.suitNature) || str(r.cause)).replace(/^\d+\s*/, "");
+  const docs = (r.recap_documents ?? []) as Json[];
+  // Prefer the charging/opening document: its description names who is being sued.
+  const doc = docs.find((d) => /complaint|petition|indictment|application|motion/i.test(str(d.short_description))) ?? docs[0];
+  const docLabel = doc ? firstSentences(str(doc.description) || str(doc.short_description), 220) : "";
+  const alarm = ALARM.test(`${caseName} ${nature} ${docLabel} ${str(doc?.description)}`);
+  const routine = /habeas|prisoner|social security|foreclosure|bankruptcy|malpractice/i.test(nature);
+  const surname = watch?.split(" ").at(-1) ?? "";
+  // "X v. Paxton": a sitting official sued in office is routine; "United States v. X",
+  // "In re ... X", or X as plaintiff are more likely news.
+  const [left, right = ""] = caseName.split(/\s+v\.?\s+/i);
+  const asDefendant = watch ? has(norm(right), surname) && !has(norm(left), surname) : false;
+  const prosecuted = watch ? /^(united states|usa)\b/i.test(left) && has(norm(right), surname) : false;
+  const others = parties.filter((p) => !GENERIC_PARTY.test(p) && (!watch || !has(norm(p), surname)));
+  const caseWords = distinctWords(caseName).filter((w) => !["matter", "application", "residence", "company", "inc", "llc"].includes(w) && !PLACE_WORDS.has(w));
+  const size = prosecuted || alarm ? 1 : routine ? 0.25 : asDefendant ? 0.45 : watch ? 0.75 : 0.6;
   return {
     id: `court-${str(r.docket_id)}`,
     source: "Courts",
     kind: watch ? "Federal case naming a candidate" : "Federal voting case",
     title: `${watch ? `${watch} in new ${cite} case` : `New ${cite} voting case`}: ${caseName}`,
     detail:
-      `Filed ${shortDate(filed)} in the ${court}${nature ? ` (${nature.replace(/^\d+\s*/, "")})` : ""}.` +
+      `Filed ${shortDate(filed)} in the ${court}${nature ? ` (${nature})` : ""}.` +
       `${parties.length ? ` Parties include ${parties.slice(0, 4).join("; ")}.` : ""}` +
       `${docLabel ? ` Filings include "${docLabel}".` : ""}`,
     url: `${CL}${str(r.docket_absolute_url)}`,
     date: filed,
     entities: [...(watch ? [watch] : []), ...parties.slice(0, 4)],
-    keys: watch && surname ? [surname, watch] : others.slice(0, 4),
-    specifics: [...others.slice(0, 4), ...caseWords.slice(0, 4)],
-    topics: ["court", "lawsuit", "lawsuits", "sue", "sues", "sued", "suing", "judge", "warrant", "search", "searched", "filing", "complaint", "case", "fbi", "investigation", "probe", "doj", "justice department", "election", "voting", "voter", "voters"],
-    size: routine ? 0.25 : alarm ? 1 : watch ? 0.75 : 0.6,
+    match: "entity",
+    keys: watch ? [surname, watch] : others.slice(0, 4),
+    specifics: [...others.slice(0, 4), ...caseWords.slice(0, 5)],
+    topics: watch ? LEGAL_TOPICS : [...LEGAL_TOPICS, "voting", "voter", "voters", "ballot", "ballots", "election"],
+    size,
     relevance: watch ? 1 : 0.9,
   };
 }
@@ -698,14 +766,26 @@ export async function getDig(): Promise<{ generatedAt: string; leads: Lead[] }> 
     senateVotes().catch(() => []),
     courts().catch(() => []),
   ]);
-  const wireText = wire.items.map((item) => ({ item, text: norm(`${item.title} ${item.summary}`) }));
+  const wireIndex = indexWire(wire.items);
 
   const leads = sources
     .flat()
     .map((d): Lead => {
-      const { coveredBy, novelty } = checkCoverage(d, wireText);
-      const { keys: _k, specifics: _s, topics: _t, size: _z, relevance: _r, ...lead } = d;
-      return { ...lead, entities: [...new Set(lead.entities.filter(Boolean))], coveredBy, novelty, score: scoreLead(d, novelty, now) };
+      const { coveredBy, novelty } = checkCoverage(d, wireIndex);
+      return {
+        id: d.id,
+        source: d.source,
+        kind: d.kind,
+        title: d.title,
+        detail: tidy(d.detail),
+        url: d.url,
+        date: d.date,
+        ...(d.amount != null ? { amount: d.amount } : {}),
+        entities: [...new Set(d.entities.filter(Boolean))],
+        coveredBy,
+        novelty,
+        score: scoreLead(d, novelty, now),
+      };
     })
     .toSorted((a, b) => b.score - a.score);
 

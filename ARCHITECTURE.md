@@ -47,7 +47,10 @@ src/lib/agents/personas.ts  Grant, Rosa, Mercer, Vex, Quill (system prompts)
 src/lib/agents/pulse.ts     The Pulse: Grok x_search
 src/lib/agents/claude.ts    Claude helpers: structured() and research() with web search
 src/lib/agents/schemas.ts   Zod schemas for every hand-off
+src/lib/agents/viral.ts     The Viral Desk + its accuracy check
 src/lib/agents/pipeline.ts  The newsroom, end to end
+src/lib/dig.ts              The Dig: official records nobody has reported (FEC, Federal Register, Congress, courts)
+src/lib/seo.ts              NewsArticle / ClaimReview / FAQPage structured data
 src/app/api/*               wire, odds, pipeline (status/run), cron/newsroom
 src/app/story/[slug]        The File page
 ```
@@ -58,6 +61,7 @@ src/app/story/[slug]        The File page
 |---|---|---|
 | `/api/wire` | GET | Current story clusters from all feeds |
 | `/api/odds` | GET | Current midterm markets |
+| `/api/dig` | GET | Unreported leads from official records |
 | `/api/pipeline` | GET | Which agents are configured |
 | `/api/pipeline` | POST | Run the newsroom on the top cluster (`Authorization: Bearer $CRON_SECRET`). Returns a draft File plus the Red Team report. **Publishes nothing.** |
 | `/api/cron/newsroom` | GET | Vercel Cron entry point |
@@ -70,6 +74,8 @@ src/app/story/[slug]        The File page
 | `XAI_API_KEY` | The Pulse (optional; the pipeline runs without it) |
 | `XAI_MODEL` | Override the Grok model (default `grok-4.7`) |
 | `CRON_SECRET` | Protects pipeline runs |
+| `DATA_GOV_API_KEY` | FEC + Congress.gov for The Dig (free; DEMO_KEY runs out after ~10 calls/day) |
+| `SITE_URL` | Canonical domain for SEO (defaults to the Vercel URL) |
 
 ## Known limits of the prototype
 

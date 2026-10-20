@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Suspense } from "react";
 import { RaceTable } from "@/components/race-table";
+import { UnreportedList } from "@/components/unreported-list";
 import { StatCard, StoryCard } from "@/components/story-bits";
 import { WireColumn } from "@/components/wire-column";
 import { allStories } from "@/lib/stories";
@@ -61,6 +62,16 @@ export default function Home() {
           </div>
         </Section>
       )}
+
+      <Section
+        title="On the record. Not in the news."
+        sub="Fresh official records (filings, orders, court dockets) that none of the 21 outlets we track has reported yet."
+        href="/unreported"
+      >
+        <Suspense fallback={<p className="text-sm text-muted">Digging through the records…</p>}>
+          <UnreportedList limit={4} compact />
+        </Suspense>
+      </Section>
 
       <div className="grid gap-16 lg:grid-cols-2">
         <Section title="Midterms: what the money says" sub="Live Kalshi and Polymarket odds. Odds aren't facts, but they move fast." href="/midterms">

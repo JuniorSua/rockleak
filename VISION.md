@@ -45,12 +45,14 @@ Every story is a **File** with the same sections, in the same order, so readers 
 | Agent | Job | Powered by |
 |---|---|---|
 | **The Wire** | Reads 21 outlets' political feeds every few minutes and clusters same-event headlines; flags **blindspots** (one side not covering a story) | RSS + Google News discovery |
+| **The Dig** | Scans official records (FEC filings, Federal Register, bills and votes, court dockets) and flags what **no outlet has reported**. This is the "leak" engine and the main source of original stories | FEC, Federal Register, Congress.gov, Senate.gov, CourtListener |
 | **The Pulse** | Searches X for trends, viral claims and Community Notes | Grok (xAI `x_search`) |
 | **The Odds** | Live midterm markets | Kalshi + Polymarket public APIs |
 | **The Record** | Verifies against primary sources: Congress.gov, FEC, Federal Register, CourtListener, BLS/CBO, transcripts | Claude + web search + government APIs |
 | **The Panel** | Grant, Rosa, Mercer and Vex debate from the same ledger | Claude (one model, four personas) |
 | **Quill** | The editor: writes the File from the ledger and the debate | Claude |
 | **The Red Team** | A separate pass that hunts for unsupported sentences and oversold headlines | Claude |
+| **The Viral Desk** | Shareable stat, plain-English "short version", SEO title, FAQ and description, 6 tested headline formats, X post and thread, video hook. Then its own accuracy check | Claude |
 | **Human editor** | Approves before anything goes live; logs corrections | You |
 
 *Later:* run one or more personas on a different model (e.g. Grok for Vex, an open model for another) so the panel
@@ -82,6 +84,15 @@ What we monitor continuously:
 - *Nov 3:* an **election-night live desk** with markets vs. results vs. claims, in real time.
 
 ## 5. Going viral (traffic → trust → money)
+
+**Owner direction (Oct 20):** focus on what's **new and never reported**, keep the site calm and readable for
+people who don't follow politics, and make everything SEO-ready. Built so far:
+- **Unreported** section (The Dig): official records no outlet has covered
+- Every story leads with **one big number** and **"The short version"** (what happened, why it matters, what's true)
+- SEO: sitemap, robots, canonical URLs, **ClaimReview** fact-check markup (eligible for Google's fact-check results),
+  FAQPage markup, NewsArticle markup, auto-generated share images built around each story's big number
+- The analyst debate moved behind "Behind this story" and onto the How it works page
+
 
 - **Headline formulas** that are catchy and true: "The $64 Million Question in Texas", "Fox Says X. CNN Says Y. The Record Says Z."
 - **Shareable cards:** every Claim and every "How They Spun It" block exports as an image for X, Instagram and TikTok.
