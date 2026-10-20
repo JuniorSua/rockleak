@@ -32,14 +32,14 @@ export default function Home() {
           </div>
           <div className="mt-8">
             <ColumnHead title="Blindspots" href="/wire" />
-            <p className="mt-3 text-xs text-muted">One side of the media is covering these. The other isn&apos;t.</p>
+            <p className="mt-3 text-xs text-muted">So far, only one side of the media is covering these.</p>
             <Suspense fallback={<p className="mt-3 kicker text-muted">Scanning…</p>}>
               <BlindspotList limit={3} />
             </Suspense>
           </div>
         </div>
 
-        <div className="lg:border-r lg:border-rule lg:px-8">
+        <div className="order-first lg:order-none lg:border-r lg:border-rule lg:px-8">
           <ColumnHead title="Top File" />
           <div className="mt-6">{lead && <StoryCard story={lead} size="lg" />}</div>
           {lead && (
