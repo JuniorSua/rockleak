@@ -3,8 +3,8 @@
     "slug": "musk-158-million-paxton-talarico-texas-senate",
     "category": "midterms",
     "kicker": "SENATE 2026",
-    "headline": "The $158 Million Question: Can Elon Musk's Money Save Ken Paxton in Texas?",
-    "dek": "Early voting is underway in a Senate race that polls call a coin flip, and the biggest player on the Republican side isn't on the ballot.",
+    "headline": "Elon Musk Gave $158M to the GOP Group Helping Ken Paxton. Polls Still Call It a Coin Flip.",
+    "dek": "Texans are already voting, and a 2,000-voter poll has Talarico up 48-46, inside the margin of error. Here's where Musk's money went and what's false.",
     "publishedAt": "2026-10-20T12:00:00Z",
     "status": "developing",
     "agreementScore": 72,
@@ -330,14 +330,101 @@
       "The race has also been a test of how fast falsehoods spread. While Talarico was off the trail with the flu, conservative influencers on X spread a claim that he'd been treated at an Ohio mental health facility. The facility denied it, and the AP, Snopes and FactCheck.org all rated it false. Earlier, Paxton's campaign ran an AI-generated ad depicting Talarico reading from a fictional Bible, which FactCheck.org said stripped his real remarks of context and added words he never said.",
       "Then there's the debate that isn't happening. Talarico has accepted several network invitations. As of mid-October, Paxton had accepted none, even after President Trump publicly called for a debate. That puts Texas on track for its first Senate race without a debate in about a quarter century.",
       "Prediction markets lean Talarico. Kalshi traders put his odds at about 62% as of Oct. 20. But Tangle notes that polls underestimated Republicans in Texas in 2024 and 2022, and early voting runs only through Oct. 30. The $158 million question will be answered on Nov. 3."
-    ]
+    ],
+    "stat": {
+      "value": "$158M",
+      "label": "Elon Musk's two September checks to the Senate GOP super PAC, per FEC filings"
+    },
+    "tldr": {
+      "what": "Elon Musk gave $158 million to the Senate GOP's main super PAC in September. It moved matching amounts into a new group running ads for Ken Paxton.",
+      "why": "Texans are voting now, through Oct. 30. Polls show a toss-up, and one donor's $158 million is more than either campaign raised from July through September.",
+      "truth": "Verified: Musk's $158 million (FEC filings) and a 48-46 poll inside the margin of error. False: the rumor that Talarico was treated at an Ohio mental health facility."
+    },
+    "newAngle": "The FEC receipts show the Senate Leadership Fund moved a matching amount into Texas PAC the day after each Musk check, and those two checks are more than 15 times the $10.2 million Paxton's own campaign committee raised in Q3. Both campaigns' headline totals ($64M and $18M) also count joint-fundraising money that isn't in their main FEC reports.",
+    "seo": {
+      "title": "Elon Musk, Ken Paxton and $158M: Texas Senate Race Explained",
+      "description": "FEC filings show Elon Musk gave $158M to the GOP super PAC helping Ken Paxton. A new poll has Talarico 48%, Paxton 46% as Texas early voting runs to Oct. 30.",
+      "keywords": [
+        "Elon Musk Ken Paxton",
+        "Elon Musk $158 million",
+        "Texas Senate race 2026",
+        "Paxton vs Talarico poll",
+        "James Talarico",
+        "Senate Leadership Fund Texas PAC",
+        "Texas early voting 2026"
+      ],
+      "faq": [
+        {
+          "q": "Did Elon Musk donate to Ken Paxton?",
+          "a": "FEC filings show Musk gave $158 million to the Senate Leadership Fund, a Republican super PAC, in September. It moved matching amounts into Texas PAC, which runs pro-Paxton, anti-Talarico ads. Super PACs can't legally coordinate with campaigns."
+        },
+        {
+          "q": "Who is winning the Texas Senate race?",
+          "a": "No one can say yet. A University of Houston Hobby School poll of 2,000 likely voters (Oct. 10-14) had James Talarico at 48% and Ken Paxton at 46%, inside the ±2.19-point margin of error."
+        },
+        {
+          "q": "When does early voting end in Texas?",
+          "a": "Early voting in Texas began Oct. 19 and runs through Oct. 30. Election Day is Nov. 3."
+        }
+      ]
+    },
+    "social": {
+      "headlineVariants": [
+        {
+          "text": "Elon Musk Gave $158M to the GOP Group Helping Ken Paxton. Polls Still Call It a Coin Flip.",
+          "score": 8,
+          "rationale": "Number-led, names both famous people up front, and the second line adds tension without predicting a winner. Says 'group helping' (not 'gave Paxton') because the money went to a super PAC. Chosen as the headline."
+        },
+        {
+          "text": "Elon Musk's $158 Million Tops What Both Texas Senate Campaigns Raised, Combined, From July to September",
+          "score": 8,
+          "rationale": "Contrast format with a surprising, checkable comparison: $158M vs. $60.2M + $10.2M in committee receipts (or $64M + $18M announced). The time frame is required to keep it literally true. Too long for most cards."
+        },
+        {
+          "text": "Can Elon Musk's $158 Million Beat James Talarico in Texas? Here's What the Filings and Polls Show.",
+          "score": 6,
+          "rationale": "Question format, answered in the deck. Weaker because question headlines tend to get lower trust, and it frames the race around Musk instead of the voters."
+        },
+        {
+          "text": "Texas' Senate Race Has a $158 Million Player Who Isn't on the Ballot: Elon Musk",
+          "score": 7,
+          "rationale": "Curiosity gap that gives the full payoff in the same line. It avoids an unprovable superlative like 'biggest spender', because the File doesn't rank every donor."
+        },
+        {
+          "text": "Talarico's Campaign Blames Billionaires. Paxton Says He's Never Felt Less Control. FEC Filings Say: $158M From Musk.",
+          "score": 7,
+          "rationale": "'X says / Y says / the record says' format. Both come from the File: the billionaire claim is from Talarico's campaign manager, Seth Krasne (not Talarico himself), and the Paxton line paraphrases his leaked audio, and the payoff is the primary-source number."
+        },
+        {
+          "text": "Texas Senate Race, Explained: Musk's $158 Million, a 48-46 Poll and Early Voting",
+          "score": 6,
+          "rationale": "Plain-explainer format that is good for search and for readers new to the race. Low curiosity, but very clear."
+        },
+        {
+          "text": "The $158 Million Question: Can Elon Musk's Money Save Ken Paxton in Texas?",
+          "score": 7,
+          "rationale": "The original headline. It's strong and front-loads the number, but question headlines tend to underperform with readers who don't follow politics, and 'save' assumes Paxton is losing when the race is inside the margin of error."
+        }
+      ],
+      "xPost": "Elon Musk gave $158 million to the Senate GOP's main super PAC in September. Each time, it moved the same amount the next day into a group running ads for Ken Paxton. The FEC filings show it. Polls: 48-46, inside the margin. Receipts, plus what's false:",
+      "thread": [
+        "Elon Musk isn't on the ballot in Texas, but FEC filings show he gave $158 million to the super PAC backing one side of its Senate race. Here's what the records say, and what's false. (1/6)",
+        "The receipts: Musk gave the Senate Leadership Fund $75M on Sept. 9 and $83M on Sept. 23. Each time, SLF moved a matching amount the next day into Texas PAC, a new group running pro-Paxton, anti-Talarico ads. (2/6)",
+        "For scale: Talarico's campaign committee reported $60.2M from July through September. Paxton's reported $10.2M. Musk's two checks alone are more than both combined. (3/6)",
+        "The race: a UH Hobby School poll of 2,000 likely voters (Oct. 10-14) has Talarico 48%, Paxton 46%, inside the ±2.19-point margin of error. Tangle notes Texas polls underestimated Republicans in 2022 and 2024. (4/6)",
+        "What's false: the rumor that Talarico was treated at an Ohio mental health facility. The facility denied it, and AP, Snopes and FactCheck.org rated it false. FactCheck.org also says Paxton's AI 'King James' ad added words Talarico never said. (5/6)",
+        "Early voting runs through Oct. 30. Election Day is Nov. 3. The full File has every source, the debate fight and what's still unknown: [link] (6/6)"
+      ],
+      "shortVideoHook": "Elon Musk isn't on the ballot in Texas. But federal filings show he gave a hundred and fifty-eight million dollars to the group helping Ken Paxton. Here's where it went.",
+      "shareCardText": "Musk gave $158M to Paxton's side. Poll: Talarico 48, Paxton 46."
+    }
   },
   {
     "slug": "trump-waives-graham-act-russia-sanctions-diesel",
     "category": "foreign-policy",
     "kicker": "SANCTIONS FIGHT",
-    "headline": "86 Senators Voted to Squeeze Putin. Trump Waived It With One Signature.",
-    "dek": "Two days before Congress's toughest Russia sanctions law was set to bite, the president set it aside indefinitely, and his own party is furious.",
+    "headline": "The Senate Voted 86-11 to Squeeze Putin. Trump Signed It, Then Waived Most of It.",
+    "dek": "Two days before new Russia sanctions were set to bite, Trump set most aside with no end date. Older sanctions remain. Top Republicans are objecting.",
     "publishedAt": "2026-10-20T12:00:00Z",
     "status": "verified",
     "agreementScore": 80,
@@ -680,13 +767,100 @@
       "The White House says enforcing the sanctions now would \"impede ongoing U.S. efforts\" to negotiate peace. Trump called it \"a very good decision.\" Secretary of State Marco Rubio said the president wants 60 days to analyze the impact, although the order itself contains no such clock.",
       "Can Congress stop it? Not before the election. Both chambers are in recess until after Nov. 3, and the waiver section requires only a certification and a report, not a vote. Rep. Gregory Meeks has introduced a bill to block the diesel deal, but it can't move until lawmakers return.",
       "Traders aren't betting on a quick payoff for the peace argument. Polymarket puts a Russia-Ukraine ceasefire agreement by Dec. 31 at about 16.5%, and gives roughly 30% odds that Russian diesel actually lands in the U.S. by the end of November."
-    ]
+    ],
+    "stat": {
+      "value": "86-11",
+      "label": "Senate vote for the Russia sanctions law Trump signed, then mostly waived on Oct. 16"
+    },
+    "tldr": {
+      "what": "Trump signed a tough Russia sanctions law Sept. 18. On Oct. 16, before most of it kicked in, he used its built-in waiver to set those parts aside.",
+      "why": "The White House says enforcing it would hurt Ukraine peace talks, and it followed a Russian diesel deal the administration says will lower fuel prices. Neither benefit is proven yet.",
+      "truth": "Verified: it's legal under the law's own waiver, has no end date, and older sanctions stay. Misleading: 'Trump lifted the sanctions.' Unproven: it helps peace talks."
+    },
+    "newAngle": "Rubio says the president wants 60 days to study the impact, but the order itself sets no clock, and Treasury's diesel license (General License 135) runs all the way to April 7, 2027. CBS's math also puts the diesel purchase at about half of one day's U.S. diesel use, a figure that, among the outlets RockLeak reviewed, only CBS spelled out.",
+    "seo": {
+      "title": "Trump Russia Sanctions Waiver: What Changed and What Didn't",
+      "description": "Trump waived most of the Graham Act's new Russia tariffs and sanctions on Oct. 16, with no end date. Older sanctions remain. What changed and who's objecting.",
+      "keywords": [
+        "Trump Russia sanctions waiver",
+        "did Trump lift Russia sanctions",
+        "Graham Act Russia sanctions",
+        "Lindsey Graham Sanctioning Russia and Iran Act",
+        "Russian diesel deal",
+        "General License 135",
+        "Russia sanctions 86-11 vote"
+      ],
+      "faq": [
+        {
+          "q": "Did Trump lift sanctions on Russia?",
+          "a": "Not all of them. On Oct. 16 he waived most of the new tariffs and sanctions in the Graham Act before they took effect. Sanctions imposed under earlier executive orders remain in force."
+        },
+        {
+          "q": "How long does Trump's Russia sanctions waiver last?",
+          "a": "It has no fixed end date. It stays in effect until the President or the Secretary of State decides further action is appropriate. Secretary of State Marco Rubio said the president wants a 60-day period to analyze the impact."
+        },
+        {
+          "q": "What is the Graham Act?",
+          "a": "The Lindsey O. Graham Sanctioning Russia and Iran Act of 2026 passed the Senate 86-11 and was signed by Trump on Sept. 18, 2026. It authorized tariffs of up to 500% on Russian goods and up to 100% on the largest buyers of Russian oil and gas."
+        }
+      ]
+    },
+    "social": {
+      "headlineVariants": [
+        {
+          "text": "The Senate Voted 86-11 to Squeeze Putin. Trump Signed It, Then Waived Most of It.",
+          "score": 9,
+          "rationale": "Number-led, with a twist most readers miss: Trump signed the law himself. 'Most of it' matches the order's scope, and 'waived' is the order's own word. Chosen as the headline."
+        },
+        {
+          "text": "Did Trump Lift Russia Sanctions? Not Exactly. Here's What His Waiver Does.",
+          "score": 8,
+          "rationale": "Question format that matches a real search and corrects the misleading 'lifted' shorthand inside the headline itself. Strong for search and for readers new to the story."
+        },
+        {
+          "text": "The Russia Sanctions Law Trump Signed Had an Escape Hatch. He Used It Two Days Before It Kicked In.",
+          "score": 8,
+          "rationale": "Curiosity gap with the full payoff. 'Escape hatch' is the Section 115 national-interest waiver, and the timing matches the order."
+        },
+        {
+          "text": "GOP Senators Blast It. Trump Calls It 'a Very Good Decision.' The Order Sets No End Date.",
+          "score": 7,
+          "rationale": "'X says / Y says / the record says' format. The criticism is on the record (Tillis, Cornyn, Cruz, Cassidy), the quote is in the cited NBC source, and the payoff comes from the primary-source order."
+        },
+        {
+          "text": "Trump Signed New Russia Sanctions on Sept. 18. On Oct. 16, He Waived Most of Them With No End Date.",
+          "score": 8,
+          "rationale": "Contrast with dates, very clear for readers who don't follow politics. A little long."
+        },
+        {
+          "text": "Trump's Russia Sanctions Waiver, Explained: What Changed, What Didn't and Who's Objecting",
+          "score": 6,
+          "rationale": "Plain explainer that works well in search. Low curiosity."
+        },
+        {
+          "text": "86 Senators Voted to Squeeze Putin. Trump Waived It With One Signature.",
+          "score": 8,
+          "rationale": "The original headline. It's punchy, but 'waived it' reads as the whole law, when the order set aside most of the new provisions. It also leaves out that Trump signed the law himself, which the new headline uses as its hook."
+        }
+      ],
+      "xPost": "The Senate voted 86-11 for tough new Russia sanctions. Trump signed the law Sept. 18. On Oct. 16, two days before most of it kicked in, he waived those parts with no end date. It's legal, and older sanctions stay. What changed and what didn't:",
+      "thread": [
+        "Did Trump lift Russia sanctions? Not exactly. Here's what his Oct. 16 order does and doesn't do, with the receipts. (1/6)",
+        "The law: the Senate passed it 86-11, and Trump signed it Sept. 18. It authorized tariffs of up to 500% on Russian goods and up to 100% on the biggest buyers of Russian oil and gas. (2/6)",
+        "The waiver: on Oct. 16, Trump used the law's own national-interest waiver to set most of the new tariffs and sanctions aside. The order sets no end date. Sanctions from earlier executive orders still apply. (3/6)",
+        "The timing: on Oct. 9, after Trump announced a diesel deal with Putin, Treasury issued General License 135, allowing certain Russian diesel transactions through April 7, 2027. CBS puts the U.S. purchase at about half a day of U.S. diesel use. (4/6)",
+        "The pushback: Republican Sens. Tillis, Cornyn, Cruz and Cassidy, Reps. Bacon and Lawler, and Nikki Haley all criticized it. Sen. Darline Graham said she \"would choose to keep the pressure on Russia.\" (5/6)",
+        "Still unproven: the White House claim that enforcing the law would hurt peace talks. Congress is in recess until after Nov. 3. The full File has every source: [link] (6/6)"
+      ],
+      "shortVideoHook": "In September, Trump signed a law allowing tariffs of up to five hundred percent on Russian goods. Four weeks later, he waived most of it. And it's legal.",
+      "shareCardText": "Senate: 86-11 for Russia sanctions. Trump: signed it, then waived most."
+    }
   },
   {
     "slug": "ilhan-omar-search-warrant-no-charges",
     "category": "courts",
     "kicker": "DOJ VS. OMAR",
-    "headline": "A Raid, a Grand Jury, Zero Charges: What the Feds Actually Have on Ilhan Omar",
+    "headline": "Agents Searched Ilhan Omar's Home 22 Days Before the Election. So Far, Zero Charges.",
     "dek": "Federal agents searched a sitting congresswoman's home three weeks before the election. Here's what's documented, what officials are saying, and what nobody has proven.",
     "publishedAt": "2026-10-20T12:00:00Z",
     "status": "contested",
@@ -1020,6 +1194,93 @@
       "Trump said the search had nothing to do with him and deferred to DOJ, but days earlier he told a Tennessee rally that \"JD Vance and our people are looking at it very strongly.\" House Democratic leaders called the search \"corrupt weaponization.\" NBC notes DOJ has no blanket 60-day pre-election blackout, but its policy says investigative steps shouldn't be timed to affect an election.",
       "Some of this has come up before. A 2019 inquiry into Omar's immigration history found insufficient evidence for a full investigation, The Washington Post reported. A 2019 request by her staff to change her listed birth year with the Minnesota Legislative Reference Library is documented, but even Fox News notes it \"does not establish that Omar falsified immigration records.\"",
       "Traders are skeptical of a fast case. Polymarket puts federal charges by Oct. 31 at about 6.5% and by Dec. 31 at about 22.5%. Omar's Minneapolis seat isn't considered at risk on Nov. 3."
-    ]
+    ],
+    "stat": {
+      "value": "0",
+      "label": "Criminal charges filed against Rep. Ilhan Omar as of Oct. 20, eight days after the search"
+    },
+    "tldr": {
+      "what": "On Oct. 12, federal agents searched Rep. Ilhan Omar's Washington home with a judge-approved warrant. They took her phone, reports say. No charges have been filed.",
+      "why": "It happened three weeks before the midterms, and border czar Tom Homan says stripping her citizenship \"could happen\" if evidence supports it. None has been released.",
+      "truth": "Verified: a judge-approved search, grand jury subpoenas to relatives, and zero charges. Widely reported: the probe concerns family immigration paperwork. No public evidence proves wrongdoing."
+    },
+    "newAngle": "The 'strong case' line behind many headlines is secondhand: Homan said he'd been told that, and that he didn't have the evidence specifics himself. Even Fox News, which has led on the birth-year question, notes that the 2019 birth-year record change \"does not establish that Omar falsified immigration records.\"",
+    "seo": {
+      "title": "Ilhan Omar Home Search: What's Known and No Charges So Far",
+      "description": "Federal agents searched Rep. Ilhan Omar's D.C. home Oct. 12 under a judge-approved warrant. No charges have been filed. Here's what's confirmed and what isn't.",
+      "keywords": [
+        "Ilhan Omar",
+        "Ilhan Omar home searched",
+        "Ilhan Omar search warrant",
+        "Ilhan Omar charges",
+        "Ilhan Omar citizenship",
+        "Ilhan Omar denaturalization",
+        "Tom Homan Ilhan Omar"
+      ],
+      "faq": [
+        {
+          "q": "Has Ilhan Omar been charged with a crime?",
+          "a": "No. As of Oct. 20, 2026, Omar has not been charged with any crime, and the Justice Department has not publicly described any allegations."
+        },
+        {
+          "q": "Why was Ilhan Omar's home searched?",
+          "a": "DOJ says Homeland Security Investigations agents executed a judicially authorized search warrant on Oct. 12 as part of an ongoing federal criminal investigation. Reporting says the focus is family immigration paperwork. DOJ hasn't described specifics."
+        },
+        {
+          "q": "Can Ilhan Omar lose her citizenship?",
+          "a": "No case has been filed. Border czar Tom Homan said on Oct. 18 that denaturalization \"could happen\" \"if the evidence points that way,\" but said he didn't have the evidence specifics himself."
+        }
+      ]
+    },
+    "social": {
+      "headlineVariants": [
+        {
+          "text": "Agents Searched Ilhan Omar's Home 22 Days Before the Election. So Far, Zero Charges.",
+          "score": 8,
+          "rationale": "Number-led and neutral. It states the two hardest facts (the search and zero charges) and the timing that drives the controversy, without implying guilt or a conspiracy. Chosen as the headline."
+        },
+        {
+          "text": "Has Ilhan Omar Been Charged? No. Here's What the Search of Her Home Does and Doesn't Show.",
+          "score": 8,
+          "rationale": "Question format that matches the top real search and answers it in the headline. Strong for search snippets."
+        },
+        {
+          "text": "Agents Took Ilhan Omar's Phone and Her Relatives Got Subpoenas. What Hasn't Happened: Charges.",
+          "score": 7,
+          "rationale": "Curiosity gap with the payoff in the same line. The phone seizure is reported by CBS and Al Jazeera, the subpoenas are confirmed, and so is the lack of charges."
+        },
+        {
+          "text": "Omar's Lawyers Say Agents Broke a Judge's Rules. DOJ Says No. The Record So Far: Zero Charges.",
+          "score": 7,
+          "rationale": "'X says / Y says / the record says' format. Both positions are confirmed as stated positions, and no court has ruled. The payoff is the confirmed fact."
+        },
+        {
+          "text": "A Judge-Approved Search, Grand Jury Subpoenas, Zero Charges: The Omar Investigation So Far",
+          "score": 7,
+          "rationale": "Contrast between activity and outcome. Says 'investigation,' not 'case against Omar,' because DOJ hasn't said whether she is a target."
+        },
+        {
+          "text": "Ilhan Omar Home Search, Explained: What's Confirmed, What's Claimed and What's Unproven",
+          "score": 6,
+          "rationale": "Plain explainer that is good for search and matches RockLeak's format. Low curiosity."
+        },
+        {
+          "text": "A Raid, a Grand Jury, Zero Charges: What the Feds Actually Have on Ilhan Omar",
+          "score": 5,
+          "rationale": "The original headline. Red-team: 'What the Feds Actually Have on Ilhan Omar' implies investigators hold damaging evidence and promises to reveal it, but no evidence is public and DOJ hasn't described any allegation. 'Raid' is also a loaded word for a court-authorized search."
+        }
+      ],
+      "xPost": "Federal agents searched Rep. Ilhan Omar's home Oct. 12 with a judge-approved warrant. Eight days later: 0 charges, and DOJ hasn't said what it suspects. What's documented, what officials are claiming, and what no one has proven:",
+      "thread": [
+        "Federal agents searched Rep. Ilhan Omar's home 22 days before the midterms. Eight days later, there are no charges. Here's what's actually documented. (1/6)",
+        "Confirmed: Homeland Security Investigations agents executed a \"judicially authorized search warrant\" at her D.C. home on Oct. 12, as \"part of an ongoing federal criminal investigation,\" per DOJ. A judge approving a search is not a finding of guilt. (2/6)",
+        "Also confirmed: grand jury subpoenas went to several relatives days before the search. Reports say agents took her personal cellphone, and The Washington Post reported they took her passport too. (3/6)",
+        "Reported focus: family immigration paperwork, including whether she was 17 or 18 when her father naturalized in 2000. She says she became a citizen at 17 through him. DOJ hasn't publicly described any allegation. (4/6)",
+        "In dispute: Omar's lawyers say agents ignored a judge's instructions meant to protect her rights as a member of Congress. DOJ calls their letter \"riddled with false allegations and inaccuracies.\" No court has ruled. (5/6)",
+        "Border czar Tom Homan says he was told investigators \"have a strong case,\" but he didn't have the specifics. No evidence has been made public. The full File, with sources and open questions: [link] (6/6)"
+      ],
+      "shortVideoHook": "Federal agents searched Congresswoman Ilhan Omar's home three weeks before the election. Eight days later? Zero charges. So what do we actually know?",
+      "shareCardText": "Ilhan Omar's home searched Oct. 12. Charges filed so far: zero."
+    }
   }
 ]
