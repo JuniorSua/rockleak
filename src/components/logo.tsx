@@ -1,8 +1,6 @@
-import { ACTIVE_CONCEPT } from "@/lib/brand";
-
-// Uses the active concept from the Brand lab. Swap ACTIVE_CONCEPT in src/lib/brand.ts to change it site-wide.
-export function Logo({ dark = false }: { dark?: boolean }) {
-  const file = `/brand/logos/${ACTIVE_CONCEPT.file}-lockup${dark ? "-dark" : ""}.svg`;
+// Header/footer lockup: the active Brand-lab concept (Reflection), cropped to its content.
+// To switch concepts, regenerate public/brand/logo.svg from brand/logos/<concept>-lockup.svg.
+export function Logo() {
   // eslint-disable-next-line @next/next/no-img-element
-  return <img src={file} alt="RockLeak" className="-ml-3 h-16 w-auto md:-ml-5 md:h-20" />;
+  return <img src="/brand/logo.svg" alt="RockLeak" className="h-10 w-auto md:h-12" />;
 }

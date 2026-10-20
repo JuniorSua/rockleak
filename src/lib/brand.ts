@@ -79,4 +79,3 @@ export const CONCEPTS = [
   },
 ] as const;
 
-export const ACTIVE_CONCEPT: { file: string } = ROUND2[0];
