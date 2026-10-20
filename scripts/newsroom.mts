@@ -240,6 +240,10 @@ function check(file: string, { forPublish = false } = {}): Story {
   for (const s of allSources) if (s.tier === "social" && s.url.includes("news.google.com")) warnings.push(`Google News redirect used as a source: ${s.url}`);
   if (story.coverage.some((c) => c.url.includes("news.google.com")))
     warnings.push("a coverage link is a Google News redirect; prefer the outlet's own URL");
+  if (story.headline.trim().endsWith("?") && !story.question)
+    errors.push("a question headline needs a `question` with the answer from the record (PLAYBOOK 2c)");
+  if (story.question && story.headline.trim().endsWith("?") && story.question.text !== story.headline)
+    warnings.push("the headline is a question but differs from question.text; usually they match");
   if (story.stat && !story.coreFacts.some((f) => f.verdict === "confirmed")) errors.push("stat card needs a confirmed fact behind it");
   if (forPublish && !story.review) errors.push("missing review: Plumb has not approved this story");
 

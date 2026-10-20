@@ -81,6 +81,7 @@ export default function AboutPage() {
         <ul className="mt-5 space-y-2 leading-relaxed text-ink/80">
           <li>Our stories are researched and written by AI. We never pretend otherwise.</li>
           <li>No side. Same rules for every party.</li>
+          <li>We ask the hard questions people are actually asking, and answer them with the record, even when the answer is no.</li>
           <li>Every fact links to its source, so you don&apos;t have to trust us.</li>
           <li>Photos come from Wikimedia Commons, under free licenses, with credit.</li>
         </ul>

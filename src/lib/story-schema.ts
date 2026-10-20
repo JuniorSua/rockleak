@@ -49,6 +49,14 @@ export const StorySchema = z.object({
   body: z.array(text).min(3).max(10),
   stat: z.object({ value: text.max(14), label: text.max(160) }).optional(),
   tldr: z.object({ what: text, why: text, truth: text }).optional(),
+  question: z
+    .object({
+      text: text.max(100).regex(/\?$/, 'must end with "?"'),
+      answer: z.enum(["yes", "no", "partly", "unknown"]),
+      short: text.max(220),
+      askedBy: text.max(160),
+    })
+    .optional(),
   newAngle: text.optional(),
   seo: z
     .object({

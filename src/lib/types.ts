@@ -86,6 +86,8 @@ export interface Story {
   stat?: { value: string; label: string };
   /** The short version: what happened, why it matters to the reader, and what's true. */
   tldr?: { what: string; why: string; truth: string };
+  /** The hard question people are asking, with what the record says. A question headline needs one. */
+  question?: StoryQuestion;
   /** What this File shows that most coverage missed. */
   newAngle?: string;
   seo?: { title: string; description: string; keywords: string[]; faq: { q: string; a: string }[] };
@@ -100,6 +102,18 @@ export interface Story {
   image?: StoryImage;
   /** Sign-off from Plumb, the neutral standards editor. Nothing publishes without it. */
   review?: { approvedBy: string; approvedAt: string; notes: string; edition: "morning" | "evening" | "night" | "manual" };
+}
+
+export type QuestionAnswer = "yes" | "no" | "partly" | "unknown";
+
+export interface StoryQuestion {
+  /** Asked plainly, ending in "?". Usually the headline. */
+  text: string;
+  answer: QuestionAnswer;
+  /** What the record says, in one or two sentences. */
+  short: string;
+  /** Who's asking it, so readers can see it's a real question: "Trending on X; raised at Fox and CNN town halls". */
+  askedBy: string;
 }
 
 export interface StoryImage {

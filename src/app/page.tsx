@@ -22,8 +22,8 @@ export default function Home() {
       <section className="border-b border-ink py-9 sm:py-12">
         <h1 className="headline text-[2.2rem] sm:text-[3rem]">Politics, minus the noise.</h1>
         <p className="mt-3 max-w-xl text-[1.05rem] leading-relaxed text-ink/70">
-          Only the political news that matters today, checked against the record. Every drop answers three questions:
-          what happened, why it matters to you, and what&apos;s actually true.
+          Only the political news that matters today, and the hard questions people are actually asking, answered with the
+          record. Every drop tells you what happened, why it matters to you, and what&apos;s actually true.
         </p>
         <p className="mono mt-5 text-[0.7rem] uppercase tracking-wider text-muted">
           <NextDrop />

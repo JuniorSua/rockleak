@@ -44,10 +44,12 @@ export function storyJsonLd(s: Story) {
       reviewRating: { "@type": "Rating", ratingValue: RATING[c.verdict][0], bestRating: 5, worstRating: 1, alternateName: RATING[c.verdict][1] },
     })),
   ];
-  if (s.seo?.faq?.length) {
+  // The story's hard question leads the FAQ: people search in questions.
+  const faq = [...(s.question ? [{ q: s.question.text, a: s.question.short }] : []), ...(s.seo?.faq ?? [])];
+  if (faq.length) {
     graph.push({
       "@type": "FAQPage",
-      mainEntity: s.seo.faq.map((f) => ({ "@type": "Question", name: f.q, acceptedAnswer: { "@type": "Answer", text: f.a } })),
+      mainEntity: faq.map((f) => ({ "@type": "Question", name: f.q, acceptedAnswer: { "@type": "Answer", text: f.a } })),
     });
   }
   return { "@context": "https://schema.org", "@graph": graph };

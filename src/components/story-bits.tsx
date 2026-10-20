@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { LEAN_COLOR, LEAN_LABEL, LEAN_ORDER, VERDICT_META, hostOf, pct, unquote } from "@/lib/format";
 import { persona } from "@/lib/agents/personas";
-import type { Coverage, DebateTurn, MarketRef, SourceRef, Story, Verdict } from "@/lib/types";
+import type { Coverage, DebateTurn, MarketRef, QuestionAnswer, SourceRef, Story, Verdict } from "@/lib/types";
 
 /** Quiet verdict label: colored dot + word. */
 export function VerdictChip({ verdict }: { verdict: Verdict }) {
@@ -51,6 +51,37 @@ export function ShortVersion({ story }: { story: Story }) {
   );
 }
 
+export const ANSWER_LABEL: Record<QuestionAnswer, string> = {
+  yes: "Yes",
+  no: "No",
+  partly: "Partly",
+  unknown: "Nobody knows yet",
+};
+
+/** The hard question, answered from the record right under it, plus an invitation to ask it out loud. */
+export function TheQuestion({ story, url }: { story: Story; url: string }) {
+  const q = story.question;
+  if (!q) return null;
+  const isHeadline = q.text === story.headline;
+  const ask = `https://x.com/intent/post?text=${encodeURIComponent(`${q.text} Here's what the record says:`)}&url=${encodeURIComponent(url)}`;
+  return (
+    <section aria-label="The question" className="relative overflow-hidden rounded-2xl bg-ink p-6 text-white">
+      <div className="sheen absolute inset-x-0 top-0 h-1" />
+      <p className="kicker text-white/50">The question</p>
+      {!isHeadline && <p className="headline mt-2 text-[1.6rem]">{q.text}</p>}
+      <p className="mt-3 flex flex-wrap items-baseline gap-x-3 gap-y-1">
+        <span className="text-sm text-white/60">What the record says:</span>
+        <span className="headline rounded-md bg-white px-2.5 py-0.5 text-[1.4rem] text-ink">{ANSWER_LABEL[q.answer]}</span>
+      </p>
+      <p className="mt-3 text-[1.05rem] leading-relaxed text-white/85">{q.short}</p>
+      <p className="mt-4 text-xs leading-relaxed text-white/50">Who&apos;s asking: {q.askedBy}</p>
+      <a href={ask} target="_blank" rel="noreferrer" className="mt-4 inline-block rounded-full border border-white/30 px-3.5 py-1.5 text-xs font-semibold hover:border-white">
+        Ask it on X →
+      </a>
+    </section>
+  );
+}
+
 /** A Commons photo with the credit its license requires. */
 export function StoryPhoto({ story }: { story: Story }) {
   const img = story.image;
@@ -58,7 +89,7 @@ export function StoryPhoto({ story }: { story: Story }) {
   return (
     <figure>
       <div className="relative aspect-[16/9] overflow-hidden rounded-xl bg-paper">
-        <Image src={img.src} alt={img.alt} fill priority sizes="(min-width: 768px) 672px, 100vw" className="object-cover object-[50%_22%]" />
+        <Image src={img.src} alt={img.alt} fill priority sizes="(min-width: 768px) 672px, 100vw" className="object-cover object-[50%_30%]" />
       </div>
       <figcaption className="mt-1.5 text-[0.7rem] text-muted">
         Photo: {img.credit} ·{" "}

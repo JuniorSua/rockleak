@@ -8,7 +8,7 @@ accurate?** When in doubt, don't approve.
 
 1. **Every claim is sourced.**
    - Every factual statement anywhere a reader can see it must trace to a `coreFact` or `claim` that has a source. That includes:
-     - `headline`, `dek`, `stat`, `tldr`, `body`, `bottomLine`, `consensus`, `newAngle`, `image` (alt and credit)
+     - `headline`, `question`, `dek`, `stat`, `tldr`, `body`, `bottomLine`, `consensus`, `newAngle`, `image` (alt and credit)
      - each `debate` turn (position, argument, concedes)
      - `claims[].explanation` and `coverage[].framing`
      - `seo` (title, description, FAQ answers) and `social` (xPost, thread, video hook, share card)
@@ -59,12 +59,24 @@ accurate?** When in doubt, don't approve.
     - If it fails, the fix is "remove `image` from article.json".
 13. **It matters to a regular reader.** Would someone who doesn't follow politics be glad they read it today?
     If not, say so in `summary`. It isn't grounds for REJECT on its own.
+14. **The question is fair** (when the draft has a `question` or a question headline).
+    - **Real.** People are actually asking it. Confirm at least one instance behind `askedBy`.
+    - **Answered honestly.** `answer` matches the record. "unknown" is the right answer when it is. `short` gives the evidence.
+    - **No insinuation.** If the answer turns out to be "no", is it still a fair question? Would the person's own supporters accept it as a legitimate one?
+      - A question about a named person's crime, misconduct, health or private life needs an official record, or credible outlets on both sides, that already raise it.
+    - **No false premise.** The question can't assume something unproven, as in "Why did X lie…?"
+    - **Symmetry.** Would we ask the same question about the other side in the same situation?
+    - **It matches.** A question headline must equal `question.text`.
+    - **Fixes.** If the question fails, require a rewrite of the question, or require dropping it for a statement headline.
 
 ## Length limits (the site rejects anything longer)
 
 | Field | Max characters |
 |---|---|
 | headline | 100 |
+| question text | 100 |
+| question short | 220 |
+| question askedBy | 160 |
 | dek | 320 |
 | kicker | 40 |
 | stat value | 14 |

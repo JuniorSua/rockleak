@@ -45,6 +45,10 @@ Each story gets its own folder, `<dir>` = `newsroom/desk/<date>/<edition>/`.
      - Say who each platform favors and by how much, why traders might disagree, and what the polls and money say.
      - Rate the claims going around the race.
      - Put both platforms' contracts in `markets`.
+   - **A hard question**: a lot of people are asking it (on X, on talk shows, in comments, in "People also ask"), but outlets dance around it or only one side asks it.
+     - RockLeak's edge is to ask it plainly and answer it with the record, even when the answer is "no" or "nobody knows yet".
+     - Look for it in the wire (what one side keeps asking and the other ignores), on X, and in the claims going around.
+     - Find at least one real instance of people asking it. That becomes `question.askedBy`.
    - **Records nobody reported** (the Dig) are a bonus. Use them to add a fact others missed. Publish one on its own only if it would matter to a regular reader.
    - **Skip**:
      - inside-baseball that a regular reader wouldn't care about
@@ -139,7 +143,23 @@ The story page leads with the short version and the key facts. Everything else s
      - intriguing and literally true: open a curiosity gap with a specific true detail
      - the most surprising TRUE thing goes first
      - numbers beat adjectives
-     - no question headlines, no "slams"
+     - no "slams"
+     - a question headline is allowed only with a `question` (below), and the headline must equal `question.text`
+   - `question` (optional; required for a question headline): the hard question this drop answers.
+     - `text`: 100 max, asked plainly, ending in "?"
+     - `answer`: yes, no, partly, or unknown ("Nobody knows yet"), exactly as the record supports
+     - `short`: 220 max, the answer in 1–2 sentences, with the key number or record
+     - `askedBy`: 160 max, who is actually asking it, e.g. "Trending on X; raised by Fox's Bret Baier and CNN's Jake Tapper"
+     - The answer shows right under the question, before anything else, so the question creates curiosity without accusing anyone.
+     - Good questions:
+       - "Can Trump Legally Waive a Sanctions Law the Senate Passed 86-11?" (yes, and the story shows how)
+       - "Did Noncitizens Swing Michigan's Vote?" (whatever the record shows)
+       - "Who's Paying for the $1.2 Million Against Husted?" (nobody knows yet, and the story says why)
+     - Bad questions:
+       - "Is Ilhan Omar Hiding Something?" This insinuates, no record raises it, and it can't be answered.
+       - "Why Did X Lie About Y?" It assumes the lie.
+       - Any question about a named person's crime, health or private life that no official record or credible outlets on both sides already raise.
+     - Use the symmetry test: would we ask the same question about the other side's figure in the same spot?
    - `dek` (320 max; aim for 200): the teaser under the headline in the feed. Two short sentences.
    - `tldr`, the short version every drop opens with. Each part is 1–2 sentences:
      - `what`: **What happened?** Plain facts, no jargon.

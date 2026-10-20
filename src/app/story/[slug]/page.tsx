@@ -13,6 +13,7 @@ import {
   StatCard,
   StatusTag,
   StoryPhoto,
+  TheQuestion,
   VerdictChip,
 } from "@/components/story-bits";
 import { LEAN_COLOR, dayHeading, dropLabel, etTime, shortDate, unquote } from "@/lib/format";
@@ -129,6 +130,12 @@ function StoryLayout({ story }: { story: Story }) {
           <ShareBar url={url} text={story.social?.xPost ?? story.headline} />
         </div>
       </header>
+
+      {story.question && (
+        <div className="mt-7">
+          <TheQuestion story={story} url={url} />
+        </div>
+      )}
 
       <div className="mt-7">
         {story.image ? <StoryPhoto story={story} /> : <StatCard story={story} />}
