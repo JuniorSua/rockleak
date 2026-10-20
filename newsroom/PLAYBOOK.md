@@ -61,9 +61,10 @@ Research with WebSearch and WebFetch. Go to primary records first:
 
 FEC tips:
 - `docquery.fec.gov` filing images block automated readers.
-- Use the FEC API instead: `https://api.open.fec.gov/v1/schedules/schedule_e/?committee_id=…&api_key=$KEY`.
-  Take `$KEY` from `DATA_GOV_API_KEY` in `.env.local`. If it's missing, run `npx vercel@latest env pull .env.local --yes`.
-  If it's still missing, use `DEMO_KEY`, which allows about 40 calls an hour, so spend them carefully.
+- Query the FEC API through the site, which holds the data.gov key:
+  `pnpm newsroom fec schedules/schedule_e/ committee_id=C00901223 sort=-expenditure_date per_page=20`
+  Other paths that work: `committee/<id>/`, `schedules/schedule_a/`, `filings/`, `candidate/<id>/`. It prints
+  the calls left this hour, out of 1,000.
 - An FEC record you can't open isn't confirmed. Pick a candidate you can verify instead.
 
 Then outlets on the left, center and right. Write `ledger.json`:
@@ -137,6 +138,7 @@ Plumb must actually open the sources (WebFetch) behind the headline, the stat an
    - End the message with the Co-Authored-By line used in this repo's history.
 3. `git push origin foundation`. If it's rejected, run `git pull --rebase --autostash origin foundation`, then push again.
 4. `scripts/deploy.sh`. This deploys the committed HEAD to Vercel production. Uncommitted edits never ship.
+   If it says FAILED, wait 2 minutes and run it once more. A slow government API can time out a build, and a failed build leaves the old site live.
 5. Verify: `curl -s https://rockleak-roan.vercel.app/story/<slug>` returns 200 and contains the headline. Retry every 60 seconds, up to 5 times.
    - If it never goes live, say so plainly in the report.
    - Never claim it's live without that check.

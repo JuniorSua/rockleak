@@ -7,6 +7,8 @@
 //   node scripts/newsroom.mts publish <draft.json>            check, require Plumb's approval, add to content/stories.json
 //   node scripts/newsroom.mts unpublish <slug> "<reason>"     take a story down (kept in the desk)
 //   node scripts/newsroom.mts list                            published stories
+//   node scripts/newsroom.mts fec <path> [key=value ...]      OpenFEC via the site's key, e.g.
+//        fec schedules/schedule_e/ committee_id=C00901223 sort=-expenditure_date per_page=20
 
 import { existsSync, mkdirSync, readFileSync, renameSync, writeFileSync } from "node:fs";
 import { basename, dirname, join } from "node:path";
@@ -184,7 +186,25 @@ function list() {
     console.log(`${s.publishedAt.slice(0, 16)}  ${s.slug}\n    ${s.headline}${s.review ? `  [approved by ${s.review.approvedBy}]` : ""}  ${host(SITE)}/story/${s.slug}`);
 }
 
-const [cmd, a, b] = process.argv.slice(2);
+/** OpenFEC through /api/fec, which holds the real data.gov key (Vercel won't release it to this PC). */
+async function fec(path: string, pairs: string[]) {
+  if (!path) fail("usage: fec <path> [key=value ...]");
+  const env = existsSync(join(ROOT, ".env.local")) ? readFileSync(join(ROOT, ".env.local"), "utf8") : "";
+  const secret = process.env.CRON_SECRET ?? env.match(/^CRON_SECRET=(.+)$/m)?.[1]?.trim();
+  if (!secret) fail("CRON_SECRET missing from .env.local");
+  const url = new URL(`${SITE}/api/fec`);
+  url.searchParams.set("path", path);
+  for (const p of pairs) {
+    const i = p.indexOf("=");
+    if (i > 0) url.searchParams.append(p.slice(0, i), p.slice(i + 1));
+  }
+  const r = await fetch(url, { headers: { authorization: `Bearer ${secret}` }, signal: AbortSignal.timeout(60_000) });
+  console.error(`HTTP ${r.status} · FEC calls left this hour: ${r.headers.get("x-ratelimit-remaining") || "?"}/${r.headers.get("x-ratelimit-limit") || "?"}`);
+  console.log(await r.text());
+  if (!r.ok) process.exit(1);
+}
+
+const [cmd, a, b, ...rest] = process.argv.slice(2);
 switch (cmd) {
   case "brief":
     await brief(a);
@@ -203,6 +223,9 @@ switch (cmd) {
     break;
   case "list":
     list();
+    break;
+  case "fec":
+    await fec(a, [b, ...rest].filter(Boolean));
     break;
   default:
     console.log(readFileSync(fileURLToPath(import.meta.url), "utf8").split("\n").slice(0, 10).join("\n"));
