@@ -1,5 +1,5 @@
-import Link from "next/link";
-import { LEAN_COLOR, LEAN_LABEL, LEAN_ORDER, VERDICT_META, hostOf, pct, shortDate, unquote } from "@/lib/format";
+import Image from "next/image";
+import { LEAN_COLOR, LEAN_LABEL, LEAN_ORDER, VERDICT_META, hostOf, pct, unquote } from "@/lib/format";
 import { persona } from "@/lib/agents/personas";
 import type { Coverage, DebateTurn, MarketRef, SourceRef, Story, Verdict } from "@/lib/types";
 
@@ -28,25 +28,45 @@ export function StatCard({ story, size = "md" }: { story: Story; size?: "lg" | "
   );
 }
 
-export function TldrBox({ story }: { story: Story }) {
+/** The three questions every drop answers, up front. */
+export function ShortVersion({ story }: { story: Story }) {
   if (!story.tldr) return null;
   const rows = [
-    ["What happened", story.tldr.what],
-    ["Why it matters", story.tldr.why],
-    ["What's true", story.tldr.truth],
+    ["What happened?", story.tldr.what],
+    ["Why does it matter to me?", story.tldr.why],
+    ["What's true?", story.tldr.truth],
   ];
   return (
-    <div className="rounded-2xl border border-rule bg-paper p-6">
-      <p className="kicker text-accent">The short version</p>
-      <dl className="mt-4 space-y-3">
-        {rows.map(([k, v]) => (
-          <div key={k} className="grid gap-1 sm:grid-cols-[130px_1fr]">
-            <dt className="text-sm font-semibold">{k}</dt>
-            <dd className="text-[0.95rem] leading-relaxed text-ink/80">{v}</dd>
+    <section aria-label="The short version" className="divide-y divide-rule border-y border-ink">
+      {rows.map(([q, a], i) => (
+        <div key={q} className="grid grid-cols-[2rem_1fr] gap-x-2 py-5">
+          <span className="mono pt-1 text-xs font-bold text-muted">0{i + 1}</span>
+          <div>
+            <h2 className="headline text-[1.35rem]">{q}</h2>
+            <p className="mt-1.5 text-[1.05rem] leading-relaxed text-ink/85">{a}</p>
           </div>
-        ))}
-      </dl>
-    </div>
+        </div>
+      ))}
+    </section>
+  );
+}
+
+/** A Commons photo with the credit its license requires. */
+export function StoryPhoto({ story }: { story: Story }) {
+  const img = story.image;
+  if (!img) return null;
+  return (
+    <figure>
+      <div className="relative aspect-[16/9] overflow-hidden rounded-xl bg-paper">
+        <Image src={img.src} alt={img.alt} fill priority sizes="(min-width: 768px) 672px, 100vw" className="object-cover object-[50%_22%]" />
+      </div>
+      <figcaption className="mt-1.5 text-[0.7rem] text-muted">
+        Photo: {img.credit} ·{" "}
+        <a href={img.sourceUrl} target="_blank" rel="noreferrer" className="underline underline-offset-2 hover:text-ink">
+          {img.license}
+        </a>
+      </figcaption>
+    </figure>
   );
 }
 
@@ -175,32 +195,4 @@ export function StatusTag({ status }: { status: Story["status"] }) {
   } as const;
   const m = map[status];
   return <span className={`kicker ${m.c}`}>{m.t}</span>;
-}
-
-function factLine(story: Story) {
-  const facts = story.coreFacts.length;
-  const claims = story.claims.length;
-  return `${facts} facts checked · ${claims} claims rated · ${story.coverage.length} outlets compared`;
-}
-
-export function StoryCard({ story, size = "md" }: { story: Story; size?: "lg" | "md" | "sm" }) {
-  return (
-    <Link href={`/story/${story.slug}`} className="group block">
-      <div className="flex items-center gap-3">
-        <span className="kicker text-accent">{story.kicker}</span>
-        <StatusTag status={story.status} />
-      </div>
-      <h3
-        className={`headline mt-2 group-hover:underline group-hover:decoration-2 group-hover:underline-offset-4 ${
-          size === "lg" ? "text-[2.5rem] md:text-[3.4rem]" : size === "md" ? "text-[1.65rem]" : "text-[1.25rem]"
-        }`}
-      >
-        {story.headline}
-      </h3>
-      {size !== "sm" && <p className={`dek mt-3 ${size === "lg" ? "text-xl" : "text-base"}`}>{story.dek}</p>}
-      <p className="byline mt-3">
-        {shortDate(story.publishedAt)} · {factLine(story)}
-      </p>
-    </Link>
-  );
 }

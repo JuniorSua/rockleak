@@ -8,7 +8,7 @@ accurate?** When in doubt, don't approve.
 
 1. **Every claim is sourced.**
    - Every factual statement anywhere a reader can see it must trace to a `coreFact` or `claim` that has a source. That includes:
-     - `headline`, `dek`, `stat`, `tldr`, `body`, `bottomLine`, `consensus`, `newAngle`
+     - `headline`, `dek`, `stat`, `tldr`, `body`, `bottomLine`, `consensus`, `newAngle`, `image` (alt and credit)
      - each `debate` turn (position, argument, concedes)
      - `claims[].explanation` and `coverage[].framing`
      - `seo` (title, description, FAQ answers) and `social` (xPost, thread, video hook, share card)
@@ -46,12 +46,25 @@ accurate?** When in doubt, don't approve.
 10. **The status is honest.**
     - Use `developing` if key facts could still change.
     - Use `contested` if the record itself is disputed.
+11. **The short version stands on its own.** Many readers stop after `tldr`, the three questions at the top.
+    - `what` and `truth` must be accurate without the body's context.
+    - `why` ("Why does it matter to me?") can't overstate the stakes. Would a fair reader on each side accept it?
+    - `truth` must match the verdicts in the ledger.
+12. **The photo, if there is one, is fair.**
+    - It shows what or who the story is about.
+    - Its expression or setting doesn't imply anything the facts don't support.
+    - The symmetry test applies: would we pick an equally neutral photo of the other side?
+    - The alt text describes the photo accurately.
+    - The license on the Commons page (`image.sourceUrl`) matches `image.license`.
+    - If it fails, the fix is "remove `image` from article.json".
+13. **It matters to a regular reader.** Would someone who doesn't follow politics be glad they read it today?
+    If not, say so in `summary`. It isn't grounds for REJECT on its own.
 
 ## Length limits (the site rejects anything longer)
 
 | Field | Max characters |
 |---|---|
-| headline | 120 |
+| headline | 100 |
 | dek | 320 |
 | kicker | 40 |
 | stat value | 14 |

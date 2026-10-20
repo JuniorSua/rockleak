@@ -5,11 +5,14 @@ starts a fresh run three times a day on ProDesktop, which is always on. Times ar
 
 | Run | Time | Job |
 | --- | --- | --- |
-| `morning` | 9:00 AM | **Plan the day.** Read overnight news and records; pick 3–5 candidates. Publishes nothing. |
-| `evening` | 5:00 PM | **Publish one story**, usually the plan's #1, unless something bigger broke. |
-| `night` | 10:00 PM | **Publish one story**: the day's most important development, or the next-best candidate. |
+| `morning` | 9:00 AM | **Set up the day.** Publish the one story people will be talking about today. Also write a short plan for the later runs. |
+| `evening` | 5:00 PM | **What happened today.** Publish the day's most important development. |
+| `night` | 10:00 PM | **Before bed.** Publish what moved tonight, or a close-call race (see 1), or nothing. |
 
-At most one story per run. **Publishing nothing is a valid outcome.** A thin or shaky story hurts the brand more
+Each published story is a **drop**. RockLeak should feel like a release, not a feed: rare, important and complete.
+A reader who doesn't follow politics should be able to catch one drop and feel set for the day.
+
+At most one drop per run. **Publishing nothing is a valid outcome.** A thin or niche drop hurts the brand more
 than a quiet evening does.
 
 Working files go in `newsroom/desk/<YYYY-MM-DD>/` (gitignored, so they stay on this PC). Use the ET date: `TZ=America/New_York date +%F`.
@@ -26,36 +29,39 @@ Each story gets its own folder, `<dir>` = `newsroom/desk/<date>/<edition>/`.
 2. Run `git pull --ff-only origin foundation`. If that fails because of local changes, carry on. Publishing only commits `content/stories.json`.
 3. Run `pnpm newsroom brief <edition>` to get the wire (21 outlets, left to right), the Dig (official records, flagged when no outlet has covered them), live odds and what's already published.
 
-## 1. Morning run: plan the day
+## 1. Pick what matters (every run)
 
-1. Read the brief. Then run 3–6 web searches for overnight US political news it may miss:
-   - breaking news
-   - court rulings
+1. Read the brief. Then run 3–6 web searches for US political news it may miss:
+   - breaking news and court rulings
    - new polls
-   - FEC filings
-   - X/Twitter storms that outlets are now writing about
-2. Score each candidate. **Newness counts most.** RockLeak's edge is what nobody has reported, or what everyone missed:
-   - **Unreported**: an official record no outlet has covered (Dig leads with novelty 1), or a fact buried in a filing.
-   - **Missed angle**: a story everyone covers where the record shows something the coverage leaves out or gets wrong.
-   - **Big and contested**: dominant on every side but framed very differently. Our fact-check plus a side-by-side comparison is the value.
-   - **Midterms**: Election Day is Nov 3, 2026. Races, money, voting rules and odds all count.
-   - **Skip** anything already published unless there's a real new fact. Also skip anything that rests on one anonymous source or on social posts alone.
-3. Write `newsroom/desk/<date>/plan.md`. For each candidate (ranked) include:
+   - voting rules, ballots and deadlines
+   - claims going viral, especially false or misleading ones that outlets are now fact-checking
+2. Ask of each candidate: **would someone who doesn't follow politics need to know this today?** Score it on:
+   - **Everyone's talking about it**: it leads the wire on both sides, or it's driving the conversation on X.
+   - **People are confused**: false or misleading claims are spreading, for example about how a state counts its votes. Our "What's true?" is the value.
+   - **It affects the reader**: their vote, ballot, deadlines, money, rights or safety.
+   - **Close call**: the race is in the brief's "Close calls" list.
+     - Once a day, if a close call is listed and no drop covered that race in the last 3 days, one drop should explain it.
+     - Say who each platform favors and by how much, why traders might disagree, and what the polls and money say.
+     - Rate the claims going around the race.
+     - Put both platforms' contracts in `markets`.
+   - **Records nobody reported** (the Dig) are a bonus. Use them to add a fact others missed. Publish one on its own only if it would matter to a regular reader.
+   - **Skip**:
+     - inside-baseball that a regular reader wouldn't care about
+     - anything already published, unless there's a real new fact
+     - anything resting on one anonymous source or on social posts alone
+3. **Morning only.** Write `newsroom/desk/<date>/plan.md` with 2–4 ranked candidates for the day. For each, include:
    - a working headline
-   - why it's new, in one line
-   - the 2–4 official sources to pull
+   - why it matters to a regular person, in one line
+   - the 2–4 sources to pull
    - which outlets have it (left, center, right)
    - legal or fairness risks
-   - "ready by 5pm?" yes or no
-4. Do a light check on #1 and #2. Confirm the key record exists and says what the lead claims. Note anything that changes the ranking.
-5. Final reply: the ranked list with one line each. No publishing.
+4. **Evening and night.** Read `plan.md`, if there is one, and the fresh brief. Something bigger that broke since the plan was written outranks it. On the night run, prefer what moved during the day.
+5. Pick the single best candidate. Write `<dir>/pick.md` with the pick and one sentence on why a regular reader needs it.
 
-## 2. Evening and night runs: report, write, approve, publish
+## 2. Report, write, approve, publish (every run)
 
-### 2a. Pick
-Read `plan.md`, if there is one, and the fresh brief. Pick the single best candidate. A big development since the plan was written can outrank it. On the night run, prefer what moved during the day. Write `<dir>/pick.md` with the pick and one sentence on why.
-
-### 2b. Report (you, the desk chief)
+### 2a. Report (you, the desk chief)
 Research with WebSearch and WebFetch. Go to primary records first:
 - FEC, congress.gov, Senate and House roll calls, court dockets (CourtListener)
 - the Federal Register, agency releases, official statements and transcripts
@@ -113,7 +119,7 @@ Write `ledger.json`. It's the fact base for everything that follows, and `assemb
   - `probability` is 0–1. Set `asOf` to now.
   - Leave the list empty rather than using an unrelated market.
 
-### 2c. Debate (4 sub-agents in parallel)
+### 2b. Debate (4 sub-agents in parallel)
 1. Build each prompt with `pnpm newsroom prompt <Grant|Rosa|Mercer|Vex> <dir>/ledger.json`. It prints the persona,
    the numbered ledger and the exact reply format. Use each output as that sub-agent's whole prompt.
 2. Launch all four in ONE message with the Agent tool, `model: "sonnet"`.
@@ -121,22 +127,28 @@ Write `ledger.json`. It's the fact base for everything that follows, and `assemb
    4 objects with `position`, `argument`, `concedes`, `acceptsFacts` and `challenges`.
 4. If an analyst challenges a fact, re-check that fact. If the challenge holds, fix or downgrade it in `ledger.json`.
 
-### 2d. Write (you, as Quill)
-Write as Quill, using Quill's system prompt in personas.ts. The reader doesn't follow politics, so be plain, concrete and short.
+### 2c. Write (you, as Quill)
+Write as Quill, using Quill's system prompt in personas.ts. The reader doesn't follow politics and may be 19, so be plain, concrete and short.
+The story page leads with the short version and the key facts. Everything else sits under "Go deeper".
 
 1. Write `<dir>/article.json` with these fields:
    - `slug`: lowercase-with-dashes, under 90 characters.
    - `category`: one of midterms, congress, white-house, courts, economy, campaigns, foreign-policy.
    - `kicker`: 40 characters max, e.g. "SENATE 2026".
-   - `headline` (120 characters max):
-     - catchy and literally true
+   - `headline` (100 characters max; aim for 70):
+     - intriguing and literally true: open a curiosity gap with a specific true detail
      - the most surprising TRUE thing goes first
      - numbers beat adjectives
      - no question headlines, no "slams"
-   - `dek` (320 max), `body` (5–9 short paragraphs), `bottomLine`, `consensus` (what all four analysts accept).
+   - `dek` (320 max; aim for 200): the teaser under the headline in the feed. Two short sentences.
+   - `tldr`, the short version every drop opens with. Each part is 1–2 sentences:
+     - `what`: **What happened?** Plain facts, no jargon.
+     - `why`: **Why does it matter to me?** Speak to the reader: what it changes for their vote, money or rights, or what happens next. Don't exaggerate.
+     - `truth`: **What's true?** Lead with the verdicts: what's confirmed, what's false or misleading, what's unproven.
+   - `body` (5–9 short paragraphs): the full story, for readers who tap "Go deeper".
+   - `bottomLine`, `consensus` (what all four analysts accept), `newAngle` (what other coverage missed).
    - `status`: verified, developing or contested.
-   - `stat` {value (14 max), label (160 max)}: one big number backed by a confirmed fact.
-   - `tldr` {what, why, truth}, and `newAngle` (what other coverage missed).
+   - `stat` {value (14 max), label (160 max)}: one big number backed by a confirmed fact. It stands in for a photo.
    - `seo`:
      - title of 60 characters max
      - description of 160 max
@@ -150,35 +162,45 @@ Write as Quill, using Quill's system prompt in personas.ts. The reader doesn't f
      - shareCardText
    - **Never put a person's name in an SEO keyword next to an unproven allegation.**
    - Leave out `publishedAt`, `review`, the ledger fields and `agreementScore`. They're added for you.
-2. **Debate turns are published.** Read them against the ledger.
+2. **Photo (optional).** Drops can carry a free-license photo from Wikimedia Commons.
+   - Search: WebFetch `https://commons.wikimedia.org/w/index.php?search=<terms>&title=Special:MediaSearch&type=image`.
+   - Good: official portraits (often public domain), the building or place involved, public events.
+   - Never use:
+     - private people or minors
+     - news-agency or press photos
+     - AI-generated images
+     - a photo whose expression or setting implies something the facts don't support
+   - Attach it with `pnpm newsroom image <dir> "File:<name>" "<alt text>"`. The tool reads the license and author from Commons and refuses anything that isn't CC0, public domain, CC BY or CC BY-SA.
+   - If nothing fits, skip it. The stat card stands in.
+3. **Debate turns are published.** Read them against the ledger.
    - If a turn states something the ledger doesn't support, add a corrected `debate` array to article.json: [{persona, position, argument, concedes}] × 4, in the same order.
    - Fix accuracy only, never the analyst's view.
-3. Run `pnpm newsroom assemble <dir>`. It merges the ledger, the article and the debate into `draft.json`, computes the agreement score, and runs `check`. Fix anything `check` reports in ledger.json or article.json, then run assemble again.
+4. Run `pnpm newsroom assemble <dir>`. It merges the ledger, the article and the debate into `draft.json`, computes the agreement score, and runs `check`. Fix anything `check` reports in ledger.json or article.json, then run assemble again.
 
-### 2e. Approve (Plumb, the neutral standards editor)
+### 2d. Approve (Plumb, the neutral standards editor)
 Launch ONE fresh sub-agent with the Agent tool, at the default model, not sonnet. Its prompt must include:
 - Plumb's system prompt from `src/lib/agents/personas.ts`
 - the full text of `newsroom/STANDARDS.md`
 - the paths to `<dir>/draft.json` and `content/stories.json` (to check that it's new)
-- the FEC and blocked-site notes from 2b
+- the FEC and blocked-site notes from 2a
 - "Review this draft. You did not write it and you owe its writer nothing."
 
 Plumb opens the sources itself and replies with the JSON in STANDARDS.md. Save it as `<dir>/review.json`.
 
-- **APPROVE**: `pnpm newsroom review <dir>/draft.json <dir>/review.json <edition>`, then go to 2f.
+- **APPROVE**: `pnpm newsroom review <dir>/draft.json <dir>/review.json <edition>`, then go to 2e.
 - **APPROVE_WITH_EDITS**: Plumb has approved, subject to wording fixes.
   1. Apply each `requiredFixes` item to ledger.json or article.json.
   2. If a fix breaks a length limit, shorten it but keep its meaning.
   3. Run assemble again.
-  4. Run `pnpm newsroom review …`, then go to 2f.
+  4. Run `pnpm newsroom review …`, then go to 2e.
 - **REVISE**: the story has a substance problem.
   1. Apply every fix.
   2. Run assemble again.
   3. Launch a NEW Plumb for round 2. Give it everything above plus round 1's `review.json` and a list of what you changed. Save its verdict as `review-2.json`.
   - Round 2 must decide APPROVE, APPROVE_WITH_EDITS or REJECT. There's no third round.
-- **REJECT**: don't publish. Keep the draft in the desk. If there's time, you may try the plan's next candidate once (2a onward). Otherwise publish nothing.
+- **REJECT**: don't publish. Keep the draft in the desk. If there's time, you may try the plan's next candidate once (section 1, step 5 onward). Otherwise publish nothing.
 
-### 2f. Publish
+### 2e. Publish
 1. `pnpm newsroom publish <dir>/draft.json`. This re-checks the draft, refuses it without Plumb's approval, and stamps the real publish time.
 2. `git add content/stories.json && git commit -m "Publish: <headline>" -- content/stories.json`
    - Commit only that file.
@@ -192,7 +214,7 @@ Plumb opens the sources itself and replies with the JSON in STANDARDS.md. Save i
 
 ## 3. Report (final reply of every run)
 The owner reads this on an iPhone. Keep it to 6 lines or fewer, with markdown links and no jargon:
-- **Published:** the headline, as a [link](https://rockleak-roan.vercel.app/story/slug), plus one line on why it's new.
+- **Published:** the headline, as a [link](https://rockleak-roan.vercel.app/story/slug), plus one line on why a regular reader needs it.
 - **Or nothing published:** say why (Plumb rejected it, with the reason, or nothing cleared the bar).
 - Plumb's one-line note.
 - Anything the owner should know or decide.
@@ -200,7 +222,7 @@ The owner reads this on an iPhone. Keep it to 6 lines or fewer, with markdown li
 Also append the same lines to `newsroom/desk/log.md` with the date and edition.
 
 ## Hard rules
-- Nothing reaches `content/stories.json` except through `pnpm newsroom publish`, after Plumb approves.
+- Nothing reaches `content/stories.json` except through `pnpm newsroom publish`, after Plumb approves. The exceptions are `unpublish` and `image <slug>`, and only when the owner asks.
 - Don't edit site code during a newsroom run. If something is broken, report it.
 - Never run `git checkout`, `git switch`, `git reset`, `git stash` (except via `--autostash`), or force-push.
 - To take a story down when the owner asks:
@@ -221,5 +243,5 @@ Run `git worktree remove <path> && git branch -d <branch>` from the main checkou
 ## Practice runs
 A practice run follows the evening steps with `practice` as the edition:
 - `pnpm newsroom brief practice` writes its brief to `newsroom/desk/<date>/practice/`, and `<dir>` is that folder.
-- It stops after 2e.
+- It stops after 2d.
 - It never runs publish, commits, pushes or deploys, and never writes to `log.md`.

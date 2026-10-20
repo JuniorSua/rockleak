@@ -22,7 +22,7 @@ export const StorySchema = z.object({
   slug: z.string().regex(/^[a-z0-9]+(-[a-z0-9]+)*$/, "lowercase-words-with-dashes").max(90),
   category: z.enum(["midterms", "congress", "white-house", "courts", "economy", "campaigns", "foreign-policy"]),
   kicker: text.max(40),
-  headline: text.max(120),
+  headline: text.max(100),
   dek: text.max(320),
   publishedAt: z.iso.datetime({ offset: true }),
   status: z.enum(["developing", "verified", "contested"]),
@@ -65,6 +65,16 @@ export const StorySchema = z.object({
       thread: z.array(text.max(280)).min(3).max(7),
       shortVideoHook: z.string(),
       shareCardText: z.string(),
+    })
+    .optional(),
+  image: z
+    .object({
+      src: z.url({ protocol: /^https$/, hostname: /^(upload|thumb)\.wikimedia\.org$/ }),
+      alt: text.max(200),
+      credit: text.max(120),
+      license: text,
+      licenseUrl: url.optional(),
+      sourceUrl: z.url({ protocol: /^https$/, hostname: /^commons\.wikimedia\.org$/ }),
     })
     .optional(),
   review: z

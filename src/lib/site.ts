@@ -3,7 +3,7 @@ export const SITE_URL = (process.env.SITE_URL ?? "https://rockleak-roan.vercel.a
 export const SITE_NAME = "RockLeak";
 export const TAGLINE = "Bedrock facts. Every side.";
 export const DESCRIPTION =
-  "RockLeak checks political news against the official record, shows how every side spun it, and digs up what nobody else is reporting.";
+  "Only the political news that matters today: what happened, why it matters to you, and what's true. Checked against the record, three times a day.";
 
 /** Serialize JSON-LD safely for a <script> tag. */
 export function jsonLd(data: unknown) {

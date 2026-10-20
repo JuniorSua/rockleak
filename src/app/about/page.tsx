@@ -1,87 +1,74 @@
 import type { Metadata } from "next";
-import { PersonaBadge, VerdictChip } from "@/components/story-bits";
-import { PERSONAS } from "@/lib/agents/personas";
+import Link from "next/link";
+import { VerdictChip } from "@/components/story-bits";
 import type { Verdict } from "@/lib/types";
 
 export const metadata: Metadata = {
-  title: "How RockLeak Works: AI-Assisted, Source-Checked Political News",
+  title: "About RockLeak: Politics, Minus the Noise",
   description:
-    "How RockLeak reports: we read every side, check claims against official records, compare coverage, dig up unreported records, and run every story past an independent standards check.",
+    "RockLeak drops only the political news that matters today: what happened, why it matters to you, and what's true. Checked against the record, signed off by a neutral editor.",
   alternates: { canonical: "/about" },
 };
 
 const STEPS = [
-  ["Read every side", "Our Wire reads 21 outlets from left to right, from Fox and Newsmax to CNN and The Guardian, and groups headlines about the same event."],
-  ["Dig for what's missing", "We scan official records (campaign-finance filings, executive orders, court dockets, votes) and flag the ones no outlet has covered yet."],
-  ["Listen to X", "Grok scans X for what's trending, what people claim and which Community Notes appear. Posts are leads, never proof."],
-  ["Check the record", "Every fact needs a source, ideally an official one. Each gets a verdict, from Confirmed to False."],
-  ["Argue it out", "Four AI analysts with openly different views debate the same facts, and each must concede a point. Disagreement is labeled, not hidden."],
-  ["Write it plainly", "An AI editor writes the story for someone who doesn't follow politics: what happened, why it matters, what's true."],
-  ["Red-team it", "A separate check hunts for any sentence the sources don't support and any headline that oversells."],
-  ["A neutral editor signs off", "Plumb, our standards editor, didn't write the story and has no side. Plumb opens the sources, swaps the parties to test for double standards, and approves, sends back or kills every story."],
+  ["We pick what matters.", "Three times a day, at 9 AM, 5 PM and 10 PM ET, we look at what every side is talking about and pick the one story you actually need. Some days that's nothing, so we post nothing."],
+  ["We check it.", "Every fact goes back to its source: court filings, campaign-finance records, votes, official statements. If we can't source it, we don't say it."],
+  ["Someone neutral signs off.", "Plumb, our standards editor, didn't write the story and has no side. Plumb swaps the parties to test for double standards, then approves the story, sends it back, or kills it."],
 ];
 
 const VERDICTS: [Verdict, string][] = [
-  ["confirmed", "Backed by an official record or by independent outlets on both sides."],
-  ["likely", "Strong evidence, but no official record yet."],
-  ["unverified", "Claimed or reported, but we can't confirm it."],
-  ["misleading", "Contains some truth but leaves out context that changes the meaning."],
-  ["false", "Contradicted by official records or verified evidence."],
+  ["confirmed", "On the record, or reported by outlets on both sides."],
+  ["likely", "Strong evidence, no official record yet."],
+  ["unverified", "Someone said it. Nobody's proven it."],
+  ["misleading", "Part true, missing context that changes it."],
+  ["false", "The record says otherwise."],
 ];
+
+function H2({ id, children }: { id?: string; children: React.ReactNode }) {
+  return (
+    <h2 id={id} className="headline scroll-mt-6 border-b border-ink pb-2 text-[1.6rem]">
+      {children}
+    </h2>
+  );
+}
 
 export default function AboutPage() {
   return (
-    <div className="mx-auto max-w-4xl px-5 py-12">
-      <p className="kicker text-accent">How it works</p>
-      <h1 className="headline mt-3 text-[2.6rem] md:text-[3.4rem]">News you can check yourself.</h1>
-      <p className="dek mt-5 text-xl">
-        Most outlets pick a side, then gather facts. RockLeak starts with the official record, compares how every side
-        covered it, and tells you plainly what&apos;s true, what&apos;s spin, and what nobody has reported yet. Every
-        fact links to its source so you never have to take our word for it.
+    <div className="mx-auto max-w-2xl px-5 py-12">
+      <h1 className="headline text-[2.4rem] md:text-[3.2rem]">Politics, minus the noise.</h1>
+      <p className="mt-4 text-lg leading-relaxed text-ink/80">
+        You don&apos;t have time to follow politics all day. We do it for you. Check in once and you&apos;re set: what
+        happened, why it matters to you, and what&apos;s actually true.
       </p>
 
-      <section className="mt-14">
-        <h2 className="headline border-b border-ink pb-3 text-[1.9rem]">How a story gets made</h2>
-        <ol className="mt-6 grid gap-x-10 gap-y-7 md:grid-cols-2">
+      <section className="mt-12">
+        <H2>How it works</H2>
+        <ol className="mt-5 space-y-6">
           {STEPS.map(([t, d], i) => (
-            <li key={t} className="flex gap-4">
-              <span className="headline w-7 shrink-0 text-2xl text-muted">{i + 1}</span>
+            <li key={t} className="grid grid-cols-[2rem_1fr] gap-x-2">
+              <span className="mono pt-0.5 text-xs font-bold text-muted">0{i + 1}</span>
               <div>
                 <p className="font-semibold">{t}</p>
-                <p className="mt-1 text-[0.95rem] leading-relaxed text-ink/75">{d}</p>
+                <p className="mt-1 leading-relaxed text-ink/75">{d}</p>
               </div>
             </li>
           ))}
         </ol>
       </section>
 
-      <section className="mt-14">
-        <h2 className="headline border-b border-ink pb-3 text-[1.9rem]">The newsroom</h2>
-        <p className="mt-4 leading-relaxed text-ink/75">
-          Behind every story, four AI analysts with openly declared points of view argue from the same set of facts.
-          Quill writes up what survives the debate, and Plumb decides whether it runs. They&apos;re all AI and never
-          pretend to be people. You can read the debate under &ldquo;Behind this story&rdquo; on any article.
+      <section className="mt-12">
+        <H2>The odds</H2>
+        <p className="mt-4 leading-relaxed text-ink/80">
+          We show who people betting real money on Kalshi and Polymarket expect to win. When a race is close, or the two
+          platforms disagree, we write a drop about why. Odds aren&apos;t facts, and they&apos;re not betting advice.
         </p>
-        <div className="mt-6 grid gap-4 sm:grid-cols-2">
-          {PERSONAS.map((p) => (
-            <div key={p.id} className="flex gap-4 rounded-xl border border-rule p-5">
-              <PersonaBadge id={p.id} size={40} />
-              <div>
-                <p className="font-semibold">
-                  {p.name} <span className="font-normal text-muted">· {p.title}</span>
-                </p>
-                <p className="mt-1 text-sm leading-relaxed text-ink/75">{p.bio}</p>
-              </div>
-            </div>
-          ))}
-        </div>
       </section>
 
-      <section className="mt-14">
-        <h2 className="headline border-b border-ink pb-3 text-[1.9rem]">What our verdicts mean</h2>
-        <ul className="mt-6 space-y-4">
+      <section className="mt-12">
+        <H2 id="truth">What our labels mean</H2>
+        <ul className="mt-5 space-y-3">
           {VERDICTS.map(([v, d]) => (
-            <li key={v} className="grid gap-1 sm:grid-cols-[130px_1fr]">
+            <li key={v} className="grid grid-cols-[110px_1fr] gap-2">
               <VerdictChip verdict={v} />
               <span className="leading-relaxed text-ink/80">{d}</span>
             </li>
@@ -89,26 +76,26 @@ export default function AboutPage() {
         </ul>
       </section>
 
-      <section id="standards" className="mt-14 scroll-mt-6">
-        <h2 className="headline border-b border-ink pb-3 text-[1.9rem]">Our standards</h2>
-        <ul className="mt-6 space-y-3 leading-relaxed text-ink/80">
-          <li>No invented quotes, numbers or events. If we can&apos;t source it, we don&apos;t say it.</li>
-          <li>Headlines must be catchy and literally true.</li>
-          <li>Official records beat reporting; reporting from both sides beats reporting from one; social posts are leads, not proof.</li>
-          <li>We link to the outlets we compare and quote only briefly. Read them in full at the source.</li>
-          <li>Prediction-market odds show expectations, not facts.</li>
-          <li>Stories are reported and written by AI and approved by an independent AI standards editor. Our editors can pull any story at any time.</li>
-          <li>The newsroom checks in three times a day (9 a.m., 5 p.m. and 10 p.m. Eastern) and publishes only when a story clears the bar.</li>
+      <section className="mt-12">
+        <H2 id="standards">Real talk</H2>
+        <ul className="mt-5 space-y-2 leading-relaxed text-ink/80">
+          <li>Our stories are researched and written by AI. We never pretend otherwise.</li>
+          <li>No side. Same rules for every party.</li>
+          <li>Every fact links to its source, so you don&apos;t have to trust us.</li>
+          <li>Photos come from Wikimedia Commons, under free licenses, with credit.</li>
         </ul>
       </section>
 
-      <section id="corrections" className="mt-14 scroll-mt-6">
-        <h2 className="headline border-b border-ink pb-3 text-[1.9rem]">Corrections</h2>
+      <section className="mt-12">
+        <H2 id="corrections">Corrections</H2>
         <p className="mt-4 leading-relaxed text-ink/80">
-          When we get something wrong, we fix it on the story with a dated note explaining what changed. No corrections
-          have been issued yet. Spot something wrong? Tell us and we&apos;ll check it against the record.
+          If we get something wrong, we fix it on the story with a dated note saying what changed. No corrections yet.
         </p>
       </section>
+
+      <Link href="/" className="mt-12 inline-block font-semibold text-accent hover:underline">
+        Read the latest drop →
+      </Link>
     </div>
   );
 }

@@ -84,7 +84,7 @@ export interface Story {
   // Reader-first + distribution layer (written by the Viral Desk, checked by the Red Team)
   /** One big shareable number, backed by a confirmed fact. */
   stat?: { value: string; label: string };
-  /** Plain-English summary for readers who don't follow politics. */
+  /** The short version: what happened, why it matters to the reader, and what's true. */
   tldr?: { what: string; why: string; truth: string };
   /** What this File shows that most coverage missed. */
   newAngle?: string;
@@ -96,8 +96,23 @@ export interface Story {
     shortVideoHook: string;
     shareCardText: string;
   };
+  /** A free-license photo from Wikimedia Commons, with the credit its license requires. */
+  image?: StoryImage;
   /** Sign-off from Plumb, the neutral standards editor. Nothing publishes without it. */
   review?: { approvedBy: string; approvedAt: string; notes: string; edition: "morning" | "evening" | "night" | "manual" };
+}
+
+export interface StoryImage {
+  /** A Wikimedia Commons file or thumbnail URL (upload. or thumb.wikimedia.org) */
+  src: string;
+  alt: string;
+  /** "Photographer / Wikimedia Commons" */
+  credit: string;
+  /** e.g. "CC BY-SA 4.0" or "Public domain" */
+  license: string;
+  licenseUrl?: string;
+  /** The Commons file page, where the license is stated. */
+  sourceUrl: string;
 }
 
 /** A headline pulled from an outlet's feed by the Wire agent. */

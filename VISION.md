@@ -85,6 +85,16 @@ What we monitor continuously:
 
 ## 5. Going viral (traffic → trust → money)
 
+**Owner direction (Oct 20, evening): simplify.** Inspired by WikiLeaks' old releases page: each story is a numbered
+**drop**, and drops are rare enough to feel important. The front page is one calm stacked feed (no hero), grouped by
+day, with Commons photos. A reader who doesn't follow politics should catch one drop and feel set for the day. Every
+drop opens with three questions (What happened? Why does it matter to me? What's true?) and the key facts; the full
+story, claims, coverage and debate sit under "Go deeper". The Kalshi-vs-Polymarket favorites table stays, and close
+calls get a drop. The Wire and Unreported pages were retired from the site (their APIs still feed the newsroom brief).
+The About page is short and written for Gen Z.
+
+*Earlier direction, kept for history:*
+
 **Owner direction (Oct 20):** focus on what's **new and never reported**, keep the site calm and readable for
 people who don't follow politics, and make everything SEO-ready. Built so far:
 - **Unreported** section (The Dig): official records no outlet has covered

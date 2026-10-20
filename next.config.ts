@@ -11,6 +11,10 @@ const nextConfig: NextConfig = {
       },
     },
   },
+  // Story photos come from Wikimedia Commons (free licenses only; see newsroom/PLAYBOOK.md)
+  images: {
+    remotePatterns: ["upload", "thumb"].map((h) => ({ protocol: "https" as const, hostname: `${h}.wikimedia.org`, pathname: "/wikipedia/commons/**" })),
+  },
   // Share-image fonts are read from disk at request time for new stories
   outputFileTracingIncludes: { "/story/[slug]/opengraph-image": ["./assets/fonts/**"] },
   // Old routes from the first prototype
@@ -19,6 +23,8 @@ const nextConfig: NextConfig = {
       { source: "/panel", destination: "/about", permanent: true },
       { source: "/method", destination: "/about", permanent: true },
       { source: "/odds", destination: "/midterms", permanent: true },
+      { source: "/wire", destination: "/", permanent: false },
+      { source: "/unreported", destination: "/", permanent: false },
     ];
   },
 };

@@ -5,10 +5,13 @@
 The live newsroom runs **inside Claude Code on the owner's Claude subscription**. No Anthropic API key is needed.
 T3 Code's scheduler starts a fresh Claude Code run on ProDesktop, the always-on home PC, three times a day (Eastern):
 
-| 9:00 AM | morning | Plans the day: 3–5 ranked candidates. Publishes nothing. |
+| 9:00 AM | morning | Sets up the day: plans 2–4 candidates and publishes the essential one (or nothing). |
 |---|---|---|
-| 5:00 PM | evening | Reports, debates, writes and approves **one** story, then publishes it (or nothing). |
-| 10:00 PM | night | Same, for the day's biggest development or the next candidate. |
+| 5:00 PM | evening | Reports, debates, writes and approves **one** story ("drop"), then publishes it (or nothing). |
+| 10:00 PM | night | Same, for what moved during the day or a close-call race in the markets. |
+
+Each run picks the political news a regular reader needs today. Once a day, a race the markets call close
+(favorite at 60% or less, or Kalshi and Polymarket disagreeing; see `src/lib/races.ts`) gets a drop of its own.
 
 Each run follows [`newsroom/PLAYBOOK.md`](newsroom/PLAYBOOK.md):
 

@@ -1,101 +1,64 @@
 import Link from "next/link";
 import { Suspense } from "react";
+import { Countdown } from "@/components/countdown";
+import { DropItem } from "@/components/drop-item";
+import { NextDrop } from "@/components/next-drop";
 import { RaceTable } from "@/components/race-table";
-import { UnreportedList } from "@/components/unreported-list";
-import { StatCard, StoryCard } from "@/components/story-bits";
-import { WireColumn } from "@/components/wire-column";
+import { dayHeading, etDay } from "@/lib/format";
 import { allStories } from "@/lib/stories";
+import type { Story } from "@/lib/types";
 
-function Section({ title, sub, href, children }: { title: string; sub?: string; href?: string; children: React.ReactNode }) {
-  return (
-    <section className="border-t border-ink pt-5">
-      <div className="mb-6 flex items-end justify-between gap-4">
-        <div>
-          <h2 className="headline text-[1.9rem]">{title}</h2>
-          {sub && <p className="mt-1 text-sm text-muted">{sub}</p>}
-        </div>
-        {href && (
-          <Link href={href} className="shrink-0 text-sm font-semibold text-accent hover:underline">
-            See all →
-          </Link>
-        )}
-      </div>
-      {children}
-    </section>
-  );
+// The front page is one calm, stacked feed: newest drop first, grouped by day. No hero, no grid.
+
+function byDay(stories: Story[]) {
+  const days = new Map<string, Story[]>();
+  for (const s of stories) days.set(etDay(s.publishedAt), [...(days.get(etDay(s.publishedAt)) ?? []), s]);
+  return [...days.values()];
 }
 
 export default function Home() {
-  const [lead, ...rest] = allStories();
   return (
-    <div className="mx-auto max-w-6xl space-y-16 px-5 py-10">
-      {/* Lead */}
-      {lead && (
-        <section className="grid items-center gap-10 lg:grid-cols-[1.3fr_1fr]">
-          <div>
-            <StoryCard story={lead} size="lg" />
-            {lead.tldr && (
-              <p className="mt-6 border-l-4 border-accent pl-4 leading-relaxed text-ink/80">
-                <span className="font-semibold text-ink">Why it matters: </span>
-                {lead.tldr.why}
-              </p>
-            )}
-          </div>
-          <Link href={`/story/${lead.slug}`} className="block transition hover:opacity-95">
-            <StatCard story={lead} size="lg" />
-          </Link>
-        </section>
-      )}
+    <div className="mx-auto max-w-3xl px-5">
+      <section className="border-b border-ink py-9 sm:py-12">
+        <h1 className="headline text-[2.2rem] sm:text-[3rem]">Politics, minus the noise.</h1>
+        <p className="mt-3 max-w-xl text-[1.05rem] leading-relaxed text-ink/70">
+          Only the political news that matters today, checked against the record. Every drop answers three questions:
+          what happened, why it matters to you, and what&apos;s actually true.
+        </p>
+        <p className="mono mt-5 text-[0.7rem] uppercase tracking-wider text-muted">
+          <NextDrop />
+        </p>
+      </section>
 
-      {/* More Files */}
-      {rest.length > 0 && (
-        <Section title="Fact-checked this week" sub="Every claim checked against the official record. Every side's coverage compared.">
-          <div className="grid gap-10 md:grid-cols-2">
-            {rest.map((s) => (
-              <div key={s.slug} className="space-y-5">
-                <Link href={`/story/${s.slug}`} className="block">
-                  <StatCard story={s} />
-                </Link>
-                <StoryCard story={s} />
-              </div>
+      {byDay(allStories()).map((day) => (
+        <section key={day[0].slug}>
+          <h2 className="mono border-b border-rule pb-2 pt-9 text-[0.7rem] font-bold uppercase tracking-widest text-muted">
+            {dayHeading(day[0].publishedAt)}
+          </h2>
+          <div className="divide-y divide-rule">
+            {day.map((s) => (
+              <DropItem key={s.slug} story={s} />
             ))}
           </div>
-        </Section>
-      )}
+        </section>
+      ))}
 
-      <Section
-        title="On the record. Not in the news."
-        sub="Fresh official records (filings, orders, court dockets) that none of the 21 outlets we track has reported yet."
-        href="/unreported"
-      >
-        <Suspense fallback={<p className="text-sm text-muted">Digging through the records…</p>}>
-          <UnreportedList limit={4} compact />
-        </Suspense>
-      </Section>
-
-      <div className="grid gap-16 lg:grid-cols-2">
-        <Section title="Midterms: what the money says" sub="Live Kalshi and Polymarket odds. Odds aren't facts, but they move fast." href="/midterms">
-          <Suspense fallback={<p className="text-sm text-muted">Loading the markets…</p>}>
-            <RaceTable limit={7} />
-          </Suspense>
-        </Section>
-
-        <Section title="What everyone's covering" sub="Headlines from 21 outlets, left to right, grouped by story." href="/wire">
-          <Suspense fallback={<p className="text-sm text-muted">Reading the feeds…</p>}>
-            <WireColumn limit={6} />
-          </Suspense>
-        </Section>
-      </div>
-
-      <section className="rounded-2xl bg-paper p-8 md:p-10">
-        <h2 className="headline text-3xl">How RockLeak works, in one line</h2>
-        <p className="mt-3 max-w-3xl text-lg leading-relaxed text-ink/80">
-          We read what every side is saying, check it against the official record, and tell you plainly what&apos;s true,
-          what&apos;s spin, and what nobody has reported yet.
+      <section className="mt-14 border-t border-ink pt-6">
+        <div className="flex items-end justify-between gap-4">
+          <h2 className="headline text-[1.9rem]">What the bettors think</h2>
+          <Link href="/midterms" className="shrink-0 pb-1 text-sm font-semibold text-accent hover:underline">
+            All odds →
+          </Link>
+        </div>
+        <p className="mt-2 text-sm leading-relaxed text-muted">
+          Live favorites on Kalshi and Polymarket. <span className="font-semibold text-amber">◆ Close call</span> means 60-40 or
+          tighter, or the two disagree. Those races get a drop. <Countdown />.
         </p>
-        <Link href="/about" className="mt-5 inline-block text-sm font-semibold text-accent hover:underline">
-          See how a story is made →
-        </Link>
+        <div className="mt-4">
+          <Suspense fallback={<p className="text-sm text-muted">Loading the markets…</p>}>
+            <RaceTable limit={8} />
+          </Suspense>
+        </div>
       </section>
     </div>
   );

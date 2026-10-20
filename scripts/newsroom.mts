@@ -12,13 +12,16 @@
 //   node scripts/newsroom.mts list                            published stories
 //   node scripts/newsroom.mts fec <path> [key=value ...]      OpenFEC via the site's key, e.g.
 //        fec schedules/schedule_e/ committee_id=C00901223 sort=-expenditure_date per_page=20
+//   node scripts/newsroom.mts image <story dir | slug> "<File:Name.jpg>" "<alt text>"
+//        attach a free-license Wikimedia Commons photo, with its credit (a slug edits a published story)
 
 import { existsSync, mkdirSync, readFileSync, renameSync, writeFileSync } from "node:fs";
 import { basename, dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { DEBATERS } from "../src/lib/agents/personas.ts";
+import { closeCall, outcomeName, raceRows } from "../src/lib/races.ts";
 import { StorySchema } from "../src/lib/story-schema.ts";
-import type { CoreFact, Story, WireCluster } from "../src/lib/types.ts";
+import type { CoreFact, LiveMarket, Story, StoryImage, WireCluster } from "../src/lib/types.ts";
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
 const STORIES = join(ROOT, "content/stories.json");
@@ -61,20 +64,13 @@ interface Lead {
   novelty: number;
   score: number;
 }
-interface Market {
-  platform: string;
-  question: string;
-  outcome: string;
-  probability: number;
-  url: string;
-}
 
 async function brief(edition: string) {
   if (!["morning", "evening", "night", "practice"].includes(edition)) fail("edition must be morning, evening, night or practice");
   const [wire, dig, odds] = await Promise.all([
     getJson<WireCluster[]>("/api/wire"),
     getJson<{ leads: Lead[] }>("/api/dig"),
-    getJson<Market[]>("/api/odds"),
+    getJson<LiveMarket[]>("/api/odds"),
   ]);
   const now = new Date();
   const out: string[] = [
@@ -85,7 +81,7 @@ async function brief(edition: string) {
   out.push("## Already published (don't repeat; a follow-up needs a genuinely new fact)");
   for (const s of readStories().slice(0, 12)) out.push(`- ${s.publishedAt.slice(0, 10)} · ${s.headline} (/story/${s.slug})`);
 
-  out.push("", "## The Wire: biggest stories across 21 outlets, last 48h");
+  out.push("", "## The Wire: what every side is covering, last 48h (more outlets + both sides = bigger story)");
   if (!wire) out.push("(wire unavailable)");
   for (const c of (wire ?? []).filter((c) => c.items.length >= 2).slice(0, 18)) {
     const leans = [...new Set(c.leans)].join(", ");
@@ -93,17 +89,25 @@ async function brief(edition: string) {
     for (const i of c.items.slice(0, 4)) out.push(`  - ${i.outlet}: ${i.title} <${i.url}>`);
   }
 
-  out.push("", "## The Dig: official records (novelty 1 = no outlet has covered it)");
+  const rows = raceRows(odds ?? []);
+  const fmt = (m?: LiveMarket) => (m ? `${outcomeName(m.outcome)} ${Math.round(m.probability * 100)}% <${m.url}>` : "—");
+  out.push("", "## Close calls in the markets (favorite at 60% or less, or Kalshi and Polymarket disagree)");
+  out.push("If one is listed and no drop covered it in the last 3 days, one of today's drops should explain it. See PLAYBOOK 1.");
+  if (!odds) out.push("(markets unavailable)");
+  const close = rows.filter((r) => closeCall(r));
+  if (odds && !close.length) out.push("(none right now)");
+  for (const r of close) out.push(`- **${r.race}**: ${closeCall(r)}. Kalshi: ${fmt(r.kalshi)} · Polymarket: ${fmt(r.poly)}`);
+
+  out.push("", "## All race favorites (expectations, not facts)");
+  for (const r of rows.filter((r) => !closeCall(r))) out.push(`- ${r.race}: Kalshi ${fmt(r.kalshi)} · Polymarket ${fmt(r.poly)}`);
+
+  out.push("", "## The Dig: official records (novelty 1 = no outlet has covered it). A source of facts and fresh angles, not the main pick.");
   if (!dig) out.push("(dig unavailable)");
-  for (const l of (dig?.leads ?? []).slice(0, 15)) {
+  for (const l of (dig?.leads ?? []).slice(0, 12)) {
     const covered = l.coveredBy.length ? `covered by ${l.coveredBy.map((c) => c.outlet).join(", ")}` : "UNREPORTED";
     out.push(`- [${l.source} · ${l.kind} · ${l.date ?? "undated"}] **${l.title}** (${covered}; novelty ${l.novelty})`);
     out.push(`  ${l.detail} <${l.url}>`);
   }
-
-  out.push("", "## Markets (expectations, not facts)");
-  if (!odds) out.push("(markets unavailable)");
-  for (const m of (odds ?? []).slice(0, 24)) out.push(`- ${m.platform} · ${m.question} · ${m.outcome}: ${Math.round(m.probability * 100)}% <${m.url}>`);
 
   const text = out.join("\n") + "\n";
   // Practice runs keep their brief inside their own folder so real runs never mistake it for theirs.
@@ -291,6 +295,49 @@ async function fec(path: string, pairs: string[]) {
   if (!r.ok) process.exit(1);
 }
 
+/** Free licenses only: CC0, public domain, CC BY, CC BY-SA. Never NC/ND, fair use or "all rights reserved". */
+const FREE = /^(cc0|public domain|pd\b|pd-|cc by(-sa)? \d|cc-by(-sa)?-\d|attribution)/i;
+const stripHtml = (h: string) => h.replace(/<[^>]+>/g, "").replace(/\s+/g, " ").trim();
+
+/** Look up a Commons file's license and author, then attach it to a draft or (owner request) a published story. */
+async function image(target: string, file: string, alt: string) {
+  if (!target || !file || !alt) fail('usage: image <story dir | slug> "<File:Name.jpg>" "<alt text>"');
+  const title = decodeURIComponent(file.replace(/^.*\/wiki\//, "")).replace(/^(File:)?/, "File:").replace(/_/g, " ");
+  const api = new URL("https://commons.wikimedia.org/w/api.php");
+  for (const [k, v] of Object.entries({ action: "query", format: "json", prop: "imageinfo", iiprop: "url|extmetadata", iiurlwidth: "1600", titles: title }))
+    api.searchParams.set(k, v);
+  const r = await fetch(api, { headers: { "user-agent": `RockLeak newsroom (${SITE})` }, signal: AbortSignal.timeout(30_000) });
+  const page = Object.values(((await r.json()) as { query?: { pages?: Record<string, { missing?: string; imageinfo?: Record<string, unknown>[] }> } }).query?.pages ?? {})[0];
+  const info = page?.imageinfo?.[0];
+  if (!info) fail(`not found on Commons: ${title}`);
+  const meta = info!.extmetadata as Record<string, { value: string }>;
+  const license = stripHtml(meta.LicenseShortName?.value ?? "");
+  if (!FREE.test(license) || /\b(nc|nd)\b/i.test(license)) fail(`license "${license}" isn't free enough; pick a CC0, public-domain, CC BY or CC BY-SA photo`);
+  const artist = stripHtml(meta.Artist?.value ?? "") || "Unknown author";
+  const img: StoryImage = {
+    src: String(info!.thumburl ?? info!.url).split("?")[0],
+    alt,
+    credit: `${artist.length > 80 ? `${artist.slice(0, 77)}…` : artist} / Wikimedia Commons`,
+    license,
+    ...(meta.LicenseUrl?.value ? { licenseUrl: meta.LicenseUrl.value } : {}),
+    sourceUrl: String(info!.descriptionurl),
+  };
+  if (existsSync(join(target, "article.json"))) {
+    const article = readJson<Partial<Story>>(join(target, "article.json"));
+    writeFileSync(join(target, "article.json"), JSON.stringify({ ...article, image: img }, null, 2) + "\n");
+    console.log(`✓ photo added to ${join(target, "article.json")}; run assemble again`);
+  } else {
+    const stories = readStories();
+    const story = stories.find((s) => s.slug === target) ?? fail(`${target} is neither a story folder nor a published slug`);
+    const parsed = StorySchema.shape.image.safeParse(img);
+    if (!parsed.success) fail(parsed.error.issues.map((i) => `image.${i.path.join(".")}: ${i.message}`).join("; "));
+    story.image = img;
+    writeStories(stories);
+    console.log(`✓ photo added to published story ${target}`);
+  }
+  console.log(JSON.stringify(img, null, 2));
+}
+
 const [cmd, a, b, ...rest] = process.argv.slice(2);
 const [c] = rest;
 switch (cmd) {
@@ -324,6 +371,9 @@ switch (cmd) {
   case "fec":
     await fec(a, [b, ...rest].filter(Boolean));
     break;
+  case "image":
+    await image(a, b, c);
+    break;
   default:
-    console.log(readFileSync(fileURLToPath(import.meta.url), "utf8").split("\n").slice(0, 10).join("\n"));
+    console.log(readFileSync(fileURLToPath(import.meta.url), "utf8").split("\n").slice(0, 16).join("\n"));
 }

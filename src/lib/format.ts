@@ -51,3 +51,25 @@ export function hostOf(url: string) {
 export function unquote(s: string) {
   return s.trim().replace(/^["“”']+|["“”']+$/g, "");
 }
+
+const ET = "America/New_York";
+
+/** "5:36 PM ET" */
+export function etTime(iso: string) {
+  return `${new Date(iso).toLocaleTimeString("en-US", { hour: "numeric", minute: "2-digit", timeZone: ET })} ET`;
+}
+
+/** The Eastern calendar day, "2026-10-20", for grouping. */
+export function etDay(iso: string) {
+  return new Date(iso).toLocaleDateString("en-CA", { timeZone: ET });
+}
+
+/** "Tuesday, October 20" */
+export function dayHeading(iso: string) {
+  return new Date(iso).toLocaleDateString("en-US", { weekday: "long", month: "long", day: "numeric", timeZone: ET });
+}
+
+/** Drop numbers read like release numbers: 7 -> "007". */
+export function dropLabel(n: number) {
+  return `Drop ${String(n).padStart(3, "0")}`;
+}
