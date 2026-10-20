@@ -111,7 +111,7 @@ function shortDate(iso: string | null) {
   return Number.isNaN(d.getTime()) ? "" : d.toLocaleDateString("en-US", { month: "short", day: "numeric", timeZone: "UTC" });
 }
 
-const UPPER = new Set("PAC PACS LLC LP LLP USA US U.S. II III IV NC DC AFL-CIO CIO SEIU NRA NRSC NRCC DSCC DCCC RNC DNC GOP SMP CLF HMP AIPAC UDP SLF MAGA A16Z ACLU NAACP FBI DOJ ICE".split(" "));
+const UPPER = new Set("PAC PACS LLC LP LLP USA US U.S. II III IV NC DC AFL-CIO CIO SEIU NRA NRSC NRCC DSCC DCCC RNC DNC GOP SMP CLF HMP AIPAC UDP SLF MAGA A16Z ACLU NAACP FBI DOJ ICE LCV EMILY AFP NEA AFT UAW".split(" "));
 const LOWER = new Set("of for the and a an to in on at by with or".split(" "));
 
 /** "LONE STAR LIBERTY PAC" -> "Lone Star Liberty PAC". Leaves mixed-case text alone. */
