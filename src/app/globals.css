@@ -61,7 +61,7 @@ body {
 
 /* The oil-sheen rule: the brand's one decorative device. */
 .sheen {
-  background: linear-gradient(90deg, #0b0d10 0%, #1f4fd6 35%, #0e9f9a 60%, #6d3fd6 85%, #0b0d10 100%);
+  background: linear-gradient(90deg, #4c6bff 0%, #19bfb2 50%, #9563f5 100%);
 }
 
 .prose-rl p + p {

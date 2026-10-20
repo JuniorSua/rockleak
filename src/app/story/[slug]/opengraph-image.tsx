@@ -22,7 +22,7 @@ export default async function Image({ params }: { params: Promise<{ slug: string
   return new ImageResponse(
     (
       <div style={{ width: "100%", height: "100%", display: "flex", flexDirection: "column", background: "#0b0d10", color: "white", padding: 64, fontFamily: "Barlow" }}>
-        <div style={{ display: "flex", height: 8, width: "100%", background: "linear-gradient(90deg,#1f4fd6,#0e9f9a,#6d3fd6)", borderRadius: 4 }} />
+        <div style={{ display: "flex", height: 8, width: "100%", background: "linear-gradient(90deg,#4c6bff,#19bfb2,#9563f5)", borderRadius: 4 }} />
         <div style={{ display: "flex", marginTop: 36, fontSize: 26, fontWeight: 500, letterSpacing: 4, color: "rgba(255,255,255,0.55)", textTransform: "uppercase" }}>
           {story?.kicker ?? "Fact-checked"}
         </div>

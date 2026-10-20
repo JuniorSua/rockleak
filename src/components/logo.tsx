@@ -4,5 +4,5 @@ import { ACTIVE_CONCEPT } from "@/lib/brand";
 export function Logo({ dark = false }: { dark?: boolean }) {
   const file = `/brand/logos/${ACTIVE_CONCEPT.file}-lockup${dark ? "-dark" : ""}.svg`;
   // eslint-disable-next-line @next/next/no-img-element
-  return <img src={file} alt="RockLeak" className="h-11 w-auto md:h-12" />;
+  return <img src={file} alt="RockLeak" className="-ml-3 h-16 w-auto md:-ml-5 md:h-20" />;
 }

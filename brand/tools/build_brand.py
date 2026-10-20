@@ -642,6 +642,504 @@ body{background:#E9E6DF;color:var(--ink);font-family:'Inter','Helvetica Neue',Ar
        img(top["lock_dark"], 480, 120))
 
 
+# =====================================================================
+# ROUND 2: Capitol direction, oil instead of blood (concepts 6-8)
+# =====================================================================
+OIL_HI = ["#3A414C", "#15181D", "#050608"]
+REF_HI = ["#23272F", "#101318", "#050608"]               # glossy black body (light bg)
+OIL_DARK = ["#3653D9", "#1597A3", "#6A43D6"]             # iridescent body (dark bg)
+SHEEN = ["#4C6BFF", "#19BFB2", "#9563F5"]                # oil-slick accent: blue -> teal -> violet
+
+
+def smooth_closed(pts):
+    """Closed Catmull-Rom spline through pts, as cubic Beziers."""
+    n = len(pts)
+    d = "M%s,%s" % (f(pts[0][0]), f(pts[0][1]))
+    for i in range(n):
+        p0, p1, p2, p3 = pts[(i - 1) % n], pts[i], pts[(i + 1) % n], pts[(i + 2) % n]
+        c1 = (p1[0] + (p2[0] - p0[0]) / 6, p1[1] + (p2[1] - p0[1]) / 6)
+        c2 = (p2[0] - (p3[0] - p1[0]) / 6, p2[1] - (p3[1] - p1[1]) / 6)
+        d += " C%s,%s %s,%s %s,%s" % (f(c1[0]), f(c1[1]), f(c2[0]), f(c2[1]), f(p2[0]), f(p2[1]))
+    return d + " Z"
+
+
+def stream(spine, cap_top=True):
+    """Viscous ribbon: spine = [(x, y, width)], top to bottom. Returns a smooth closed outline."""
+    left = [(x - w / 2, y) for x, y, w in spine]
+    right = [(x + w / 2, y) for x, y, w in spine][::-1]
+    bx, by, bw = spine[-1]
+    tx, ty, tw = spine[0]
+    pts = left + [(bx, by + bw * 0.5)] + right
+    if cap_top:
+        pts.append((tx, ty - tw * 0.45))
+    return smooth_closed(pts)
+
+
+def oil_defs(uid, dark):
+    body = OIL_DARK if dark else OIL_HI
+    return ('<linearGradient id="%s-oil" x1="0" y1="0" x2="0.25" y2="1">'
+            '<stop offset="0" stop-color="%s"/><stop offset="0.45" stop-color="%s"/><stop offset="1" stop-color="%s"/>'
+            '</linearGradient>'
+            '<linearGradient id="%s-sheen" x1="0" y1="0" x2="1" y2="1">'
+            '<stop offset="0" stop-color="%s"/><stop offset="0.5" stop-color="%s"/><stop offset="1" stop-color="%s"/>'
+            '</linearGradient>') % (uid, body[0], body[1], body[2], uid, SHEEN[0], SHEEN[1], SHEEN[2])
+
+
+def glint(cx, cy, rx, ry, rot=-30, op=0.9):
+    return '<ellipse cx="%s" cy="%s" rx="%s" ry="%s" transform="rotate(%s %s %s)" fill="#FFFFFF" opacity="%s"/>' % (
+        f(cx), f(cy), f(rx), f(ry), f(rot), f(cx), f(cy), op)
+
+
+def dome_rel(simple=False, finial=True, slots=True):
+    """Capitol in relative units: centre x=0, ground y=0, height ~302. Returns one evenodd path."""
+    def rect(x, y, w, h):
+        return "M%s,%s H%s V%s H%s Z" % (f(x), f(y), f(x + w), f(y + h), f(x))
+    d = [rect(-150, -16, 300, 16), rect(-134, -32, 268, 16)]
+    drum = rect(-116, -88, 232, 56)
+    if slots:
+        n, sw = (3, 22) if simple else (7, 10)
+        col = (232 - n * sw) / (n + 1)
+        for k in range(n):
+            sx = -116 + col * (k + 1) + sw * k
+            drum += " M%s,%s V-42 H%s V%s Z" % (f(sx), -76 if simple else -78, f(sx + sw), -76 if simple else -78)   # CCW hole
+    d.append(drum)
+    d.append(rect(-126, -100, 252, 12))
+    d.append(rect(-106, -116, 212, 16))
+    d.append("M-96,-116 A96,110 0 0 1 96,-116 Z")
+    d.append(rect(-16, -250, 32, 30))
+    d.append(rect(-21, -257, 42, 8))
+    d.append("M-16,-256 A16,17 0 0 1 16,-256 Z")
+    if finial:
+        d.append(poly([(-4.5, -270), (4.5, -270), (0, -302)]))
+    return " ".join(d)
+
+
+DOME_RIBS = ("M-68,-116 A68,110 0 0 1 0,-226 M68,-116 A68,110 0 0 0 0,-226")
+
+
+# ---------------------------------------------------------------- concept 6
+def oil_cap(cx, cy, rx, ry, drips, phi=(132, 48)):
+    """Oil coating the crown of a dome (ellipse centre cx,cy) with drip fingers.
+    drips: list of (x, length_below_rim, width), right-to-left order."""
+    pts = []
+    for k in range(9):
+        a = math.radians(phi[0] + (phi[1] - phi[0]) * k / 8)
+        pts.append((cx + rx * math.cos(a), cy - ry * math.sin(a)))
+    ex = lambda x: cy - ry * math.sqrt(max(0.0, 1 - ((x - cx) / rx) ** 2)) * 0.0 + 0  # unused helper
+    rim = lambda x: 0.35 * abs(x - cx) ** 1.0 * 0 + (cy - ry * 0.55)            # flat-ish lower rim
+    right_x = pts[-1][0]
+    pts.append((right_x - 4, pts[-1][1] + 14))
+    for x, ln, w in drips:
+        y0 = rim(x) + 4
+        pts += [(x + w / 2 + 2, y0), (x + w / 2, y0 + ln * 0.45), (x + w * 0.62, y0 + ln * 0.85),
+                (x, y0 + ln + w * 0.55), (x - w * 0.62, y0 + ln * 0.85), (x - w / 2, y0 + ln * 0.45), (x - w / 2 - 2, y0)]
+    pts.append((pts[0][0] + 4, pts[0][1] + 14))
+    return smooth_closed(pts)
+
+
+def mark_blueprint(dark=False, uid="c6", simple=False):
+    """Architectural line drawing of the dome. Its crown is full of oil that drips down the inside
+    of the shell; the longest drip breaks into pixels inside the colonnade."""
+    ink = PAPER if dark else INK
+    S, s2 = (30, 24) if simple else (16, 10)
+    oy = 12
+    L, top = [], []
+    def line(x1, y1, x2, y2, w, dst=None):
+        (L if dst is None else dst).append('<path d="M%s,%s L%s,%s" stroke-width="%s"/>' % (f(x1), f(y1 + oy), f(x2), f(y2 + oy), w))
+    def arc(d, w):
+        L.append('<path d="%s" stroke-width="%s" transform="translate(0 %s)"/>' % (d, w, oy))
+    if simple:
+        line(104, 384, 408, 384, S)
+        for x in (164, 207, 305, 348):
+            line(x, 302, x, 370, s2)
+        line(132, 290, 380, 290, S)
+        arc("M158,276 A98,116 0 0 1 354,276", S)
+        line(256, 112, 256, 150, s2, top)
+        cx, cy, rx, ry = 256, 276, 98, 116
+        rim, drips = 216, [(256, 52, 30)]
+        pixels = []
+    else:
+        line(96, 392, 416, 392, S)
+        line(122, 366, 390, 366, S)
+        for x in (152, 186.7, 221.3, 290.7, 325.3, 360):
+            line(x, 308, x, 358, s2)
+        line(134, 298, 378, 298, S)
+        line(150, 272, 362, 272, S)
+        arc("M160,272 A96,110 0 0 1 352,272", S)
+        arc("M188,272 A68,108 0 0 1 256,164 M324,272 A68,108 0 0 0 256,164", s2)
+        line(241, 134, 241, 158, s2, top)
+        line(271, 134, 271, 158, s2, top)
+        line(230, 160, 282, 160, s2, top)
+        top.append('<path d="M230,%s A26,24 0 0 1 282,%s Z" stroke="none" fill="%s"/>' % (f(134 + oy), f(134 + oy), ink))
+        line(256, 90, 256, 112, s2, top)
+        cx, cy, rx, ry = 256, 272, 96, 110
+        rim, drips = 206, [(300, 22, 12), (256, 50, 15), (214, 12, 11)]
+        pixels = [(256, 316, 13), (256, 336, 9), (256, 351, 6)]
+    # oil body: everything above the rim line, plus drip fingers; clipped to the inside of the shell
+    pts = [(cx - rx - 20, rim), (cx - rx - 20, cy - ry - 30), (cx + rx + 20, cy - ry - 30), (cx + rx + 20, rim)]
+    for x, ln, w in sorted(drips, key=lambda d: -d[0]):
+        pts += [(x + w / 2 + 3, rim), (x + w / 2, rim + ln * 0.5), (x + w * 0.6, rim + ln * 0.88),
+                (x, rim + ln + w * 0.55), (x - w * 0.6, rim + ln * 0.88), (x - w / 2, rim + ln * 0.5), (x - w / 2 - 3, rim)]
+    pts = [(x, y + oy) for x, y in pts]
+    # straight top part + smooth drips: build path manually
+    d = "M%s,%s L%s,%s L%s,%s L%s,%s" % (f(pts[0][0]), f(pts[0][1]), f(pts[1][0]), f(pts[1][1]),
+                                         f(pts[2][0]), f(pts[2][1]), f(pts[3][0]), f(pts[3][1]))
+    for i in range(len(drips)):
+        seg = pts[4 + 7 * i: 4 + 7 * (i + 1)]
+        d += " L%s,%s" % (f(seg[0][0]), f(seg[0][1]))
+        # use an open Catmull-Rom through the finger (skip closing segment)
+        for j in range(len(seg) - 1):
+            p0 = seg[max(j - 1, 0)]; p1 = seg[j]; p2 = seg[j + 1]; p3 = seg[min(j + 2, len(seg) - 1)]
+            c1 = (p1[0] + (p2[0] - p0[0]) / 6, p1[1] + (p2[1] - p0[1]) / 6)
+            c2 = (p2[0] - (p3[0] - p1[0]) / 6, p2[1] - (p3[1] - p1[1]) / 6)
+            d += " C%s,%s %s,%s %s,%s" % (f(c1[0]), f(c1[1]), f(c2[0]), f(c2[1]), f(p2[0]), f(p2[1]))
+    d += " Z"
+    shell = "M%s,%s A%s,%s 0 0 1 %s,%s Z" % (f(cx - rx), f(cy + oy), rx, ry, f(cx + rx), f(cy + oy))
+    defs = oil_defs(uid, dark)
+    defs += '<clipPath id="%s-shell"><path d="%s"/></clipPath>' % (uid, shell)
+    body = ['<g clip-path="url(#%s-shell)"><path d="%s" fill="url(#%s-oil)"/></g>' % (uid, d, uid)]
+    body.append('<g fill="none" stroke="%s">' % ink + "".join(L) + '</g>')
+    body.append('<g fill="none" stroke="%s">' % ink + "".join(top) + '</g>')
+    for i, (x, y, w) in enumerate(pixels):
+        fill = "url(#%s-sheen)" % uid if i == len(pixels) - 1 else "url(#%s-oil)" % uid
+        body.append('<rect x="%s" y="%s" width="%s" height="%s" fill="%s"/>' % (f(x - w / 2), f(y + oy), w, w, fill))
+    if not simple:
+        body.append('<path d="M204,%s C220,%s 238,%s 252,%s" stroke="url(#%s-sheen)" stroke-width="3.5" stroke-linecap="round" fill="none"/>' % (
+            f(196 + oy), f(186 + oy), f(181 + oy), f(180 + oy), uid))
+        body.append(glint(252, 262 + oy, 2.2, 4.4, 0, 0.85))
+    else:
+        body.append(glint(248, 258 + oy, 4, 7, 0, 0.85))
+    return defs, "\n".join(body)
+
+
+# ---------------------------------------------------------------- concept 7
+def mark_reflection(dark=False, uid="c7", simple=False):
+    """Solid dome above a slick of oil; its reflection breaks into lines of data and drips."""
+    ink = PAPER if dark else INK
+    k = 0.74
+    horizon = 286
+    gap = 12
+    ry = 0.6
+    defs = oil_defs(uid, dark)
+    # reflection gradient in the reflection's own (relative) coordinates: near = sheen-dark, far = black
+    body_cols = OIL_DARK if dark else REF_HI
+    defs += ('<linearGradient id="%s-ref" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="0" y2="-280">'
+             '<stop offset="0" stop-color="%s"/><stop offset="0.5" stop-color="%s"/><stop offset="1" stop-color="%s"/>'
+             '</linearGradient>') % (uid, body_cols[0], body_cols[1], body_cols[2])
+    lines = [] if simple else [(22, 4), (40, 5), (62, 6.5), (88, 8)]
+    if simple:
+        lines = [(30, 7), (62, 9)]
+    bars = "".join('<rect x="0" y="%s" width="512" height="%s" fill="#000"/>' % (f(horizon + gap + y), f(h)) for y, h in lines)
+    defs += ('<mask id="%s-scan" maskUnits="userSpaceOnUse" x="0" y="0" width="512" height="512">'
+             '<rect width="512" height="512" fill="#fff"/>%s</mask>') % (uid, bars)
+    rib_mask = ""
+    if not simple:
+        defs += ('<mask id="%s-ribs" maskUnits="userSpaceOnUse" x="-300" y="-400" width="600" height="500">'
+                 '<rect x="-300" y="-400" width="600" height="500" fill="#fff"/>'
+                 '<path d="%s" fill="none" stroke="#000" stroke-width="7"/></mask>') % (uid, DOME_RIBS)
+        rib_mask = ' mask="url(#%s-ribs)"' % uid
+    body = []
+    body.append('<g transform="translate(256 %s) scale(%s)"><path d="%s" fill="%s" fill-rule="evenodd"%s/></g>' % (
+        f(horizon), k, dome_rel(simple), ink, rib_mask))
+    # oil surface line (the only accent): a thin sheen rule wider than the building
+    body.append('<rect x="92" y="%s" width="328" height="%s" rx="%s" fill="url(#%s-sheen)"/>' % (
+        f(horizon + 3), "4" if not simple else "6", "2" if not simple else "3", uid))
+    body.append('<g mask="url(#%s-scan)"><g transform="translate(256 %s) scale(%s %s)">'
+                '<path d="%s" fill="url(#%s-ref)" fill-rule="evenodd"/></g>' % (
+                    uid, f(horizon + gap), k, f(-k * ry), dome_rel(simple, finial=False, slots=False), uid))
+    body.append('</g>')
+    # one drop hangs from the reflected lantern: the information leaving the building
+    tip = horizon + gap + 268 * k * ry
+    dr = 17 if simple else 11
+    body.append('<path d="%s" fill="url(#%s-oil)"/>' % (drop(256, tip - 3, dr), uid))
+    body.append(glint(256 - dr * 0.42, tip - 3 + 2.1 * dr - dr * 0.35, dr * 0.17, dr * 0.36, 20, 0.85))
+    return defs, "\n".join(body)
+
+
+# ---------------------------------------------------------------- concept 8
+def mark_spill(dark=False, uid="c8", simple=False):
+    """Solid dome with one clean fracture; oil wells out, runs down its flank and pools as a slick."""
+    ink = PAPER if dark else INK
+    base = 372
+    defs = oil_defs(uid, dark)
+    spine = [(259, 210, 9), (265, 234, 15), (277, 260, 17), (287, 288, 19), (292, 316, 16), (299, 342, 21), (311, 370, 30)]
+    if simple:
+        spine = [(260, 196, 28), (270, 236, 34), (286, 272, 30), (294, 310, 34), (304, 348, 32), (316, 376, 40)]
+    st = stream(spine)
+    pool_pts = [(214, 396), (262, 384), (330, 381), (402, 384), (452, 393), (464, 403), (430, 413),
+                (360, 418), (290, 417), (236, 410)]
+    if simple:
+        pool_pts = [(196, 398), (262, 382), (340, 380), (420, 384), (470, 396), (472, 410), (420, 422), (330, 425), (250, 420), (200, 410)]
+    pool = smooth_closed(pool_pts)
+    crack = [(266, 146), (251, 178), (262, 196), (259, 214)]
+    crack_poly = poly([(264 - 5, 146), (253 - 3, 184), (259 - 1, 214),
+                       (259 + 1, 214), (253 + 3, 184), (264 + 5, 146)])
+    ko = 18 if simple else 12
+    defs += ('<mask id="%s-ko" maskUnits="userSpaceOnUse" x="0" y="0" width="512" height="512">'
+             '<rect width="512" height="512" fill="#fff"/>'
+             '<path d="%s" fill="#000" stroke="#000" stroke-width="%s" stroke-linejoin="round"/>'
+             '<path d="%s" fill="#000" stroke="#000" stroke-width="%s"/>'
+             '<path d="%s" fill="#000"/></mask>') % (uid, st, ko, pool, ko, crack_poly if not simple else
+                                                    poly([(270, 120), (250, 178), (266, 214), (254, 214), (240, 178), (258, 120)]))
+    rib = ""
+    if not simple:
+        defs += ('<mask id="%s-ribs" maskUnits="userSpaceOnUse" x="-300" y="-400" width="600" height="500">'
+                 '<rect x="-300" y="-400" width="600" height="500" fill="#fff"/>'
+                 '<path d="%s" fill="none" stroke="#000" stroke-width="7"/></mask>') % (uid, DOME_RIBS)
+        rib = ' mask="url(#%s-ribs)"' % uid
+    body = ['<g mask="url(#%s-ko)"><g transform="translate(256 %d)"><path d="%s" fill="%s" fill-rule="evenodd"%s/></g></g>' % (
+        uid, base, dome_rel(simple), ink, rib)]
+    body.append('<path d="%s" fill="url(#%s-oil)"/>' % (pool, uid))
+    body.append('<path d="%s" fill="url(#%s-oil)"/>' % (st, uid))
+    if not simple:
+        body.append('<path d="M261,232 C268,248 276,262 282,280" stroke="url(#%s-sheen)" stroke-width="3" stroke-linecap="round" fill="none"/>' % uid)
+        body.append('<path d="M262,392 C310,386 370,386 420,392" stroke="url(#%s-sheen)" stroke-width="3.5" stroke-linecap="round" fill="none"/>' % uid)
+        body.append(glint(402, 397, 9, 2.6, -4, 0.8))
+    else:
+        body.append('<path d="M250,394 C320,386 390,387 440,395" stroke="url(#%s-sheen)" stroke-width="6" stroke-linecap="round" fill="none"/>' % uid)
+    return defs, "\n".join(body)
+
+
+# ---------------------------------------------------------------- wordmark v2
+# Architectural geometric grotesque: cap 100, stems 13, horizontals 12, open tracking.
+def g2_R():
+    outer = "M0,0 H40 C56.5,0 66,10.5 66,28 C66,42 58,51.5 45.5,54.5 L66,100 H51 L31.5,56 H13 V100 H0 Z"
+    counter = "M13,12 V44 H40 C49.5,44 53,37.5 53,28 C53,18.5 49.5,12 40,12 Z"
+    return outer + " " + counter, 66
+
+
+def g2_O():
+    return ellipse(50, 50, 50, 51, True) + " " + ellipse(50, 50, 37, 39, False), 100
+
+
+def g2_C():
+    cx, cy, rx, ry, irx, iry = 50, 50, 50, 51, 37, 39
+    a = math.radians(42)
+    o1 = (cx + rx * math.cos(a), cy - ry * math.sin(a))
+    o2 = (cx + rx * math.cos(a), cy + ry * math.sin(a))
+    i1 = (cx + irx * math.cos(a), cy - iry * math.sin(a))
+    i2 = (cx + irx * math.cos(a), cy + iry * math.sin(a))
+    d = "M%s,%s A%s,%s 0 1 0 %s,%s L%s,%s A%s,%s 0 1 1 %s,%s Z" % (
+        f(o1[0]), f(o1[1]), rx, ry, f(o2[0]), f(o2[1]), f(i2[0]), f(i2[1]), irx, iry, f(i1[0]), f(i1[1]))
+    return d, o1[0]
+
+
+def g2_K():
+    tl, armd = (46, 0), (-33, 52)
+    w = 13 / math.cos(math.atan(33 / 52))
+    tr = (46 + w, 0)
+    crotch = (tr[0] + armd[0] * 40 / 52, 40)
+    br, bl = (68, 100), (52, 100)
+    legd = (br[0] - crotch[0], br[1] - crotch[1])
+    p = intersect(bl, (-legd[0], -legd[1]), tr, armd)
+    q = intersect(tr, armd, (13, 0), (0, 1))
+    return poly([(0, 0), (13, 0), (13, 52), tl, tr, crotch, br, bl, p, q, (13, 100), (0, 100)]), 68
+
+
+def g2_L():
+    return "M0,0 H13 V88 H52 V100 H0 Z", 52
+
+
+def g2_E():
+    return "M0,0 H54 V12 H13 V44 H50 V56 H13 V88 H56 V100 H0 Z", 56
+
+
+def g2_A():
+    s = 0.33
+    inner_apex = 100 - (40 - 14.5) / s
+    return poly([(33, 0), (47, 0), (80, 100), (65.5, 100), (40, inner_apex), (14.5, 100), (0, 100)]), 80
+
+
+G2 = {"R": g2_R, "O": g2_O, "C": g2_C, "K": g2_K, "L": g2_L, "E": g2_E, "A": g2_A}
+GAPS2 = [17, 17, 22, 24, 20, 13, 17, 0]
+
+
+def wordmark2():
+    """Returns (letters_d, drop_d, width). The A is a pediment; an oil drop replaces its crossbar."""
+    x, parts, dropd = 0, [], ""
+    for i, ch in enumerate("ROCKLEAK"):
+        d, adv = G2[ch]()
+        parts.append(place(d, x))
+        if ch == "A":
+            dropd = drop(x + 40, 50, 8.4)
+        x += adv + GAPS2[i]
+    return " ".join(parts), dropd, x
+
+
+CONCEPTS2 = [
+    dict(n=6, slug="blueprint", name="Blueprint Leak", fn=mark_blueprint, mark_size=272,
+         line="The dome as a precise architectural line drawing; its crown is full of glossy oil that drips down the shell, and the longest drip breaks into pixels inside the colonnade."),
+    dict(n=7, slug="reflection", name="Reflection", fn=mark_reflection, mark_size=272,
+         line="A solid dome standing on a slick of oil; its reflection breaks into scan-lines of data, and one drop falls from the reflected lantern."),
+    dict(n=8, slug="spill", name="The Spill", fn=mark_spill, mark_size=272,
+         line="A solid dome with one clean fracture; oil wells out, runs down its flank and pools into a slick at its base."),
+]
+SIGNALS2 = {6: ["Architecture", "Data leak", "Precision"], 7: ["World / reflection", "Data leak", "Calm"],
+            8: ["Politics", "Spill", "Story"]}
+RANK2 = {6: 3, 7: 1, 8: 2}
+
+
+def build_mark2(c, dark=False, simple=False):
+    return c["fn"](dark=dark, uid="c%d%s%s" % (c["n"], "d" if dark else "", "s" if simple else ""), simple=simple)
+
+
+def build_lockup2(c, dark=False):
+    defs, mbody = build_mark2(c, dark)
+    ink = PAPER if dark else INK
+    W, H = 1200, 300
+    cap = 60
+    s = cap / 100.0
+    letters, dropd, wm_w = wordmark2()
+    ms = c["mark_size"]
+    gap = 34
+    total = ms + gap + wm_w * s
+    x0 = (W - total) / 2
+    my = (H - ms) / 2
+    wx, wy = x0 + ms + gap, (H - cap) / 2
+    uid = "w%d%s" % (c["n"], "d" if dark else "")
+    defs += ('<linearGradient id="%s-sheen" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="%s"/>'
+             '<stop offset="0.5" stop-color="%s"/><stop offset="1" stop-color="%s"/></linearGradient>') % (uid, SHEEN[0], SHEEN[1], SHEEN[2])
+    parts = []
+    if dark:
+        parts.append('<rect width="%d" height="%d" fill="%s"/>' % (W, H, INK))
+    parts.append('<g transform="translate(%s %s) scale(%s)">\n%s\n</g>' % (f(x0), f(my), f(ms / 512.0), mbody))
+    parts.append('<g transform="translate(%s %s) scale(%s)">\n<path d="%s" fill="%s"/>\n<path d="%s" fill="url(#%s-sheen)"/>\n</g>' % (
+        f(wx), f(wy), f(s), letters, ink, dropd, uid))
+    return defs, "\n".join(parts)
+
+
+def build_board2(concepts, assets, ref, b64):
+    def img(svg, w, h=None):
+        return '<img src="%s" width="%s" height="%s" alt="">' % (b64(svg), w, h or w)
+
+    secs = []
+    for c in concepts:
+        a = assets[c["n"]]
+        chips = "".join('<span class="chip">%s</span>' % t for t in SIGNALS2[c["n"]])
+        secs.append("""
+<section class="concept">
+  <header class="c-head"><div class="c-num">%02d</div>
+    <div class="c-title"><h2>%s</h2><p>%s</p></div>
+    <div class="c-chips">%s<span class="chip rank">Rank #%d</span></div></header>
+  <div class="c-grid">
+    <div class="hero tile white">%s<span class="cap">Mark &middot; 512px</span></div>
+    <div class="right">
+      <div class="sizes">
+        <div class="tile white size"><div class="row">%s%s%s<span class="sep"></span>%s%s</div><span class="cap">64 &middot; 32 &middot; 16 &nbsp;|&nbsp; favicon cut 32 &middot; 16</span></div>
+        <div class="tile ink size"><div class="row">%s%s%s<span class="sep"></span>%s%s</div><span class="cap">on dark</span></div>
+      </div>
+      <div class="tile white lock">%s<span class="cap">Primary lockup &middot; light</span></div>
+      <div class="tile lockdark">%s<span class="cap">Lockup &middot; dark</span></div>
+      <div class="usage">
+        <div class="browser light"><div class="tabs"><div class="tab">%s<span>RockLeak &middot; Bedrock facts. Every side.</span><i>&times;</i></div></div>
+          <div class="bar"><span class="lock-ico"></span>rockleak.com</div></div>
+        <div class="browser dark"><div class="tabs"><div class="tab">%s<span>RockLeak &middot; Investigations</span><i>&times;</i></div></div>
+          <div class="bar"><span class="lock-ico"></span>rockleak.com/investigations</div></div>
+        <div class="apps"><div class="app"><div class="icon inkbg">%s</div><span>RockLeak</span></div>
+          <div class="app"><div class="icon whitebg">%s</div><span>RockLeak</span></div></div>
+      </div>
+    </div>
+  </div>
+</section>""" % (c["n"], c["name"], c["line"], chips, RANK2[c["n"]], img(a["mark"], 440),
+                 img(a["mark"], 64), img(a["mark"], 32), img(a["mark"], 16), img(a["fav"], 32), img(a["fav"], 16),
+                 img(a["mark_dark"], 64), img(a["mark_dark"], 32), img(a["mark_dark"], 16), img(a["fav_dark"], 32), img(a["fav_dark"], 16),
+                 img(a["lock"], 640, 160), img(a["lock_dark"], 640, 160),
+                 img(a["fav"], 16), img(a["fav_dark"], 16), img(a["fav_dark"], 56), img(a["fav"], 56)))
+    sw = "".join('<div class="sw"><div class="chipc" style="background:%s"></div><b>%s</b><code>%s</code></div>' % (hx, nm, hx)
+                 for nm, hx in [("Ink", INK), ("Graphite", GRAPHITE), ("Slate", SLATE), ("Paper", "#FFFFFF"),
+                                ("Sheen blue", SHEEN[0]), ("Sheen teal", SHEEN[1]), ("Sheen violet", SHEEN[2])])
+    ranked = sorted(concepts, key=lambda c: RANK2[c["n"]])
+    ranking = "".join('<li><b>%s</b> <span>%s</span></li>' % (c["name"], c["line"]) for c in ranked)
+    top = assets[ranked[0]["n"]]
+    return """<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>RockLeak - Logo Round 2</title><link rel="icon" href="%s">
+<style>
+:root{--ink:%s}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#F2F1EE;color:var(--ink);font-family:'Inter','Helvetica Neue',Arial,sans-serif;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1360px;margin:0 auto;padding:0 40px 72px}
+.mast{background:#fff;border-bottom:1px solid #E4E2DD;padding:52px 0 44px;margin-bottom:36px}
+.mast .wrap{padding-bottom:0;display:grid;grid-template-columns:1.25fr 1fr;gap:56px;align-items:end}
+.kicker{font:600 11px/1 'Inter',Arial,sans-serif;letter-spacing:.24em;text-transform:uppercase;color:#5B6573;display:flex;gap:12px;align-items:center}
+.kicker:before{content:"";width:28px;height:3px;border-radius:2px;background:linear-gradient(90deg,%s,%s,%s)}
+h1{font:700 56px/1.02 'Inter','Helvetica Neue',Arial,sans-serif;letter-spacing:-.035em;margin:18px 0 14px}
+.lede{font:400 18px/1.55 Georgia,'Times New Roman',serif;color:#3A424D;max-width:640px}
+.meta{display:grid;gap:18px}
+.meta h3{font:600 10.5px/1 'Inter',Arial,sans-serif;letter-spacing:.22em;text-transform:uppercase;color:#8C95A2;margin-bottom:10px}
+.ref{display:flex;gap:16px;align-items:center;font:400 13px/1.45 Georgia,serif;color:#5B6573}
+.ref img{background:#F4F2ED;border-radius:10px;padding:6px;flex:none}
+.swatches{display:grid;grid-template-columns:repeat(7,1fr);gap:8px}
+.sw{font-size:10px;color:#5B6573}.sw b{display:block;color:var(--ink);font-size:10.5px;margin-top:6px;font-weight:600}
+.sw code{font:9.5px/1.4 'IBM Plex Mono',Menlo,monospace}
+.chipc{height:30px;border-radius:6px;border:1px solid #E4E2DD}
+.concept{background:#fff;border:1px solid #E4E2DD;border-radius:16px;padding:28px;margin-bottom:24px}
+.c-head{display:grid;grid-template-columns:auto 1fr auto;gap:22px;align-items:center;padding-bottom:20px;border-bottom:1px solid #EEECE8;margin-bottom:22px}
+.c-num{font:300 40px/1 'Inter',Arial,sans-serif;letter-spacing:-.03em;color:#8C95A2;width:60px}
+.c-title h2{font:700 26px/1.1 'Inter','Helvetica Neue',Arial,sans-serif;letter-spacing:-.02em}
+.c-title p{font:400 15.5px/1.45 Georgia,serif;color:#3A424D;margin-top:5px;max-width:740px}
+.c-chips{display:flex;gap:6px;flex-wrap:wrap;justify-content:flex-end}
+.chip{font:600 9.5px/1 'Inter',Arial,sans-serif;letter-spacing:.14em;text-transform:uppercase;padding:7px 10px;border-radius:99px;border:1px solid #E4E2DD;color:#3A424D}
+.chip.rank{background:var(--ink);color:#fff;border-color:var(--ink)}
+.c-grid{display:grid;grid-template-columns:480px 1fr;gap:16px}
+.tile{border-radius:12px;position:relative;display:flex;align-items:center;justify-content:center}
+.tile .cap{position:absolute;left:14px;bottom:10px;font:600 9px/1 'Inter',Arial,sans-serif;letter-spacing:.16em;text-transform:uppercase;color:#8C95A2}
+.white{background:#fff;border:1px solid #EEECE8}.ink{background:var(--ink)}
+.hero{min-height:560px;height:100%%}
+.right{display:grid;gap:14px}
+.sizes{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.size{height:112px}.size .row{display:flex;gap:22px;align-items:flex-end;padding-bottom:10px}
+.sep{width:1px;height:40px;background:#D6D3CB;align-self:center}.ink .sep{background:#2A3039}
+.lock,.lockdark{height:176px}.lockdark{background:var(--ink)}
+.lock img,.lockdark img{width:640px;height:160px}
+.usage{display:grid;grid-template-columns:1fr 1fr 170px;gap:14px}
+.browser{border-radius:10px;overflow:hidden;border:1px solid #E4E2DD}
+.browser .tabs{display:flex;align-items:flex-end;padding:8px 8px 0;background:#E8EAED;height:40px}
+.browser .tab{display:flex;align-items:center;gap:8px;background:#fff;border-radius:8px 8px 0 0;padding:0 10px;height:32px;width:270px;font:500 12px/1 'Inter',Arial,sans-serif;color:#1D2128;white-space:nowrap;overflow:hidden}
+.browser .tab span{overflow:hidden;text-overflow:ellipsis;flex:1}.browser .tab i{font-style:normal;color:#5B6573;font-size:14px}
+.browser .bar{background:#fff;padding:10px 12px 26px;font:12px/1 'Inter',Arial,sans-serif;color:#3A424D;display:flex;gap:8px;align-items:center}
+.lock-ico{width:9px;height:10px;border:2px solid #5B6573;border-radius:2px}
+.browser.dark{border-color:#2A3039}.browser.dark .tabs{background:#1C2027}.browser.dark .tab{background:#2A3039;color:#E3E6EA}
+.browser.dark .bar{background:#2A3039;color:#C9CED6}.browser.dark .lock-ico{border-color:#AEB5BF}
+.apps{display:flex;gap:14px;justify-content:center;align-items:center;background:linear-gradient(160deg,#C9D3E0,#E9E4DA);border-radius:10px;padding:12px}
+.app{display:grid;justify-items:center;gap:6px;font:500 10.5px/1 'Inter',Arial,sans-serif;color:#1D2128}
+.icon{width:62px;height:62px;border-radius:14px;display:flex;align-items:center;justify-content:center;box-shadow:0 3px 10px rgba(0,0,0,.18)}
+.inkbg{background:var(--ink)}.whitebg{background:#fff}
+.closing{background:#fff;border:1px solid #E4E2DD;border-radius:16px;padding:36px;display:grid;grid-template-columns:1fr 1fr;gap:44px}
+.closing h2{font:700 26px/1.1 'Inter',Arial,sans-serif;letter-spacing:-.02em;margin-bottom:16px}
+.closing ol{padding-left:22px;display:grid;gap:10px}
+.closing li{font:400 15px/1.45 Georgia,serif;color:#3A424D}.closing li b{font-family:'Inter',Arial,sans-serif;color:var(--ink);margin-right:6px}
+.type h3{font:600 10.5px/1 'Inter',Arial,sans-serif;letter-spacing:.22em;text-transform:uppercase;color:#8C95A2;margin-bottom:14px}
+.type .hl{font:700 32px/1.08 'Inter','Helvetica Neue',Arial,sans-serif;letter-spacing:-.025em}
+.type .body{font:400 16.5px/1.55 Georgia,serif;color:#3A424D;margin:12px 0}
+.type .mono{font:500 11.5px/1.4 'IBM Plex Mono',Menlo,monospace;color:#5B6573;letter-spacing:.06em}
+.foot{font:12px/1.5 'Inter',Arial,sans-serif;color:#8C95A2;margin-top:20px}
+</style></head><body>
+<div class="mast"><div class="wrap">
+  <div><div class="kicker">Logo exploration &middot; Round 2 &middot; Capitol direction</div>
+    <h1>The leak is oil, not blood.</h1>
+    <p class="lede">Three refinements of concept 4. The dome stays, the red drop goes. Information now leaks as glossy black oil with a restrained oil-slick sheen, the brand's only accent. The new wordmark is an architectural geometric grotesque with open tracking; its A is a pediment, with a drop where the crossbar would be.</p></div>
+  <div class="meta">
+    <div><h3>Reference &middot; Round 1, concept 4</h3><div class="ref">%s<span>Chosen direction. Kept: the dome, the crack, the single drop. Dropped: red, the stars, the heavy wordmark.</span></div></div>
+    <div><h3>Palette</h3><div class="swatches">%s</div></div>
+  </div>
+</div></div>
+<div class="wrap">
+%s
+<div class="closing">
+  <div><h2>Ranking</h2><ol>%s</ol></div>
+  <div class="type"><h3>Wordmark &amp; type in use</h3>
+    <div style="margin:4px 0 22px">%s</div>
+    <div class="hl">Senate panel subpoenas the files it said didn&rsquo;t exist</div>
+    <p class="body">Black type, white space, one accent. Headlines in Inter Tight (Semibold to Bold); body in Source Serif 4; document IDs in IBM Plex Mono.</p>
+    <div class="mono">DOC-2026-0419 &middot; SOURCE VERIFIED &middot; 3 SIDES CONTACTED</div></div>
+</div>
+<p class="foot">Hand-built vector SVG, wordmark drawn as outlines. Files: brand/logos/concept-6..8-*. Generated by brand/tools/build_brand.py.</p>
+</div></body></html>
+""" % (b64(top["fav"]), INK, SHEEN[0], SHEEN[1], SHEEN[2], img(ref, 88, 88), sw, "\n".join(secs), ranking,
+       img(top["lock"], 520, 130))
+
+
 def main():
     os.makedirs(LOGOS, exist_ok=True)
     assets = {}
@@ -661,7 +1159,23 @@ def main():
         write(os.path.join(LOGOS, base + "-lockup.svg"), lock)
         write(os.path.join(LOGOS, base + "-lockup-dark.svg"), lock_dark)
         assets[c["n"]] = dict(mark=mark, mark_dark=mark_dark, lock=lock, lock_dark=lock_dark)
-    write(os.path.join(BRAND, "board.html"), build_board(CONCEPTS, assets, b64))
+    # Round 1 board is superseded; board.html now presents round 2 only.
+    assets2 = {}
+    for c in CONCEPTS2:
+        base = "concept-%d-%s" % (c["n"], c["slug"])
+        title = "RockLeak - %s" % c["name"]
+        out = {}
+        for key, dark, simple, fn, size in (("mark", False, False, "mark", 512), ("mark_dark", True, False, "mark-dark", 512),
+                                            ("fav", False, True, "favicon", 512), ("fav_dark", True, True, "favicon-dark", 512)):
+            d, b = build_mark2(c, dark, simple)
+            out[key] = svg_doc(512, 512, d, b, "%s %s" % (title, fn))
+            write(os.path.join(LOGOS, "%s-%s.svg" % (base, fn)), out[key])
+        for key, dark, fn in (("lock", False, "lockup"), ("lock_dark", True, "lockup-dark")):
+            d, b = build_lockup2(c, dark)
+            out[key] = svg_doc(1200, 300, d, b, "%s %s" % (title, fn))
+            write(os.path.join(LOGOS, "%s-%s.svg" % (base, fn)), out[key])
+        assets2[c["n"]] = out
+    write(os.path.join(BRAND, "board.html"), build_board2(CONCEPTS2, assets2, assets[4]["mark"], b64))
     print("ok")
 
 

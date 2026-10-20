@@ -24,7 +24,7 @@ export function SiteHeader() {
           </Suspense>
         </div>
       </div>
-      <div className="mx-auto flex max-w-6xl items-center justify-between gap-6 px-5 py-4">
+      <div className="mx-auto flex max-w-6xl items-center justify-between gap-6 px-5 py-1">
         <Link href="/" aria-label="RockLeak home">
           <Logo />
         </Link>
