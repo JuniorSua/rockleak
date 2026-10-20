@@ -80,6 +80,22 @@ export interface Story {
   consensus: string;
   stillUnknown: string[];
   body: string[];
+
+  // Reader-first + distribution layer (written by the Viral Desk, checked by the Red Team)
+  /** One big shareable number, backed by a confirmed fact. */
+  stat?: { value: string; label: string };
+  /** Plain-English summary for readers who don't follow politics. */
+  tldr?: { what: string; why: string; truth: string };
+  /** What this File shows that most coverage missed. */
+  newAngle?: string;
+  seo?: { title: string; description: string; keywords: string[]; faq: { q: string; a: string }[] };
+  social?: {
+    headlineVariants: { text: string; score: number; rationale: string }[];
+    xPost: string;
+    thread: string[];
+    shortVideoHook: string;
+    shareCardText: string;
+  };
 }
 
 /** A headline pulled from an outlet's feed by the Wire agent. */

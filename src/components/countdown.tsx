@@ -17,11 +17,11 @@ function subscribe(onChange: () => void) {
 export function Countdown() {
   // null on the server so the static shell never bakes in a stale count
   const days = useSyncExternalStore(subscribe, daysLeft, () => null);
-  if (days === null) return <span>MIDTERMS · NOV 3</span>;
-  if (days === 0) return <span className="text-signal">ELECTION DAY</span>;
+  if (days === null) return <span>Election Day: Nov. 3</span>;
+  if (days === 0) return <span className="font-semibold text-ink">It&apos;s Election Day</span>;
   return (
     <span>
-      MIDTERMS IN <span className="text-signal">{days}</span> {days === 1 ? "DAY" : "DAYS"}
+      <b className="text-ink">{days}</b> {days === 1 ? "day" : "days"} to the midterms
     </span>
   );
 }

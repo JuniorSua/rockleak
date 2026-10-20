@@ -1,32 +1,47 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Suspense } from "react";
+import { ShareBar } from "@/components/share-bar";
 import {
   AgreementMeter,
   DebateCard,
   MarketChip,
-  PersonaBadge,
   SourceLinks,
   SpinSpectrum,
+  StatCard,
   StatusTag,
+  TldrBox,
   VerdictChip,
 } from "@/components/story-bits";
-import { LEAN_COLOR, LEAN_LABEL, LEAN_ORDER, shortDate, unquote } from "@/lib/format";
+import { LEAN_COLOR, shortDate, unquote } from "@/lib/format";
+import { readMinutes, storyJsonLd, storyUrl } from "@/lib/seo";
+import { jsonLd } from "@/lib/site";
 import { allStories, getStory } from "@/lib/stories";
-import type { Story } from "@/lib/types";
+import type { Coverage, Story } from "@/lib/types";
 
 export function generateStaticParams() {
   return allStories().map((s) => ({ slug: s.slug }));
 }
 
 export async function generateMetadata({ params }: PageProps<"/story/[slug]">): Promise<Metadata> {
-  const story = getStory((await params).slug);
-  return story ? { title: story.headline, description: story.dek } : {};
+  const s = getStory((await params).slug);
+  if (!s) return {};
+  const title = s.seo?.title ?? s.headline;
+  const description = s.seo?.description ?? s.dek;
+  return {
+    title: { absolute: `${title} | RockLeak` },
+    description,
+    keywords: s.seo?.keywords,
+    alternates: { canonical: `/story/${s.slug}` },
+    openGraph: { type: "article", title: s.headline, description, url: `/story/${s.slug}`, publishedTime: s.publishedAt, section: s.category },
+    twitter: { card: "summary_large_image", title: s.headline, description },
+  };
 }
 
 export default function StoryPage(props: PageProps<"/story/[slug]">) {
   return (
-    <Suspense fallback={<div className="mx-auto max-w-7xl px-5 py-20 kicker text-muted">Opening the file…</div>}>
+    <Suspense fallback={<div className="mx-auto max-w-6xl px-5 py-20 text-sm text-muted">Loading…</div>}>
       <StoryView params={props.params} />
     </Suspense>
   );
@@ -38,97 +53,91 @@ async function StoryView({ params }: Pick<PageProps<"/story/[slug]">, "params">)
   return <StoryLayout story={story} />;
 }
 
-function SectionHead({ n, title, sub }: { n: string; title: string; sub?: string }) {
+function H2({ children, id }: { children: React.ReactNode; id?: string }) {
   return (
-    <div className="mb-5 flex items-end gap-3 border-b-2 border-ink pb-2">
-      <span className="font-mono text-xs font-bold text-signal">{n}</span>
-      <h2 className="headline text-2xl md:text-3xl">{title}</h2>
-      {sub && <span className="ml-auto hidden pb-1 text-xs text-muted sm:block">{sub}</span>}
-    </div>
+    <h2 id={id} className="headline mb-5 border-b border-rule pb-3 text-[1.7rem]">
+      {children}
+    </h2>
   );
 }
 
+const SIDES: { title: string; leans: Coverage["lean"][] }[] = [
+  { title: "Left", leans: ["left", "lean-left"] },
+  { title: "Center", leans: ["center"] },
+  { title: "Right", leans: ["lean-right", "right"] },
+];
+
 function StoryLayout({ story }: { story: Story }) {
-  const byLean = LEAN_ORDER.flatMap((l) => story.coverage.filter((c) => c.lean === l));
+  const url = storyUrl(story);
   return (
-    <article className="mx-auto max-w-7xl px-5 pb-10 pt-10">
-      {/* Masthead */}
-      <header className="max-w-4xl">
-        <div className="flex flex-wrap items-center gap-2">
-          <span className="kicker text-signal">{story.kicker}</span>
+    <article className="mx-auto max-w-6xl px-5 pb-10 pt-10">
+      <script type="application/ld+json" dangerouslySetInnerHTML={jsonLd(storyJsonLd(story))} />
+
+      <header className="max-w-3xl">
+        <div className="flex items-center gap-3">
+          <span className="kicker text-accent">{story.kicker}</span>
           <StatusTag status={story.status} />
-          <span className="kicker text-muted">· {shortDate(story.publishedAt)}</span>
         </div>
-        <h1 className="headline mt-4 text-4xl md:text-6xl">{story.headline}</h1>
-        <p className="mt-5 text-xl leading-relaxed text-ink/75">{story.dek}</p>
-        <div className="mt-5 flex items-center gap-2 text-xs text-muted">
-          <span className="flex -space-x-2">
-            {["Grant", "Rosa", "Mercer", "Vex", "Quill"].map((id) => (
-              <PersonaBadge key={id} id={id} size={26} />
-            ))}
-          </span>
-          <span>
-            Debated by The Panel · written by Quill ·{" "}
-            <span className="font-semibold text-amber">prototype: pending human review</span>
-          </span>
+        <h1 className="headline mt-3 text-[2.4rem] md:text-[3.6rem]">{story.headline}</h1>
+        <p className="dek mt-4 text-xl">{story.dek}</p>
+        <div className="mt-6 flex flex-wrap items-center justify-between gap-4 border-y border-rule py-3">
+          <p className="byline">
+            {shortDate(story.publishedAt)} · {readMinutes(story)} min read · RockLeak Newsroom ·{" "}
+            <Link href="/about" className="underline underline-offset-2 hover:text-ink">
+              AI-assisted, source-checked
+            </Link>
+          </p>
+          <ShareBar url={url} text={story.social?.xPost ?? story.headline} />
         </div>
       </header>
 
-      <div className="mt-10 grid gap-10 lg:grid-cols-[1fr_320px]">
-        <div className="min-w-0">
-          {/* Bottom line */}
-          <section className="relative overflow-hidden rounded-lg bg-ink p-6 text-white md:p-8">
-            <p className="kicker text-amber">The Bottom Line</p>
-            <p className="mt-3 font-serif text-xl leading-relaxed md:text-[1.4rem]">{story.bottomLine}</p>
-            <div className="pointer-events-none absolute -right-6 -top-6 font-mono text-[7rem] font-black leading-none text-white/5">
-              FACT
+      <div className="mt-10 grid gap-12 lg:grid-cols-[minmax(0,1fr)_300px]">
+        <div className="min-w-0 max-w-3xl space-y-12">
+          <div className="space-y-5">
+            <StatCard story={story} size="lg" />
+            <TldrBox story={story} />
+            {story.newAngle && (
+              <div className="border-l-4 border-accent pl-5">
+                <p className="kicker text-accent">What others missed</p>
+                <p className="mt-1.5 text-[1.05rem] leading-relaxed">{story.newAngle}</p>
+              </div>
+            )}
+          </div>
+
+          <section>
+            <H2>The story</H2>
+            <div className="prose-rl font-serif text-[1.15rem] leading-[1.75] text-ink/90">
+              {story.body.map((p, i) => (
+                <p key={i}>{p}</p>
+              ))}
             </div>
           </section>
 
-          {/* Ledger */}
-          <section className="mt-12">
-            <SectionHead n="01" title="The Ledger" sub="One set of facts. Every claim has a receipt." />
-            <ol className="divide-y divide-rule">
+          <section>
+            <H2 id="facts">The facts, checked</H2>
+            <ol className="space-y-5">
               {story.coreFacts.map((f, i) => (
-                <li key={i} className="grid grid-cols-[2rem_1fr] gap-3 py-4">
-                  <span className="font-mono text-sm text-muted">{String(i + 1).padStart(2, "0")}</span>
-                  <div>
-                    <div className="flex flex-wrap items-start gap-3">
-                      <VerdictChip verdict={f.verdict} />
-                      <p className="min-w-0 flex-1 font-medium leading-snug">{f.text}</p>
-                    </div>
-                    <div className="mt-2">
-                      <SourceLinks sources={f.sources} />
-                    </div>
+                <li key={i}>
+                  <VerdictChip verdict={f.verdict} />
+                  <p className="mt-1 leading-relaxed">{f.text}</p>
+                  <div className="mt-1.5">
+                    <SourceLinks sources={f.sources} />
                   </div>
                 </li>
               ))}
             </ol>
           </section>
 
-          {/* Story */}
-          <section className="mt-12">
-            <SectionHead n="02" title="The Story" />
-            <div className="prose-rl max-w-3xl font-serif text-[1.15rem] leading-[1.75]">
-              {story.body.map((p, i) => (
-                <p key={i} className={i === 0 ? "first-letter:float-left first-letter:mr-2 first-letter:text-6xl first-letter:font-black first-letter:leading-[0.85]" : ""}>
-                  {p}
-                </p>
-              ))}
-            </div>
-          </section>
-
-          {/* Claims */}
-          <section className="mt-12">
-            <SectionHead n="03" title="Claims, Checked" sub="What's being said, and whether it holds up." />
-            <div className="grid gap-4 md:grid-cols-2">
+          <section>
+            <H2>Claims going around</H2>
+            <div className="space-y-6">
               {story.claims.map((c, i) => (
-                <div key={i} className="rounded-lg border border-rule bg-white p-5">
+                <div key={i}>
                   <VerdictChip verdict={c.verdict} />
-                  <p className="headline mt-3 text-lg leading-snug">“{unquote(c.claim)}”</p>
-                  <p className="mt-1 text-xs font-semibold text-muted">— {c.claimant}</p>
-                  <p className="mt-3 text-sm leading-relaxed text-ink/80">{c.explanation}</p>
-                  <div className="mt-3">
+                  <p className="mt-1 text-lg font-semibold leading-snug">“{unquote(c.claim)}”</p>
+                  <p className="text-sm text-muted">{c.claimant}</p>
+                  <p className="mt-2 leading-relaxed text-ink/80">{c.explanation}</p>
+                  <div className="mt-1.5">
                     <SourceLinks sources={c.sources} />
                   </div>
                 </div>
@@ -136,119 +145,123 @@ function StoryLayout({ story }: { story: Story }) {
             </div>
           </section>
 
-          {/* Coverage */}
-          <section className="mt-12">
-            <SectionHead n="04" title="How They Spun It" sub="Same event, different headlines." />
-            <div className="mb-5 max-w-md">
-              <SpinSpectrum coverage={story.coverage} />
-            </div>
-            <div className="space-y-3">
-              {byLean.map((c, i) => (
-                <a
-                  key={i}
-                  href={c.url}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="grid gap-1 rounded-lg border border-rule bg-white p-4 hover:border-ink sm:grid-cols-[150px_1fr]"
-                  style={{ borderLeft: `5px solid ${LEAN_COLOR[c.lean]}` }}
-                >
-                  <div>
-                    <p className="font-bold">{c.outlet}</p>
-                    <p className="kicker text-[0.58rem]!" style={{ color: LEAN_COLOR[c.lean] }}>
-                      {LEAN_LABEL[c.lean]}
-                    </p>
+          <section>
+            <H2>How each side covered it</H2>
+            <div className="grid gap-6 md:grid-cols-3">
+              {SIDES.map((side) => {
+                const items = story.coverage.filter((c) => side.leans.includes(c.lean));
+                return (
+                  <div key={side.title}>
+                    <p className="kicker text-muted">{side.title}</p>
+                    <div className="mt-3 space-y-4">
+                      {items.length === 0 && <p className="text-sm text-muted">No coverage found.</p>}
+                      {items.map((c, i) => (
+                        <a key={i} href={c.url} target="_blank" rel="noreferrer" className="block border-l-2 pl-3 hover:opacity-80" style={{ borderColor: LEAN_COLOR[c.lean] }}>
+                          <p className="text-xs font-semibold text-muted">{c.outlet}</p>
+                          <p className="mt-0.5 text-[0.95rem] font-semibold leading-snug">{c.headline}</p>
+                          {c.framing && <p className="mt-1 text-xs leading-relaxed text-muted">{c.framing}</p>}
+                        </a>
+                      ))}
+                    </div>
                   </div>
-                  <div>
-                    <p className="font-serif text-lg font-bold leading-snug">{c.headline}</p>
-                    <p className="mt-1 text-sm text-muted">
-                      <span className="font-semibold text-ink">The frame:</span> {c.framing}
-                    </p>
-                  </div>
-                </a>
-              ))}
+                );
+              })}
             </div>
           </section>
 
-          {/* Panel */}
-          <section className="mt-12">
-            <SectionHead n="05" title="The Panel Debates" sub="Same facts. Four lenses. Each must concede something." />
-            <div className="grid gap-4 md:grid-cols-2">
-              {story.debate.map((t) => (
-                <DebateCard key={t.persona} turn={t} />
-              ))}
-            </div>
-            <div className="mt-5 rounded-lg border-2 border-ink bg-white p-6">
-              <p className="kicker text-emerald-700">Where all four agree</p>
-              <p className="mt-2 font-serif text-lg leading-relaxed">{story.consensus}</p>
-            </div>
-          </section>
-
-          {/* Unknown */}
-          <section className="mt-12">
-            <SectionHead n="06" title="Still Unknown" sub="What nobody can prove yet. We'll update when they can." />
+          <section>
+            <H2>Still unknown</H2>
             <ul className="space-y-3">
               {story.stillUnknown.map((u, i) => (
-                <li key={i} className="flex gap-3">
-                  <span className="redact mt-0.5 h-5 shrink-0 rounded-sm text-xs font-mono">CLASSIFIED</span>
-                  <span>{u}</span>
+                <li key={i} className="flex gap-3 leading-relaxed">
+                  <span className="mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full bg-ink" />
+                  {u}
                 </li>
               ))}
             </ul>
           </section>
+
+          {story.seo?.faq?.length ? (
+            <section>
+              <H2>Questions people are asking</H2>
+              <div className="divide-y divide-rule border-y border-rule">
+                {story.seo.faq.map((f, i) => (
+                  <details key={i} className="group py-4">
+                    <summary className="flex items-center justify-between gap-4 font-semibold">
+                      {f.q}
+                      <span className="chev text-muted transition">›</span>
+                    </summary>
+                    <p className="mt-2 leading-relaxed text-ink/80">{f.a}</p>
+                  </details>
+                ))}
+              </div>
+            </section>
+          ) : null}
+
+          {/* The machinery stays available, but out of the way */}
+          <details className="rounded-2xl border border-rule">
+            <summary className="flex items-center justify-between gap-4 p-5">
+              <span>
+                <span className="font-semibold">Behind this story</span>
+                <span className="block text-sm text-muted">The analyst debate, agreement score, betting odds and X reaction</span>
+              </span>
+              <span className="chev text-xl text-muted transition">›</span>
+            </summary>
+            <div className="space-y-8 border-t border-rule p-5">
+              <AgreementMeter score={story.agreementScore} />
+              <div>
+                <p className="mb-3 text-sm font-semibold">Four AI analysts, same facts, different lenses</p>
+                <div className="grid gap-3 md:grid-cols-2">
+                  {story.debate.map((t) => (
+                    <DebateCard key={t.persona} turn={t} />
+                  ))}
+                </div>
+                <p className="mt-4 rounded-xl bg-paper p-4 text-sm leading-relaxed">
+                  <span className="font-semibold">Where all four agree:</span> {story.consensus}
+                </p>
+              </div>
+              <div>
+                <p className="mb-2 text-sm font-semibold">On X</p>
+                <p className="text-sm leading-relaxed text-ink/80">{story.xPulse.summary}</p>
+                {story.xPulse.communityNote && <p className="mt-2 text-sm text-muted">Community Note: {story.xPulse.communityNote}</p>}
+              </div>
+              <Link href="/about" className="inline-block text-sm font-semibold text-accent hover:underline">
+                How a RockLeak story is made →
+              </Link>
+            </div>
+          </details>
         </div>
 
-        {/* Sidebar */}
-        <aside className="space-y-8 lg:sticky lg:top-32 lg:self-start">
-          <div className="rounded-lg border border-rule bg-white p-5">
-            <AgreementMeter score={story.agreementScore} />
-            <div className="mt-5">
-              <p className="kicker mb-2 text-[0.6rem]! text-muted">Coverage spectrum</p>
-              <SpinSpectrum coverage={story.coverage} />
-            </div>
-            <div className="mt-5 grid grid-cols-3 gap-2 text-center">
+        <aside className="space-y-8 lg:sticky lg:top-6 lg:self-start">
+          <div>
+            <p className="kicker text-muted">At a glance</p>
+            <div className="mt-3 grid grid-cols-3 gap-2 text-center">
               {(["confirmed", "misleading", "false"] as const).map((v) => {
                 const n = [...story.coreFacts, ...story.claims].filter((x) => x.verdict === v).length;
                 return (
-                  <div key={v} className="rounded bg-paper py-2">
+                  <div key={v} className="rounded-lg bg-paper py-3">
                     <p className="headline text-2xl">{n}</p>
-                    <p className="kicker text-[0.55rem]! text-muted">{v}</p>
+                    <p className="text-[0.68rem] capitalize text-muted">{v}</p>
                   </div>
                 );
               })}
             </div>
           </div>
-
+          <div>
+            <p className="kicker mb-3 text-muted">Who covered it</p>
+            <SpinSpectrum coverage={story.coverage} />
+          </div>
           {story.markets.length > 0 && (
             <div>
-              <p className="kicker mb-2 text-muted">The Odds</p>
+              <p className="kicker mb-3 text-muted">What bettors expect</p>
               <div className="space-y-2">
                 {story.markets.map((m, i) => (
                   <MarketChip key={i} m={m} />
                 ))}
               </div>
-              <p className="mt-2 text-[0.7rem] leading-snug text-muted">
-                Prediction-market prices as of {shortDate(story.markets[0].asOf)}. Markets measure what bettors expect, not what is true.
-              </p>
+              <p className="mt-2 text-[0.7rem] leading-snug text-muted">Prediction-market prices as of {shortDate(story.markets[0].asOf)}. Odds aren&apos;t facts.</p>
             </div>
           )}
-
-          <div className="rounded-lg bg-ink p-5 text-white">
-            <p className="kicker text-leak">The Pulse on X</p>
-            <p className="mt-2 text-sm leading-relaxed text-white/85">{story.xPulse.summary}</p>
-            <div className="mt-3 flex flex-wrap gap-1.5">
-              {story.xPulse.trending.map((t) => (
-                <span key={t} className="rounded-full bg-white/10 px-2 py-0.5 font-mono text-[0.68rem]">
-                  {t}
-                </span>
-              ))}
-            </div>
-            {story.xPulse.communityNote && (
-              <div className="mt-4 rounded border border-amber/40 bg-amber/10 p-3 text-xs leading-relaxed">
-                <p className="kicker mb-1 text-[0.55rem]! text-amber">Community Note</p>
-                {story.xPulse.communityNote}
-              </div>
-            )}
-          </div>
         </aside>
       </div>
     </article>
