@@ -326,7 +326,7 @@ async function fecIndependentExpenditures(): Promise<Draft[]> {
       kind: "Independent expenditure",
       title: `${committee} spent ${money(total)} ${verb} ${cand.full}${party ? ` (${party})` : ""} in the ${race} race`,
       detail:
-        `${rs.length === 1 ? "One independent expenditure" : `${rs.length} independent expenditures`} dated ${span} reported to the FEC${rs.length === 1 ? ":" : "; the largest is"} ${money(num(top.expenditure_amount))}` +
+        `${rs.length === 1 ? "One independent expenditure" : `${rs.length} independent expenditures`} dated ${span}${filed ? `, filed with the FEC ${shortDate(filed)}` : " reported to the FEC"}${rs.length === 1 ? ":" : "; the largest is"} ${money(num(top.expenditure_amount))}` +
         `${purpose ? ` for "${purpose}"` : ""}${payee ? ` paid to ${payee}` : ""}.` +
         (ytd > total ? ` The committee reports ${money(ytd)} spent on this race so far this year.` : ""),
       url: str(top.pdf_url) || `https://www.fec.gov/data/independent-expenditures/?committee_id=${str(top.committee_id)}&cycle=2026`,

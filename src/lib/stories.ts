@@ -1,9 +1,9 @@
-import seed from "../../content/seed-stories.json";
+import published from "../../content/stories.json";
 import type { Story } from "@/lib/types";
 
-// Prototype storage: stories are JSON in /content. The pipeline will write to a
-// database (see ARCHITECTURE.md) and this module becomes the read layer for it.
-const STORIES = (seed as Story[]).toSorted((a, b) => b.publishedAt.localeCompare(a.publishedAt));
+// Published stories live in content/stories.json. Only scripts/newsroom.mts writes it,
+// after the story passes schema checks and Plumb's approval (see newsroom/PLAYBOOK.md).
+const STORIES = (published as Story[]).toSorted((a, b) => b.publishedAt.localeCompare(a.publishedAt));
 
 export function allStories(): Story[] {
   return STORIES;

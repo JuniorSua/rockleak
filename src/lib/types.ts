@@ -96,6 +96,8 @@ export interface Story {
     shortVideoHook: string;
     shareCardText: string;
   };
+  /** Sign-off from Plumb, the neutral standards editor. Nothing publishes without it. */
+  review?: { approvedBy: string; approvedAt: string; notes: string; edition: "morning" | "evening" | "night" | "manual" };
 }
 
 /** A headline pulled from an outlet's feed by the Wire agent. */

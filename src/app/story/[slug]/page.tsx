@@ -84,7 +84,7 @@ function StoryLayout({ story }: { story: Story }) {
           <p className="byline">
             {shortDate(story.publishedAt)} · {readMinutes(story)} min read · RockLeak Newsroom ·{" "}
             <Link href="/about" className="underline underline-offset-2 hover:text-ink">
-              AI-assisted, source-checked
+              {story.review ? `AI-reported · Approved by ${story.review.approvedBy}, standards editor` : "AI-assisted, source-checked"}
             </Link>
           </p>
           <ShareBar url={url} text={story.social?.xPost ?? story.headline} />

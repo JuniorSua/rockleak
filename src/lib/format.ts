@@ -33,7 +33,8 @@ export function pct(p: number) {
 
 export function shortDate(iso: string | null) {
   if (!iso) return "";
-  const d = new Date(iso);
+  // Date-only values ("2026-10-18") are calendar days; parsing them as UTC midnight shows the day before in ET.
+  const d = new Date(/^\d{4}-\d{2}-\d{2}$/.test(iso) ? `${iso}T12:00:00Z` : iso);
   if (Number.isNaN(d.getTime())) return "";
   return d.toLocaleDateString("en-US", { month: "short", day: "numeric", timeZone: "America/New_York" });
 }

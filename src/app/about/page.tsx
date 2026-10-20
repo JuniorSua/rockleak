@@ -6,7 +6,7 @@ import type { Verdict } from "@/lib/types";
 export const metadata: Metadata = {
   title: "How RockLeak Works: AI-Assisted, Source-Checked Political News",
   description:
-    "How RockLeak reports: we read every side, check claims against official records, compare coverage, dig up unreported records, and have people approve every story.",
+    "How RockLeak reports: we read every side, check claims against official records, compare coverage, dig up unreported records, and run every story past an independent standards check.",
   alternates: { canonical: "/about" },
 };
 
@@ -18,7 +18,7 @@ const STEPS = [
   ["Argue it out", "Four AI analysts with openly different views debate the same facts, and each must concede a point. Disagreement is labeled, not hidden."],
   ["Write it plainly", "An AI editor writes the story for someone who doesn't follow politics: what happened, why it matters, what's true."],
   ["Red-team it", "A separate check hunts for any sentence the sources don't support and any headline that oversells."],
-  ["A person approves", "Nothing publishes without human review. Corrections are dated and shown on the story."],
+  ["A neutral editor signs off", "Plumb, our standards editor, didn't write the story and has no side. Plumb opens the sources, swaps the parties to test for double standards, and approves, sends back or kills every story."],
 ];
 
 const VERDICTS: [Verdict, string][] = [
@@ -56,11 +56,11 @@ export default function AboutPage() {
       </section>
 
       <section className="mt-14">
-        <h2 className="headline border-b border-ink pb-3 text-[1.9rem]">The analysts</h2>
+        <h2 className="headline border-b border-ink pb-3 text-[1.9rem]">The newsroom</h2>
         <p className="mt-4 leading-relaxed text-ink/75">
           Behind every story, four AI analysts with openly declared points of view argue from the same set of facts.
-          They&apos;re AI and never pretend to be people. You can read their debate under &ldquo;Behind this
-          story&rdquo; on any article.
+          Quill writes up what survives the debate, and Plumb decides whether it runs. They&apos;re all AI and never
+          pretend to be people. You can read the debate under &ldquo;Behind this story&rdquo; on any article.
         </p>
         <div className="mt-6 grid gap-4 sm:grid-cols-2">
           {PERSONAS.map((p) => (
@@ -97,7 +97,8 @@ export default function AboutPage() {
           <li>Official records beat reporting; reporting from both sides beats reporting from one; social posts are leads, not proof.</li>
           <li>We link to the outlets we compare and quote only briefly. Read them in full at the source.</li>
           <li>Prediction-market odds show expectations, not facts.</li>
-          <li>Stories are written with AI assistance and approved by a person before publishing.</li>
+          <li>Stories are reported and written by AI and approved by an independent AI standards editor. Our editors can pull any story at any time.</li>
+          <li>The newsroom checks in three times a day (9 a.m., 5 p.m. and 10 p.m. Eastern) and publishes only when a story clears the bar.</li>
         </ul>
       </section>
 
@@ -105,7 +106,7 @@ export default function AboutPage() {
         <h2 className="headline border-b border-ink pb-3 text-[1.9rem]">Corrections</h2>
         <p className="mt-4 leading-relaxed text-ink/80">
           When we get something wrong, we fix it on the story with a dated note explaining what changed. No corrections
-          have been issued yet. This site is a prototype and every story is pending final human review.
+          have been issued yet. Spot something wrong? Tell us and we&apos;ll check it against the record.
         </p>
       </section>
     </div>

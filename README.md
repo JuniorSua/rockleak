@@ -20,4 +20,6 @@ pnpm dev
 The site's Wire and Odds pages pull live data with no keys. The agent pipeline (`POST /api/pipeline`) needs
 `ANTHROPIC_API_KEY` (and optionally `XAI_API_KEY`) plus `CRON_SECRET`.
 
-> Prototype edition: the seed Files in `content/` were researched by AI agents and are pending human review.
+The newsroom itself runs on a Claude subscription through scheduled Claude Code runs (9am, 5pm and 10pm ET). See
+[`newsroom/PLAYBOOK.md`](newsroom/PLAYBOOK.md). Every story must pass Plumb, the neutral standards editor
+([`newsroom/STANDARDS.md`](newsroom/STANDARDS.md)), before `pnpm newsroom publish` will accept it.

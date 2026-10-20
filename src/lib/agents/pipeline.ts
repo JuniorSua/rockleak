@@ -8,7 +8,7 @@ import { getMidtermMarkets } from "@/lib/markets";
 import type { DebateTurn, Story, WireCluster } from "@/lib/types";
 
 // The RockLeak newsroom, end to end:
-//   Wire -> Pulse -> Odds -> Record (ledger) -> Panel -> Quill -> Red Team -> Viral Desk -> human review
+//   Wire -> Pulse -> Odds -> Record (ledger) -> Panel -> Quill -> Red Team -> Viral Desk -> standards review (Plumb)
 // Each stage is a plain async function so it can later move to a queue/workflow runner.
 
 export interface PipelineResult {

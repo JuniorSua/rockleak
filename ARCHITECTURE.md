@@ -1,5 +1,37 @@
 # RockLeak architecture
 
+## How the newsroom actually runs (subscription mode)
+
+The live newsroom runs **inside Claude Code on the owner's Claude subscription**. No Anthropic API key is needed.
+T3 Code's scheduler starts a fresh Claude Code run on ProDesktop, the always-on home PC, three times a day (Eastern):
+
+| 9:00 AM | morning | Plans the day: 3–5 ranked candidates. Publishes nothing. |
+|---|---|---|
+| 5:00 PM | evening | Reports, debates, writes and approves **one** story, then publishes it (or nothing). |
+| 10:00 PM | night | Same, for the day's biggest development or the next candidate. |
+
+Each run follows [`newsroom/PLAYBOOK.md`](newsroom/PLAYBOOK.md):
+
+1. `pnpm newsroom brief` collects the wire, the Dig and the odds from this site's own APIs.
+2. Claude researches the story with web search.
+3. Four sub-agents debate it (Grant, Rosa, Mercer, Vex).
+4. Quill writes the draft.
+5. **Plumb**, a separate neutral sub-agent, checks it against [`newsroom/STANDARDS.md`](newsroom/STANDARDS.md):
+   - opens the sources
+   - runs a swap-the-parties symmetry test
+   - approves it, sends it back for revision, or rejects it
+6. `pnpm newsroom publish` validates the story against `src/lib/story-schema.ts`. It refuses any story without
+   Plumb's sign-off, then writes `content/stories.json`.
+7. `scripts/deploy.sh` deploys the committed HEAD to Vercel. The run then checks that the story URL is live.
+
+Working files (briefs, plans, drafts, rejected stories) stay on the PC in `newsroom/desk/`, which is gitignored.
+To pull a story: `pnpm newsroom unpublish <slug> "<reason>"`, then commit, push and deploy.
+
+The API pipeline below (`src/lib/agents/*`, `/api/pipeline`) is the same newsroom written for API keys. It stays
+in place as an option but nothing calls it on a schedule.
+
+## API-key pipeline (optional)
+
 ```
                     ┌────────────────────────── SOURCES ───────────────────────────┐
                     │ 21 outlet feeds   X (via Grok)   Kalshi   Polymarket   Gov APIs│
@@ -20,7 +52,7 @@
                                          └────────┬────────┘   └──────┬───────┘
                                                   └───── draft File ──┘
                                                            │
-  8                                          Human review → publish → site
+  8                                     Plumb (standards) → publish → site
 ```
 
 ## Stack
@@ -32,9 +64,9 @@
 | LLM: research, panel, editor | Claude Opus 5.5 (`claude-opus-5-5`) via `@anthropic-ai/sdk` | Structured outputs (Zod), server-side web search, server-side refusal fallback |
 | LLM: X / Twitter | Grok (`grok-4.7`) via xAI Responses API + `x_search` tool | ~$5 per 1k posts fetched |
 | Markets | Kalshi public API, Polymarket Gamma API | No auth needed for reads |
-| Storage (prototype) | `content/seed-stories.json` | Seed Files, produced by hand by the research agents |
+| Storage (now) | `content/stories.json` | Written only by `pnpm newsroom publish` (schema-checked, needs Plumb's approval) |
 | Storage (next) | Postgres (Neon via the Vercel Marketplace) | Tables: `files`, `ledger_facts`, `sources`, `debate_turns`, `corrections`, `wire_items` |
-| Scheduling | Vercel Cron → `/api/cron/newsroom` | Hobby plan allows daily crons only; Pro plan for hourly |
+| Scheduling | T3 Code scheduled tasks on ProDesktop (9am / 5pm / 10pm ET) | Runs Claude Code on the subscription; `/api/cron/newsroom` remains for API-key mode |
 
 ## Code map
 
@@ -43,7 +75,12 @@ src/lib/types.ts            Domain model (Story/File, Ledger, Coverage, Markets�
 src/lib/sources.ts          Outlet registry: feed URLs + lean labels (verified 2026-10-20)
 src/lib/feeds.ts            The Wire: fetch + parse RSS, cluster headlines, blindspots
 src/lib/markets.ts          The Odds: Kalshi + Polymarket
-src/lib/agents/personas.ts  Grant, Rosa, Mercer, Vex, Quill (system prompts)
+src/lib/agents/personas.ts  Grant, Rosa, Mercer, Vex, Quill, Plumb (system prompts)
+src/lib/story-schema.ts     Zod schema every published story must pass
+scripts/newsroom.mts        Desk tool: brief, agreement, check, publish, unpublish, list
+scripts/deploy.sh           Deploy committed HEAD to Vercel production
+newsroom/PLAYBOOK.md        What each scheduled run does
+newsroom/STANDARDS.md       Plumb's approval checklist
 src/lib/agents/pulse.ts     The Pulse: Grok x_search
 src/lib/agents/claude.ts    Claude helpers: structured() and research() with web search
 src/lib/agents/schemas.ts   Zod schemas for every hand-off
@@ -64,13 +101,13 @@ src/app/story/[slug]        The File page
 | `/api/dig` | GET | Unreported leads from official records |
 | `/api/pipeline` | GET | Which agents are configured |
 | `/api/pipeline` | POST | Run the newsroom on the top cluster (`Authorization: Bearer $CRON_SECRET`). Returns a draft File plus the Red Team report. **Publishes nothing.** |
-| `/api/cron/newsroom` | GET | Vercel Cron entry point |
+| `/api/cron/newsroom` | GET | API-key mode entry point (not scheduled) |
 
 ## Environment variables
 
 | Name | Needed for |
 |---|---|
-| `ANTHROPIC_API_KEY` | The Record, the Panel, Quill, the Red Team |
+| `ANTHROPIC_API_KEY` | API-key mode only. The subscription newsroom doesn't need it |
 | `XAI_API_KEY` | The Pulse (optional; the pipeline runs without it) |
 | `XAI_MODEL` | Override the Grok model (default `grok-4.7`) |
 | `CRON_SECRET` | Protects pipeline runs |
