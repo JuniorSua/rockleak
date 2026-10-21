@@ -1,5 +1,423 @@
 [
   {
+    "slug": "democrats-sue-trump-voter-lists-nevada-16000-185-dhs",
+    "category": "courts",
+    "kicker": "VOTING · 2026 MIDTERMS",
+    "headline": "DHS Said Nevada Had Nearly 16,000 Noncitizens on Its Rolls, Then Named 185. Democrats Are Suing.",
+    "dek": "Nevada says its records show all 185 are citizens. DHS says Nevada has the ID numbers to check them and that it has confirmed about 2,000 more. Schumer, Jeffries and party groups want a judge to stop federal pressure over who gets a ballot.",
+    "publishedAt": "2026-10-21T21:22:30.267Z",
+    "status": "developing",
+    "agreementScore": 100,
+    "bottomLine": "Two courts now hold the key questions: whether Washington can make states set aside ballots, and whether its warnings to election officials cross into intimidation. Until a judge rules, the numbers on both sides are claims, not findings.",
+    "coreFacts": [
+      {
+        "text": "On Oct. 20, 2026, the DSCC, the DCCC, the Democratic Governors Association, the Nevada State Democratic Party, Senate Minority Leader Chuck Schumer, House Minority Leader Hakeem Jeffries and Erick Jose Jimenez, a California voter who became a naturalized citizen in 2006, sued President Trump, the Justice Department, Attorney General Todd Blanche, the Department of Homeland Security and DHS Secretary Markwayne Mullin in federal court in Washington, D.C. (DSCC v. Trump, No. 1:26-cv-03674). On Oct. 21 the case was assigned to Chief Judge James E. Boasberg.",
+        "verdict": "confirmed",
+        "sources": [
+          {
+            "label": "Complaint, DSCC v. Trump, No. 1:26-cv-03674 (D.D.C., filed Oct. 20, 2026)",
+            "url": "https://storage.courtlistener.com/recap/gov.uscourts.dcd.297829/gov.uscourts.dcd.297829.1.0.pdf",
+            "tier": "primary"
+          },
+          {
+            "label": "Court docket, DSCC v. Trump (CourtListener)",
+            "url": "https://www.courtlistener.com/docket/74994590/dscc-v-trump/",
+            "tier": "primary"
+          },
+          {
+            "label": "AP: Democrats sue to block Trump administration from usurping states' authority to administer elections",
+            "url": "https://www.news4jax.com/news/politics/2026/10/21/democrats-sue-to-block-trump-administration-from-usurping-states-authority-to-administer-elections/",
+            "tier": "outlet"
+          }
+        ]
+      },
+      {
+        "text": "The complaint asks the court to bar the defendants from directing states to remove registered voters from their rolls, to withhold ballots from them, or to set aside or refuse to count ballots they have cast, and to bar them from threatening state and local election officials for issuing and counting registered voters' ballots. It claims the defendants acted beyond their legal authority and violated Section 11(b) of the Voting Rights Act, which bars intimidating or threatening voters and people who help them vote, as well as the Constitution's Elections Clause and the Tenth Amendment.",
+        "verdict": "confirmed",
+        "sources": [
+          {
+            "label": "Complaint, DSCC v. Trump (paragraphs 5 and 7; Counts I-IV)",
+            "url": "https://storage.courtlistener.com/recap/gov.uscourts.dcd.297829/gov.uscourts.dcd.297829.1.0.pdf",
+            "tier": "primary"
+          },
+          {
+            "label": "Democracy Docket: Democrats sue to block Trump admin from threatening the midterms",
+            "url": "https://www.democracydocket.com/news-alerts/democrats-sue-to-block-trump-admin-from-threatening-the-midterms/",
+            "tier": "outlet"
+          }
+        ]
+      },
+      {
+        "text": "In Nevada, DHS first announced it had found close to 16,000 noncitizens on the voter list. A DHS official later told Nevada officials that figure was \"the ceiling\" and that each voter still needed manual review. DHS then sent Nevada a list of 185 voter ID numbers it said it was confident were noncitizens, said more than 14,000 voters \"need additional review,\" and declined Nevada's request for the data points used to match them.",
+        "verdict": "confirmed",
+        "sources": [
+          {
+            "label": "NPR (via Connecticut Public): DHS acknowledges the noncitizen numbers it touted on voter rolls were inflated (Aug. 25, 2026)",
+            "url": "https://www.ctpublic.org/2026-08-25/dhs-acknowledges-the-noncitizen-numbers-it-touted-on-voter-rolls-were-inflated",
+            "tier": "outlet"
+          },
+          {
+            "label": "Complaint, DSCC v. Trump (paragraphs 64-67)",
+            "url": "https://storage.courtlistener.com/recap/gov.uscourts.dcd.297829/gov.uscourts.dcd.297829.1.0.pdf",
+            "tier": "primary"
+          }
+        ]
+      },
+      {
+        "text": "Nevada officials say their records show all 185 people on DHS's list are U.S. citizens. Deputy Attorney General Greg Ott wrote to DHS: \"You have provided nothing of substance to suggest otherwise.\" Secretary of State Cisco Aguilar said the two sides may not be looking at the same people, because DHS provided only \"voter case numbers,\" which can repeat across counties. A DHS spokesperson said the agency \"is providing a service to the citizens of Nevada.\" In a statement to Nevada Week (PBS), aired Oct. 15, DHS said Nevada's claim that it lacked enough information to act \"is false\" because DHS \"already handed over the unique state voter ID numbers assigned by the Nevada Secretary of State,\" adding: \"They have the data; they refuse to use it.\" DHS did not answer when Nevada Week asked whether it still believes the 185 are noncitizens, and said it had since manually confirmed about 2,000 more noncitizens from the same list.",
+        "verdict": "confirmed",
+        "sources": [
+          {
+            "label": "The Nevada Independent: 185 noncitizen voters flagged by Trump admin in Nevada are likely citizens, state says",
+            "url": "https://thenevadaindependent.com/article/185-noncitizen-voters-flagged-by-trump-admin-in-nevada-are-likely-citizens-state-says",
+            "tier": "outlet"
+          },
+          {
+            "label": "Nevada Week (PBS): Election Integrity (Oct. 15, 2026)",
+            "url": "https://www.pbs.org/video/election-integrity-en5iar/",
+            "tier": "outlet"
+          }
+        ]
+      },
+      {
+        "text": "On Oct. 16, a Justice Department letter to Los Angeles County's counsel, signed by acting Deputy Attorney General Trent McCotter, said that persons who \"knowingly tabulate ballots cast by individuals identified by federal agencies as noncitizens\" risk \"becoming aiders and abettors to a federal crime.\" That evening Trump posted on social media: \"They will all go to jail for a long period of time!!!\"",
+        "verdict": "confirmed",
+        "sources": [
+          {
+            "label": "Democracy Docket: 'They will all go to jail': Trump threatens California officials amid push to reject 20,000 ballots",
+            "url": "https://www.democracydocket.com/news-alerts/they-will-all-go-to-jail-trump-threatens-california-officials-amid-push-to-reject-20000-ballots/",
+            "tier": "outlet"
+          },
+          {
+            "label": "Complaint, DSCC v. Trump (paragraphs 79-80, citing Reuters, Oct. 16, 2026)",
+            "url": "https://storage.courtlistener.com/recap/gov.uscourts.dcd.297829/gov.uscourts.dcd.297829.1.0.pdf",
+            "tier": "primary"
+          }
+        ]
+      },
+      {
+        "text": "In a separate case, the Justice Department sued California and Los Angeles County's registrar on Oct. 15 (United States v. California, No. 2:26-cv-12025) and on Oct. 19 asked for a temporary restraining order requiring California to set aside mail ballots from people the federal government identified as likely noncitizens, more than 20,000 people, until their citizenship is verified. On Oct. 21 the case was transferred to Judge David O. Carter as related to an earlier case. As of the Oct. 21 docket, the court had not ruled on that request.",
+        "verdict": "confirmed",
+        "sources": [
+          {
+            "label": "Court docket, United States v. State of California, No. 2:26-cv-12025 (C.D. Cal.)",
+            "url": "https://www.courtlistener.com/docket/74967108/united-states-v-state-of-california/",
+            "tier": "primary"
+          },
+          {
+            "label": "Complaint, DSCC v. Trump (paragraphs 75-81, describing DOJ's Oct. 13 letters, Oct. 15 suit and Oct. 19 request)",
+            "url": "https://storage.courtlistener.com/recap/gov.uscourts.dcd.297829/gov.uscourts.dcd.297829.1.0.pdf",
+            "tier": "primary"
+          },
+          {
+            "label": "RedState: DOJ Details How It Found 20,000 Likely Noncitizens on CA Voter Rolls, Seeks Emergency Court Order",
+            "url": "https://redstate.com/jenvanlaar/2026/10/19/doj-explains-20000-suspected-noncitizens-ca-voter-roll-emergency-motion-n2208341",
+            "tier": "outlet"
+          }
+        ]
+      },
+      {
+        "text": "The administration defends its actions. A Justice Department spokesperson said every DOJ action on election integrity this year is grounded in law and being litigated in open court, and that ensuring only eligible citizens vote is a requirement of federal law. White House spokeswoman Lauren Bis said anyone who \"illegally votes in our elections will be held accountable\" and accused Democrats of opposing \"common sense election-security measures.\" Attorney General Todd Blanche said: \"State-facilitated voter fraud is unacceptable in the United States of America.\"",
+        "verdict": "confirmed",
+        "sources": [
+          {
+            "label": "Washington Post (via Yahoo): Democrats sue Trump, DOJ over effort to remove voters from state rolls",
+            "url": "https://www.yahoo.com/news/politics/articles/democrats-sue-trump-doj-over-152615363.html",
+            "tier": "outlet"
+          },
+          {
+            "label": "The Epoch Times: Democrats Sue Trump Admin Over Bid to Clean Up Voter Rolls",
+            "url": "https://www.theepochtimes.com/us/democrats-sue-trump-admin-over-bid-to-clean-up-voter-rolls-6106924",
+            "tier": "outlet"
+          }
+        ]
+      },
+      {
+        "text": "Federal law makes it a crime for a noncitizen to vote in a federal election (18 U.S.C. 611). The Justice Department's California suit rests on a claim under the Constitution's Supremacy Clause, and DOJ says DHS built its list by matching the state's public voter roll against federal records, removing people with evidence of citizenship, and manually reviewing the rest. The Democrats' complaint argues that law can be enforced only through criminal prosecution and that no statute lets federal agencies order states to withhold or set aside ballots.",
+        "verdict": "confirmed",
+        "sources": [
+          {
+            "label": "Complaint, DSCC v. Trump (paragraphs 39-41, 103)",
+            "url": "https://storage.courtlistener.com/recap/gov.uscourts.dcd.297829/gov.uscourts.dcd.297829.1.0.pdf",
+            "tier": "primary"
+          },
+          {
+            "label": "RedState: DOJ Details How It Found 20,000 Likely Noncitizens on CA Voter Rolls, Seeks Emergency Court Order",
+            "url": "https://redstate.com/jenvanlaar/2026/10/19/doj-explains-20000-suspected-noncitizens-ca-voter-roll-emergency-motion-n2208341",
+            "tier": "outlet"
+          },
+          {
+            "label": "The Epoch Times: Democrats Sue Trump Admin Over Bid to Clean Up Voter Rolls",
+            "url": "https://www.theepochtimes.com/us/democrats-sue-trump-admin-over-bid-to-clean-up-voter-rolls-6106924",
+            "tier": "outlet"
+          }
+        ]
+      }
+    ],
+    "claims": [
+      {
+        "claim": "DHS's lists of supposed noncitizens \"have crumbled upon the barest inspection.\"",
+        "claimant": "Democratic plaintiffs, in the DSCC v. Trump complaint",
+        "verdict": "unverified",
+        "explanation": "Nevada says its records show all 185 people DHS named are citizens, a DHS official called the 16,000 figure a ceiling that needed review, and Los Angeles County told the court that in a sample of about 200 voters from its part of DOJ's California list, 25.8% of the records listed a U.S. birthplace, which it called a strong indicator of citizenship. But DHS says it has confirmed about 2,000 more Nevada noncitizens (unverified), and the Justice Department said on Oct. 19 that 28 people it charged appear on its California list (charges are accusations, not convictions). No court has yet ruled on whether the lists are accurate.",
+        "sources": [
+          {
+            "label": "The Nevada Independent",
+            "url": "https://thenevadaindependent.com/article/185-noncitizen-voters-flagged-by-trump-admin-in-nevada-are-likely-citizens-state-says",
+            "tier": "outlet"
+          },
+          {
+            "label": "Nevada Week (PBS), Oct. 15, 2026",
+            "url": "https://www.pbs.org/video/election-integrity-en5iar/",
+            "tier": "outlet"
+          },
+          {
+            "label": "RedState: DOJ Details How It Found 20,000 Likely Noncitizens",
+            "url": "https://redstate.com/jenvanlaar/2026/10/19/doj-explains-20000-suspected-noncitizens-ca-voter-roll-emergency-motion-n2208341",
+            "tier": "outlet"
+          },
+          {
+            "label": "DOJ press release: Justice Department charges 28 foreign nationals in California with election crimes (Oct. 19, 2026)",
+            "url": "https://www.justice.gov/opa/pr/justice-department-charges-28-foreign-nationals-california-election-crimes",
+            "tier": "primary"
+          },
+          {
+            "label": "LA County Registrar's opposition to DOJ's TRO application, United States v. California (ECF 32-1, Oct. 20, 2026)",
+            "url": "https://storage.courtlistener.com/recap/gov.uscourts.cacd.1043513/gov.uscourts.cacd.1043513.32.1_2.pdf",
+            "tier": "primary"
+          }
+        ]
+      },
+      {
+        "claim": "DHS has confirmed about 2,000 more noncitizens on Nevada's voter list, beyond the 185.",
+        "claimant": "DHS, as reported by Nevada Week (PBS)",
+        "verdict": "unverified",
+        "explanation": "This is DHS's statement. RockLeak found no public list, method or court record backing it, and Nevada says DHS has not given it evidence that changes its finding on the first 185.",
+        "sources": [
+          {
+            "label": "Nevada Week (PBS), Oct. 15, 2026",
+            "url": "https://www.pbs.org/video/election-integrity-en5iar/",
+            "tier": "outlet"
+          },
+          {
+            "label": "The Nevada Independent",
+            "url": "https://thenevadaindependent.com/article/185-noncitizen-voters-flagged-by-trump-admin-in-nevada-are-likely-citizens-state-says",
+            "tier": "outlet"
+          }
+        ]
+      },
+      {
+        "claim": "\"State-facilitated voter fraud is unacceptable in the United States of America.\"",
+        "claimant": "Attorney General Todd Blanche",
+        "verdict": "unverified",
+        "explanation": "No court has found that California, Nevada or their officials facilitated voter fraud. DOJ's California suit makes that case and is still waiting for a ruling. Separately, DOJ has charged individual people, which are accusations, not convictions.",
+        "sources": [
+          {
+            "label": "The Epoch Times",
+            "url": "https://www.theepochtimes.com/us/democrats-sue-trump-admin-over-bid-to-clean-up-voter-rolls-6106924",
+            "tier": "outlet"
+          },
+          {
+            "label": "Court docket, United States v. State of California",
+            "url": "https://www.courtlistener.com/docket/74967108/united-states-v-state-of-california/",
+            "tier": "primary"
+          }
+        ]
+      },
+      {
+        "claim": "The administration is using threats to scare officials into removing voters and refusing to count lawful ballots.",
+        "claimant": "Democratic plaintiffs, in the DSCC v. Trump complaint",
+        "verdict": "unverified",
+        "explanation": "The threats themselves are on the record: DOJ's Oct. 16 letter warned of \"aiders and abettors\" exposure, and Trump posted that officials \"will all go to jail.\" Whether they are unlawful intimidation, or lawful warnings about a federal crime, is what the court will decide.",
+        "sources": [
+          {
+            "label": "Democracy Docket, Oct. 17, 2026",
+            "url": "https://www.democracydocket.com/news-alerts/they-will-all-go-to-jail-trump-threatens-california-officials-amid-push-to-reject-20000-ballots/",
+            "tier": "outlet"
+          },
+          {
+            "label": "Complaint, DSCC v. Trump",
+            "url": "https://storage.courtlistener.com/recap/gov.uscourts.dcd.297829/gov.uscourts.dcd.297829.1.0.pdf",
+            "tier": "primary"
+          }
+        ]
+      }
+    ],
+    "coverage": [
+      {
+        "outlet": "Democracy Docket",
+        "lean": "left",
+        "headline": "Democrats sue to block Trump admin from threatening the midterms",
+        "url": "https://www.democracydocket.com/news-alerts/democrats-sue-to-block-trump-admin-from-threatening-the-midterms/",
+        "framing": "Leads on the threats to election officials and the Voting Rights Act claim; notes the Elias Law Group, whose chair founded Democracy Docket, represents the Democrats."
+      },
+      {
+        "outlet": "Washington Post",
+        "lean": "lean-left",
+        "headline": "Democrats sue Trump, DOJ over effort to remove voters from state rolls",
+        "url": "https://www.yahoo.com/news/politics/articles/democrats-sue-trump-doj-over-152615363.html",
+        "framing": "Frames it as Democrats accusing the administration of interfering in the midterms; includes the Nevada and LA County examples and both DOJ's and the White House's responses."
+      },
+      {
+        "outlet": "AP",
+        "lean": "center",
+        "headline": "Democrats sue to block Trump administration from usurping states' authority to administer elections",
+        "url": "https://www.news4jax.com/news/politics/2026/10/21/democrats-sue-to-block-trump-administration-from-usurping-states-authority-to-administer-elections/",
+        "framing": "A states'-rights framing: who controls elections; notes DOJ's response and that the case went to Chief Judge Boasberg, whom the White House has criticized."
+      },
+      {
+        "outlet": "The Nevada Independent",
+        "lean": "center",
+        "headline": "185 noncitizen voters flagged by Trump admin in Nevada are likely citizens, state says",
+        "url": "https://thenevadaindependent.com/article/185-noncitizen-voters-flagged-by-trump-admin-in-nevada-are-likely-citizens-state-says",
+        "framing": "September reporting on the Nevada list the lawsuit leans on; quotes both state officials and DHS."
+      },
+      {
+        "outlet": "The Epoch Times",
+        "lean": "right",
+        "headline": "Democrats Sue Trump Admin Over Bid to Clean Up Voter Rolls",
+        "url": "https://www.theepochtimes.com/us/democrats-sue-trump-admin-over-bid-to-clean-up-voter-rolls-6106924",
+        "framing": "Frames the administration's effort as cleaning up voter rolls; gives the White House, DOJ and Blanche statements alongside the suit's claims."
+      },
+      {
+        "outlet": "RedState",
+        "lean": "right",
+        "headline": "DOJ Details How It Found 20,000 Likely Noncitizens on CA Voter Rolls, Seeks Emergency Court Order",
+        "url": "https://redstate.com/jenvanlaar/2026/10/19/doj-explains-20000-suspected-noncitizens-ca-voter-roll-emergency-motion-n2208341",
+        "framing": "Covers the related California case from DOJ's side: how DHS says it built the list and why ballots should be set aside until citizenship is checked."
+      }
+    ],
+    "xPulse": {
+      "summary": "No notable X reaction beyond the outlets above.",
+      "trending": []
+    },
+    "markets": [],
+    "debate": [
+      {
+        "persona": "Grant",
+        "position": "Washington has a plain duty to keep noncitizens out of federal elections, and the Democrats' suit tries to turn a lawful warning about a federal crime into a federal offense by the government.",
+        "argument": "Voting by a noncitizen in a federal election is already a federal crime, and the Justice Department says every action it has taken is grounded in law and is being litigated in open court. The Oct. 16 letter warned that knowingly tabulating ballots cast by people federal agencies identify as noncitizens could create aiding-and-abetting exposure. A warning about the criminal code is not the same as intimidation, and the court has yet to say otherwise. DOJ says DHS built its California list by matching the public voter roll against federal records, removing anyone with evidence of citizenship and manually reviewing the rest. Nobody has ruled that those lists are wrong. Nevada's claim that all 185 names are citizens is the state's own statement, and DHS says Nevada already has the unique voter ID numbers it needs to check them. Mr. Blanche's line that state-facilitated fraud is unacceptable is unverified as a claim about any particular state, and I will not defend it beyond that.",
+        "concedes": "The Democrats' strongest point is that DHS's own record is shaky. DHS first said close to 16,000 Nevada voters were noncitizens, then called that a ceiling, then named 185 people that Nevada says are all citizens, and it refused to hand over the data used to match them. Secretary of State Cisco Aguilar says the two sides may not even be looking at the same people, since case numbers can repeat across counties. Add the President's post that officials \"will all go to jail,\" and the intimidation claim is not frivolous. The government has not shown its method, and its claim of about 2,000 more confirmed noncitizens is unverified."
+      },
+      {
+        "persona": "Rosa",
+        "position": "When the federal government threatens election officials with jail over lists its own agency calls unfinished, that is pressure on lawful voters, not election security.",
+        "argument": "DHS first said close to 16,000 Nevada voters were noncitizens. It then called that number a ceiling that still needed manual review. Its list of 185 names it was confident about is one Nevada says is all citizens, and DHS refused to hand over the data points it used to match them. Against that record, DOJ told Los Angeles County that officials who count certain ballots risk being aiders and abettors to a federal crime, and the President posted that they 'will all go to jail for a long period of time.' The Democrats' complaint also argues that no statute lets federal agencies order states to withhold or set aside ballots, and that the only route for enforcing the noncitizen voting ban is criminal prosecution. Voters should not lose their ballots, or officials their nerve, because of a list nobody outside DHS can check.",
+        "concedes": "Noncitizen voting in federal elections is a crime, and the administration is right that eligible citizens alone should vote. DOJ says DHS built its California list by matching the public voter roll against federal records, removing people with evidence of citizenship, and manually reviewing the rest. It also says it has charged 28 people from that list, and charges are accusations, not convictions. DHS says Nevada has the voter ID numbers to check its list and that it has confirmed about 2,000 more. Whether any of that holds up is unknown, and no court has ruled that the lists are wrong."
+      },
+      {
+        "persona": "Mercer",
+        "position": "Both sides are asserting more than the record can support, so the court should test the lists and the threats before anyone sets aside a ballot or claims vindication.",
+        "argument": "What is provable: DHS called its own 16,000 Nevada figure a ceiling, then produced 185 ID numbers, and Nevada says every one is a citizen. DHS has not shared its matching data. Nevada says the case numbers it got can repeat across counties, so the two sides may not be looking at the same people; DHS says it sent unique state voter ID numbers. That makes 'crumbled upon the barest inspection' too strong, because no court has ruled on accuracy and DHS says it has confirmed about 2,000 more. The administration's 'state-facilitated voter fraud' line is equally unproven, since no court has found it and the California request to set aside more than 20,000 ballots is still pending. The threats are on the record, in the DOJ's Oct. 16 letter and the president's post that officials 'will all go to jail.' Whether that is intimidation or a lawful warning is a legal question, and it should be answered by a judge, not by press releases.",
+        "concedes": "The administration is right that noncitizen voting in federal elections is a federal crime, and the DOJ says its list was built by matching the public voter roll against federal records, removing people with evidence of citizenship and manually reviewing the rest. The Democrats' own complaint also depends on the legal claim that no statute lets federal agencies order ballots set aside, which a court has yet to accept. Warning officials about criminal exposure is not automatically unlawful, and a state that disputes federal data is not automatically in the right."
+      },
+      {
+        "persona": "Vex",
+        "position": "Both parties are claiming certainty they haven't earned, and the people stuck in the middle are election officials and voters who can't check either side's list.",
+        "argument": "DHS floated a near-16,000 figure, then called it a 'ceiling,' then named 185 people. Nevada says all 185 are citizens, and DHS refused to share the data points it used to match them. Now DHS says it has confirmed about 2,000 more, and RockLeak found no public list, method or court record behind that. Separately, DOJ's letter warned officials of 'aiders and abettors' exposure, and Trump posted that they 'will all go to jail.' That is a heavy way to treat county clerks over lists nobody outside DHS can audit. The Democratic plaintiffs deserve the same scrutiny, though. Their line that the lists 'crumbled' runs ahead of the evidence, because no court has ruled on whether the lists are accurate. The party suing is also the one whose leaders are plaintiffs, and the law firm behind it is tied to one of the outlets covering it.",
+        "concedes": "Federal law does make it a crime for a noncitizen to vote, and the administration has a legitimate interest in keeping noncitizens off the rolls. DOJ says DHS matched the state roll against federal records, removed people with evidence of citizenship and manually reviewed the rest. DOJ also says it has charged 28 people on its California list. Those are accusations, not convictions, but they show prosecutors are acting on the list. A warning that knowingly counting ineligible ballots could be a crime is not automatically intimidation, and the court has not decided that."
+      }
+    ],
+    "consensus": "All four analysts accept that the suit was filed, that DHS's Nevada numbers moved from close to 16,000 to 185, that Nevada says the 185 are citizens while DHS says the state has the data to check them, that the DOJ letter and Trump's jail post are on the record, and that no court has yet ruled on whether the lists are accurate.",
+    "stillUnknown": [
+      "Whether Chief Judge Boasberg will act before the Nov. 3 election; no hearing had been set as of Oct. 21.",
+      "Whether Judge Carter will grant DOJ's request to set aside California mail ballots.",
+      "How many people on DHS's Nevada and California lists are actually noncitizens. DHS has not published its method or the matched data, and the states dispute the lists.",
+      "What DHS's reported confirmation of about 2,000 more Nevada noncitizens rests on."
+    ],
+    "body": [
+      "On Oct. 20, the Democrats' Senate and House campaign arms, the Democratic Governors Association, Nevada's Democratic Party, Senate Minority Leader Chuck Schumer, House Minority Leader Hakeem Jeffries and a naturalized California voter sued President Trump, the Justice Department, Attorney General Todd Blanche, Homeland Security and DHS Secretary Markwayne Mullin. The case, DSCC v. Trump, was assigned on Oct. 21 to Chief Judge James E. Boasberg in Washington, D.C.",
+      "They are asking the court to bar the administration from directing states to remove registered voters, withhold their ballots, or set aside or refuse to count ballots already cast. They also want the court to stop threats against state and local officials for issuing and counting registered voters' ballots. The suit claims the administration is acting beyond its legal authority and violating the Constitution's Elections Clause, the Tenth Amendment and the Voting Rights Act's ban on intimidating voters and the people who help them vote.",
+      "Nevada is the suit's lead example. DHS first announced it had found close to 16,000 noncitizens on the state's voter list. A DHS official later called that number \"the ceiling\" and said each voter still needed manual review. DHS then sent Nevada 185 voter ID numbers it said it was confident were noncitizens, said more than 14,000 others \"need additional review,\" and declined to share the data it used to match them.",
+      "Nevada says its records show all 185 are citizens. \"You have provided nothing of substance to suggest otherwise,\" a state lawyer wrote to DHS. Secretary of State Cisco Aguilar said the two sides may not even be looking at the same people, because DHS supplied only case numbers that can repeat across counties. DHS told PBS's Nevada Week that Nevada's claim it lacked enough information is \"false\" because DHS gave it \"the unique state voter ID numbers assigned by the Nevada Secretary of State.\" \"They have the data; they refuse to use it,\" DHS said. It did not answer when Nevada Week asked whether it still considers the 185 noncitizens, and said it had since manually confirmed about 2,000 more from the same list. RockLeak found no public list, method or court record behind that figure.",
+      "The suit also points to the threats. On Oct. 16, a Justice Department letter to Los Angeles County's lawyers said people who \"knowingly tabulate ballots cast by individuals identified by federal agencies as noncitizens\" risk \"becoming aiders and abettors to a federal crime.\" That evening Trump posted: \"They will all go to jail for a long period of time!!!\"",
+      "That letter is part of a separate fight. DOJ sued California and Los Angeles County's registrar on Oct. 15 and on Oct. 19 asked a judge to make California set aside mail ballots from more than 20,000 people the federal government calls likely noncitizens until their citizenship is checked. On Oct. 21 that case was moved to Judge David O. Carter. As of that day's docket, no ruling had been made.",
+      "The administration says it is following the law. Federal law makes it a crime for a noncitizen to vote in a federal election. DOJ says DHS built its California list by matching the state's public voter roll against federal records, removing people with evidence of citizenship and manually reviewing the rest, and it said on Oct. 19 that it had charged 28 people on that list. Charges are accusations, not convictions. A DOJ spokesperson said its actions are grounded in law and being litigated in open court. Blanche said: \"State-facilitated voter fraud is unacceptable in the United States of America.\" No court has found that any state did that.",
+      "The Democrats argue that the noncitizen voting law can be enforced only by prosecuting people, and that no law lets federal agencies tell states to hold back or set aside ballots. Neither judge had set a hearing or ruled as of Oct. 21, and Election Day is Nov. 3."
+    ],
+    "stat": {
+      "value": "185",
+      "label": "ID numbers DHS sent Nevada as people it was confident were noncitizens, after first announcing close to 16,000. Nevada says its records show all are citizens."
+    },
+    "tldr": {
+      "what": "Top Democrats, including Chuck Schumer and Hakeem Jeffries, sued President Trump, the Justice Department and Homeland Security on Oct. 20. They want a judge to stop federal pressure on states to drop registered voters, hold back their ballots or set them aside, and to stop threats against election officials.",
+      "why": "It's a fight over who decides whether a registered voter gets a ballot and whether it counts, two weeks before the Nov. 3 election. As of Oct. 21, no judge had ruled in this case or on DOJ's request to make California set aside mail ballots from more than 20,000 people.",
+      "truth": "Confirmed: DHS first announced close to 16,000 noncitizens on Nevada's rolls, then named 185, and DOJ and Trump warned officials of prison or criminal exposure. Disputed: Nevada says its records show all 185 are citizens; DHS says Nevada has the data to check them and that it has confirmed about 2,000 more (unverified). Unproven: Democrats' claim that the lists 'crumbled' and Blanche's charge of 'state-facilitated voter fraud'; no court has ruled on either."
+    },
+    "newAngle": "The lawsuit stories RockLeak read (AP, Washington Post, Epoch Times, Democracy Docket) don't mention DHS's statement, reported by PBS's Nevada Week on Oct. 15, that Nevada already has the voter ID numbers to check the 185 and that DHS has confirmed about 2,000 more Nevada noncitizens.",
+    "seo": {
+      "title": "Democrats Sue Trump Over Voter Lists: What It Means",
+      "description": "Schumer, Jeffries and Democratic groups sued Trump, DOJ and DHS over voter lists and threats to officials. What the Nevada record shows and what comes next.",
+      "keywords": [
+        "DSCC v. Trump",
+        "Democrats sue Trump voter rolls",
+        "Schumer Jeffries lawsuit",
+        "DHS noncitizen voter list Nevada",
+        "Nevada 185 noncitizens",
+        "California mail ballots noncitizens",
+        "DOJ California ballots lawsuit",
+        "Judge Boasberg election lawsuit"
+      ],
+      "faq": [
+        {
+          "q": "Who sued, and who are they suing?",
+          "a": "The DSCC, DCCC, Democratic Governors Association, Nevada State Democratic Party, Chuck Schumer, Hakeem Jeffries and a naturalized California voter sued President Trump, DOJ, Attorney General Todd Blanche, DHS and Secretary Markwayne Mullin on Oct. 20 in federal court in Washington."
+        },
+        {
+          "q": "What does the lawsuit ask for?",
+          "a": "An order barring the administration from directing states to remove registered voters, withhold their ballots, or set aside or refuse to count ballots, and from threatening election officials for issuing and counting registered voters' ballots."
+        },
+        {
+          "q": "How many noncitizens did DHS find on Nevada's voter rolls?",
+          "a": "DHS first announced close to 16,000, later called that a ceiling, then named 185 it was confident about. Nevada says all 185 are citizens. DHS says Nevada has the data to check them and that it has confirmed about 2,000 more, which RockLeak could not verify."
+        },
+        {
+          "q": "Will California set aside mail ballots?",
+          "a": "Not unless a judge orders it. DOJ asked on Oct. 19 for California to set aside mail ballots from more than 20,000 people it calls likely noncitizens. The case moved to Judge David O. Carter on Oct. 21 with no ruling yet."
+        },
+        {
+          "q": "Is it illegal for noncitizens to vote?",
+          "a": "Yes. Federal law makes it a crime for a noncitizen to vote in a federal election. The dispute is over how that is enforced and who decides whose ballot counts."
+        }
+      ]
+    },
+    "social": {
+      "headlineVariants": [
+        {
+          "text": "DHS Said Nevada Had Nearly 16,000 Noncitizens on Its Rolls, Then Named 185. Democrats Are Suing.",
+          "score": 86,
+          "rationale": "Leads with the most surprising confirmed numbers; the dek carries both sides' dispute over the 185."
+        },
+        {
+          "text": "Schumer and Jeffries Sued Trump to Stop Federal Pressure Over Who Gets a Ballot",
+          "score": 76,
+          "rationale": "Clear and fully confirmed, but less specific."
+        },
+        {
+          "text": "Two Weeks Out, Two Courts Will Decide How Far Washington Can Reach Into Ballot Counting",
+          "score": 70,
+          "rationale": "Explains the stakes for readers, but has no hard number."
+        }
+      ],
+      "xPost": "Top Democrats sued Trump, DOJ and DHS on Oct. 20 over voter lists. Their lead example: DHS announced close to 16,000 noncitizens on Nevada's rolls, then named 185. Nevada says all 185 are citizens; DHS says the state has the data to check. No judge has ruled.",
+      "thread": [
+        "Schumer, Jeffries and Democratic party groups sued Trump, DOJ and DHS on Oct. 20. They want a judge to stop federal pressure on states to drop voters or set aside ballots, and to stop threats against election officials.",
+        "Nevada: DHS first announced close to 16,000 noncitizens on the voter list, called that \"the ceiling,\" then sent 185 ID numbers. Nevada says all 185 are citizens. DHS says Nevada has the data to check and has confirmed about 2,000 more. RockLeak found no public record for that.",
+        "The threats are on the record. A DOJ letter warned that knowingly counting ballots from people federal agencies flag as noncitizens risks \"aiders and abettors\" exposure. Trump posted: \"They will all go to jail for a long period of time!!!\"",
+        "The administration's side: noncitizen voting in federal elections is a crime, and DOJ says its California list was built from federal records and manual review. It has charged 28 people on that list. Charges aren't convictions.",
+        "What's next: Chief Judge Boasberg has the Democrats' suit. Judge David O. Carter has DOJ's bid to make California set aside mail ballots from 20,000+ people. Neither had ruled as of Oct. 21. Election Day is Nov. 3."
+      ],
+      "shortVideoHook": "Homeland Security said Nevada had nearly 16,000 noncitizens on its voter rolls. Then it named 185. Nevada says all 185 are citizens. Now the top two Democrats in Congress are suing the president.",
+      "shareCardText": "16,000 → 185. Nevada says all 185 are citizens. DHS says Nevada has the data to check. Now Democrats are in court."
+    },
+    "review": {
+      "approvedBy": "Plumb",
+      "approvedAt": "2026-10-21T21:22:28.117Z",
+      "notes": "Round 1's 16 fixes were applied correctly and the lawsuit, Nevada numbers, threats and both court dockets all check out again; two precision fixes remain: the Los Angeles County birthplace figure came from a sample of about 200 voters, not the whole county list, and Democracy Docket did report the California case's move to Judge Carter, so the new-angle line can't say the coverage missed it.",
+      "edition": "evening"
+    }
+  },
+  {
     "slug": "russia-frees-stephen-hubbard-trump-sanctions-waiver",
     "category": "foreign-policy",
     "kicker": "RUSSIA · AMERICAN FREED",
