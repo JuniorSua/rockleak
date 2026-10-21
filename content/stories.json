@@ -1,5 +1,479 @@
 [
   {
+    "slug": "iowa-senate-polls-tied-markets-favor-hinson-turek",
+    "category": "midterms",
+    "kicker": "IOWA SENATE · CLOSE CALL",
+    "headline": "Iowa's Senate Polls Are Close to a Tie. Traders Still Give the Republican 59%.",
+    "dek": "270toWin's polling average has Republican Ashley Hinson ahead of Democrat Josh Turek by under a point, yet both big betting markets make her the favorite. Iowa's past polling misses may be one reason. Turek outraised her more than 4 to 1 last quarter, but she started October with nearly twice his cash.",
+    "publishedAt": "2026-10-21T02:26:47.512Z",
+    "status": "developing",
+    "agreementScore": 89,
+    "bottomLine": "Nobody knows who wins Iowa. The polls call it a coin flip; the markets make Hinson a modest favorite, possibly betting that Iowa's polls miss Republicans again. A 59% favorite still loses about 4 times in 10.",
+    "coreFacts": [
+      {
+        "text": "Iowa's open U.S. Senate seat, left by retiring Republican Sen. Joni Ernst, is a race between the major-party nominees, Republican Rep. Ashley Hinson and Democratic state Rep. Josh Turek, and Libertarian Thomas Laehn. Election Day is Nov. 3, 2026.",
+        "verdict": "confirmed",
+        "sources": [
+          {
+            "label": "FEC: Ashley Hinson, Senate candidate S6IA00314 (open seat)",
+            "url": "https://www.fec.gov/data/candidate/S6IA00314/?cycle=2026",
+            "tier": "primary"
+          },
+          {
+            "label": "FEC: Josh Turek, Senate candidate S6IA00298",
+            "url": "https://www.fec.gov/data/candidate/S6IA00298/?cycle=2026",
+            "tier": "primary"
+          },
+          {
+            "label": "NBC News: Trump dominates the Iowa Senate debate from afar (Oct. 7)",
+            "url": "https://www.nbcnews.com/politics/2026-election/trump-dominates-iowa-senate-debate-afar-hinson-turek-rcna602129",
+            "tier": "outlet"
+          },
+          {
+            "label": "Fox News Poll: Turek, Hinson in close Iowa Senate race (Oct. 1)",
+            "url": "https://www.foxnews.com/politics/fox-news-poll-turek-hinson-close-iowa-senate-race",
+            "tier": "outlet"
+          },
+          {
+            "label": "FEC: Thomas Laehn, Senate candidate S6IA00181 (Libertarian)",
+            "url": "https://www.fec.gov/data/candidate/S6IA00181/?cycle=2026",
+            "tier": "primary"
+          }
+        ]
+      },
+      {
+        "text": "The polls are close to a tie. 270toWin's average of the five most recent polls (through Oct. 20) has Hinson at 46.4% and Turek at 45.6%. Three of the five have Hinson ahead: NPA Polling (Oct. 8–12) 47% to 44% (678 likely voters, ±3.8), Trafalgar (Oct. 13–15) 46% to 44% (1,094 likely voters, ±2.9) and co/efficient (Oct. 15–19) 48% to 45% (863 likely voters, ±3.3). Two have Turek ahead: Marist (Oct. 8–11) 48% to 45% among likely voters (±6.6) and YouGov (Oct. 6–12) 47% to 46% (2,245 likely voters, ±3.1).",
+        "verdict": "confirmed",
+        "sources": [
+          {
+            "label": "270toWin: 2026 Iowa Senate polls",
+            "url": "https://www.270towin.com/2026-senate-polls/iowa",
+            "tier": "outlet"
+          },
+          {
+            "label": "Marist Poll: 2026 Midterm Elections in Iowa, October 2026",
+            "url": "https://maristpoll.marist.edu/polls/2026-midterm-elections-in-iowa-october-2026/",
+            "tier": "primary"
+          },
+          {
+            "label": "Newsweek: YouGov poll (Oct. 14)",
+            "url": "https://www.newsweek.com/josh-turek-ashley-hinson-iowa-polls-trump-voters-12569851",
+            "tier": "outlet"
+          },
+          {
+            "label": "Wikipedia: 2026 Iowa Senate election, polling table (field dates and margins for NPA, Trafalgar, co/efficient)",
+            "url": "https://en.wikipedia.org/wiki/2026_United_States_Senate_election_in_Iowa",
+            "tier": "outlet"
+          },
+          {
+            "label": "NPA Polling: Iowa 2026 General Election Survey Results (Oct. 19)",
+            "url": "https://backend.natpublicaffairs.com/media/Iowa_General_Election_Memo_101526.3.pdf",
+            "tier": "primary"
+          },
+          {
+            "label": "Trafalgar Group: Iowa Statewide General Election Poll, October 2026",
+            "url": "https://www.thetrafalgargroup.org/wp-content/uploads/2026/10/IA-Midterms-Report-1017.pdf",
+            "tier": "primary"
+          },
+          {
+            "label": "co/efficient: Iowa U.S. Senate (Oct. 15-19)",
+            "url": "https://battlegrounds.coefficient.org/ia/",
+            "tier": "primary"
+          }
+        ]
+      },
+      {
+        "text": "Both big prediction markets favor Hinson. As of 10:02 PM ET Oct. 20, Kalshi's 'Iowa Senate winner?' market priced Hinson at 59 cents and Turek at 44 cents, and Polymarket's 'Iowa Senate Election Winner' priced Hinson at 58% and Turek at 42%.",
+        "verdict": "confirmed",
+        "sources": [
+          {
+            "label": "Kalshi · Iowa Senate winner? (SENATEIA-26)",
+            "url": "https://kalshi.com/markets/senateia",
+            "tier": "market"
+          },
+          {
+            "label": "Polymarket · Iowa Senate Election Winner",
+            "url": "https://polymarket.com/event/iowa-senate-election-winner",
+            "tier": "market"
+          }
+        ]
+      },
+      {
+        "text": "Iowa polls have underestimated Republicans before. The final 270toWin average in 2020 had Ernst ahead 47.0% to 46.6%; NBC's results with 99% of the vote in had her winning 51.8% to 45.2%. In 2024, the final Des Moines Register/Selzer Iowa Poll showed Kamala Harris up 3 points; Donald Trump won Iowa by more than 13 points.",
+        "verdict": "confirmed",
+        "sources": [
+          {
+            "label": "270toWin: Iowa 2020 Senate polls (final average)",
+            "url": "https://www.270towin.com/2020-senate-polls/iowa/",
+            "tier": "outlet"
+          },
+          {
+            "label": "NBC News: Iowa Senate results 2020",
+            "url": "https://www.nbcnews.com/politics/2020-elections/iowa-senate-results",
+            "tier": "outlet"
+          },
+          {
+            "label": "KCRG: How did the Iowa Poll get it so wrong? (Nov. 6, 2024)",
+            "url": "https://www.kcrg.com/2024/11/06/how-did-iowa-poll-get-it-so-wrong/",
+            "tier": "outlet"
+          }
+        ]
+      },
+      {
+        "text": "Turek's campaign took in $13.9 million from July 1 to Sept. 30, more than four times the $3.25 million taken in by Hinson's campaign (Ashley for Iowa). Turek also spent more, $12.6 million to Hinson's $3.1 million, so Hinson started October with more cash: $6.9 million to Turek's $3.6 million.",
+        "verdict": "confirmed",
+        "sources": [
+          {
+            "label": "FEC: Josh Turek for Iowa, October Quarterly (filed Oct. 15)",
+            "url": "https://docquery.fec.gov/pdf/263/202610159915675263/202610159915675263.pdf",
+            "tier": "primary"
+          },
+          {
+            "label": "FEC: Ashley for Iowa, October Quarterly (filed Oct. 15)",
+            "url": "https://docquery.fec.gov/pdf/116/202610159909540116/202610159909540116.pdf",
+            "tier": "primary"
+          },
+          {
+            "label": "FEC raw filing 2027547 (Turek Q3)",
+            "url": "https://docquery.fec.gov/dcdev/posted/2027547.fec",
+            "tier": "primary"
+          },
+          {
+            "label": "FEC raw filing 2025453 (Hinson Q3)",
+            "url": "https://docquery.fec.gov/dcdev/posted/2025453.fec",
+            "tier": "primary"
+          },
+          {
+            "label": "FEC: Josh Turek for Iowa (C00915645)",
+            "url": "https://www.fec.gov/data/committee/C00915645/?cycle=2026",
+            "tier": "primary"
+          },
+          {
+            "label": "FEC: Ashley for Iowa (C00706267)",
+            "url": "https://www.fec.gov/data/committee/C00706267/?cycle=2026",
+            "tier": "primary"
+          }
+        ]
+      },
+      {
+        "text": "Marist found Turek ahead 51% to 31% among likely voters who are independents, and Trump's approval among Iowa likely voters at 44%, with 53% disapproving. In the same poll, 59% of likely voters said they think Hinson will win.",
+        "verdict": "confirmed",
+        "sources": [
+          {
+            "label": "Marist Poll: 2026 Midterm Elections in Iowa, October 2026",
+            "url": "https://maristpoll.marist.edu/polls/2026-midterm-elections-in-iowa-october-2026/",
+            "tier": "primary"
+          }
+        ]
+      },
+      {
+        "text": "The Fox News poll (Sept. 24–28, conducted by Beacon Research (D) and Shaw & Company (R), 1,008 likely voters, ±3) had Turek ahead 49% to 47%. Fox reported that more Iowa voters identify as Republicans than as Democrats, and quoted Republican pollster Daron Shaw: \"Recent history and the state's partisan makeup suggest Hinson can pull this out.\"",
+        "verdict": "confirmed",
+        "sources": [
+          {
+            "label": "Fox News Poll: Turek, Hinson in close Iowa Senate race (Oct. 1)",
+            "url": "https://www.foxnews.com/politics/fox-news-poll-turek-hinson-close-iowa-senate-race",
+            "tier": "outlet"
+          }
+        ]
+      },
+      {
+        "text": "Race raters see it as close. The Cook Political Report moved Iowa to 'toss-up' from 'lean Republican' on Aug. 20, and as of late August Inside Elections rated it 'tilt Republican'.",
+        "verdict": "confirmed",
+        "sources": [
+          {
+            "label": "KCRG: Political report shows Iowa Senate race a toss-up (Aug. 21)",
+            "url": "https://www.kcrg.com/2026/08/21/political-report-shows-iowa-governor-race-leans-democrat-senate-race-toss-up/",
+            "tier": "outlet"
+          },
+          {
+            "label": "Bleeding Heartland: Republicans seem increasingly worried about Iowa's U.S. Senate race (Aug. 24)",
+            "url": "https://www.bleedingheartland.com/?p=458547",
+            "tier": "outlet"
+          }
+        ]
+      },
+      {
+        "text": "Other polling averages also put the race within about a point, but differ on who leads. Wikipedia's compilation of averages lists RealClearPolitics at Hinson +0.1 and Silver Bulletin at Turek +1.1, both as of Oct. 19.",
+        "verdict": "likely",
+        "sources": [
+          {
+            "label": "Wikipedia: 2026 Iowa Senate election, aggregate polling table",
+            "url": "https://en.wikipedia.org/wiki/2026_United_States_Senate_election_in_Iowa",
+            "tier": "outlet"
+          }
+        ]
+      }
+    ],
+    "claims": [
+      {
+        "claim": "\"42% of the time is all Representative Turek showed up to work this year.\"",
+        "claimant": "Ashley Hinson (R), final debate, Oct. 13",
+        "verdict": "confirmed",
+        "explanation": "PolitiFact found Turek missed 261 of 445 Iowa House floor votes in the 2026 session, so he was present for 42%. The count covers floor votes only, not committee work. His absence rate was much lower in earlier years (9.8% in 2025), and Turek says he was campaigning.",
+        "sources": [
+          {
+            "label": "PolitiFact: fact-checking the final debate (Oct. 14)",
+            "url": "https://politifact.com/article/2026/oct/14/hinson-turek-iowa-senate-farm-bill-shadow-lobbyist/",
+            "tier": "outlet"
+          },
+          {
+            "label": "PolitiFact: \"skipped 58%\" rated True (Sept. 30)",
+            "url": "https://politifact.com/factchecks/2026/sep/30/ashley-hinson/josh-turek-iowa-senate-house-votes/",
+            "tier": "outlet"
+          }
+        ]
+      },
+      {
+        "claim": "Hinson \"had her husband operating as a shadow lobbyist.\"",
+        "claimant": "Josh Turek (D), final debate, Oct. 13",
+        "verdict": "misleading",
+        "explanation": "PolitiFact called it misleading. Hinson's husband, an insurance agent, chaired a government affairs committee for an insurance agents' group and helped arrange a 2023 meeting with Iowa's delegation. PolitiFact found no evidence Hinson used her office to benefit him or the group; her campaign says the role is unpaid, and federal law defines a lobbyist as someone paid to lobby.",
+        "sources": [
+          {
+            "label": "PolitiFact: fact-checking the final debate (Oct. 14)",
+            "url": "https://politifact.com/article/2026/oct/14/hinson-turek-iowa-senate-farm-bill-shadow-lobbyist/",
+            "tier": "outlet"
+          }
+        ]
+      },
+      {
+        "claim": "\"Ashley Hinson has voted in favor of (the Iran war) seven times.\"",
+        "claimant": "Josh Turek (D), first debate, Oct. 7",
+        "verdict": "likely",
+        "explanation": "PolitiFact called it mostly accurate: Hinson voted against six War Powers resolutions aimed at ending the Iran war. The seventh vote Turek's campaign cited was about U.S. forces in Lebanon, not a direct vote on Iran.",
+        "sources": [
+          {
+            "label": "PolitiFact: fact-checking the first debate (Oct. 8)",
+            "url": "https://politifact.com/article/2026/oct/08/ashley-hinson-josh-turek-iowa-immigration-iran/",
+            "tier": "outlet"
+          }
+        ]
+      },
+      {
+        "claim": "Reversing the Republican budget law would \"immediately mean all of those illegals who we have kicked off Medicaid would be back on it.\"",
+        "claimant": "Ashley Hinson (R), first debate, Oct. 7",
+        "verdict": "false",
+        "explanation": "PolitiFact found immigrants in the country illegally were already largely ineligible for federally funded Medicaid, so the law did not remove them and reversing it would not restore eligibility. Hinson's campaign pointed to a conservative think tank's argument that the law's limits on provider taxes could indirectly lead states such as California to drop some of these immigrants from state-funded coverage; PolitiFact said the law did not broadly change eligibility.",
+        "sources": [
+          {
+            "label": "PolitiFact: fact-checking the first debate (Oct. 8)",
+            "url": "https://politifact.com/article/2026/oct/08/ashley-hinson-josh-turek-iowa-immigration-iran/",
+            "tier": "outlet"
+          }
+        ]
+      },
+      {
+        "claim": "Hinson \"voted for 110,000 Iowans to lose their healthcare.\"",
+        "claimant": "Josh Turek (D), first debate, Oct. 7",
+        "verdict": "misleading",
+        "explanation": "PolitiFact found KFF estimated the budget law's direct changes would leave about 80,000 Iowans uninsured by 2034. The 110,000 figure adds people affected by expiring ACA subsidies, which were not part of that vote.",
+        "sources": [
+          {
+            "label": "PolitiFact: fact-checking the first debate (Oct. 8)",
+            "url": "https://politifact.com/article/2026/oct/08/ashley-hinson-josh-turek-iowa-immigration-iran/",
+            "tier": "outlet"
+          }
+        ]
+      }
+    ],
+    "coverage": [
+      {
+        "outlet": "Fox News",
+        "lean": "right",
+        "headline": "Fox News Poll: Turek, Hinson in close Iowa Senate race",
+        "url": "https://www.foxnews.com/politics/fox-news-poll-turek-hinson-close-iowa-senate-race",
+        "framing": "Leads with Turek's 2-point edge among likely voters, within the margin of error, and notes Iowa has more Republicans than Democrats. Its Republican pollster says recent history and the state's makeup suggest Hinson can pull it out."
+      },
+      {
+        "outlet": "NBC News",
+        "lean": "lean-left",
+        "headline": "Trump dominates the Iowa Senate debate from afar",
+        "url": "https://www.nbcnews.com/politics/2026-election/trump-dominates-iowa-senate-debate-afar-hinson-turek-rcna602129",
+        "framing": "Frames the first debate around Trump's policies, with Turek stressing that Iowans are hurting and Hinson accusing Turek of trashing the president in the primary. Says polls show the race essentially tied."
+      },
+      {
+        "outlet": "Newsweek",
+        "lean": "center",
+        "headline": "Josh Turek Is Winning Over Iowa Trump Voters, Poll Finds",
+        "url": "https://www.newsweek.com/josh-turek-ashley-hinson-iowa-polls-trump-voters-12569851",
+        "framing": "Reports YouGov's 47–46 Turek lead and infers some Trump voters back him, since the sample voted 52–41 for Trump in 2024. Notes prediction markets show a less tight race."
+      },
+      {
+        "outlet": "PolitiFact",
+        "lean": "center",
+        "headline": "Iowa Senate debate: Fact-checking Hinson, Turek on missed votes, 'shadow lobbyist' and farm bill",
+        "url": "https://politifact.com/article/2026/oct/14/hinson-turek-iowa-senate-farm-bill-shadow-lobbyist/",
+        "framing": "Confirms Hinson's 42% attendance figure, noting it rated a similar version True, and calls Turek's 'shadow lobbyist' attack on Hinson's husband misleading."
+      },
+      {
+        "outlet": "Iowa Starting Line",
+        "lean": "left",
+        "headline": "Josh Turek, Ashley Hinson spar over wealth, missed votes, and Iran in final Iowa Senate debate",
+        "url": "https://iowastartingline.com/news/politics/hinson-turek-senate-debate/",
+        "framing": "Covers the final debate as a heated exchange over Hinson's finances and Turek's attendance, quoting Hinson that 'private stock is not trading stock' and that Turek is 'too liberal for Iowa.'"
+      }
+    ],
+    "xPulse": {
+      "summary": "No notable X reaction beyond the outlets above. Hinson's own X posts call her opponent \"Liberal Josh Turek,\" per The National News Desk.",
+      "trending": []
+    },
+    "markets": [
+      {
+        "platform": "Kalshi",
+        "question": "Kalshi · Iowa Senate winner? · Ashley Hinson",
+        "probability": 0.59,
+        "url": "https://kalshi.com/markets/senateia",
+        "asOf": "2026-10-21T02:02:00Z"
+      },
+      {
+        "platform": "Kalshi",
+        "question": "Kalshi · Iowa Senate winner? · Josh Turek",
+        "probability": 0.44,
+        "url": "https://kalshi.com/markets/senateia",
+        "asOf": "2026-10-21T02:02:00Z"
+      },
+      {
+        "platform": "Polymarket",
+        "question": "Polymarket · Iowa Senate Election Winner · Ashley Hinson (R)",
+        "probability": 0.58,
+        "url": "https://polymarket.com/event/iowa-senate-election-winner",
+        "asOf": "2026-10-21T02:02:00Z"
+      },
+      {
+        "platform": "Polymarket",
+        "question": "Polymarket · Iowa Senate Election Winner · Josh Turek (D)",
+        "probability": 0.42,
+        "url": "https://polymarket.com/event/iowa-senate-election-winner",
+        "asOf": "2026-10-21T02:02:00Z"
+      }
+    ],
+    "debate": [
+      {
+        "persona": "Grant",
+        "position": "This race leans Hinson: voters' expectations, the markets and Iowa's own polling history all point the same way, while Turek's fundraising edge is more noise than signal.",
+        "argument": "Iowa polls have understated Republicans before. In 2020 the final average had Ernst up by under half a point, and she won by about 6.6. In 2024 the Selzer poll had Harris up 3, and Trump won by more than 13. Today's average has Hinson ahead 46.4 to 45.6, and both Kalshi and Polymarket price her at roughly 58 to 59 percent. Fox's own poll found more Iowans identify as Republicans than as Democrats. On the money, Turek raised $13.9 million to Hinson's $3.25 million, but he spent $12.6 million doing it, and Hinson started October with $6.9 million in the bank to his $3.6 million. PolitiFact rated a version of Hinson's attendance attack True: he was present for only 42 percent of House floor votes this year. Voters can weigh that against the open question of why traders favor Hinson, which no one has answered.",
+        "concedes": "Turek has real strengths. Marist has him ahead 51 to 31 among independents, Trump's approval among Iowa likely voters is only 44 percent with 53 percent disapproving, and Turek's fundraising lead is more than four to one. Polls from Marist, YouGov and Fox also have him ahead. Past misses are no guarantee of a repeat, because pollsters adjust and errors can run either way. Hinson also made a false claim: that reversing the budget law would put illegal immigrants back on Medicaid, when PolitiFact found they were already largely ineligible."
+      },
+      {
+        "persona": "Rosa",
+        "position": "Hinson has the stronger cash position and a possible polling edge, but the money, the independents, and Trump's weak approval say Iowa is a real toss-up and Turek is no long shot.",
+        "argument": "Turek raised $13.9 million in one quarter, more than four times Hinson's $3.25 million, and he leads 51% to 31% among independents in the Marist poll. That same poll has Trump's approval at 44% with 53% disapproving, which is a bad backdrop for the president's party. Turek also led in the Fox poll, run by a Democratic and a Republican firm, 49% to 47%. The Cook Political Report moved Iowa to toss-up for a reason. On the debate claims, Hinson's line that reversing the budget law would put people who are in the country illegally back on Medicaid is false: PolitiFact found they were already largely ineligible. Turek's 110,000 figure also counts expiring ACA subsidies that weren't in that vote, so I will stick to the 80,000 Iowans KFF estimates would be uninsured by 2034 under the law's direct changes.",
+        "concedes": "Hinson has real advantages. Iowa polls missed Republican strength badly in 2020 and 2024, and the Selzer poll had Harris up 3 in a state Trump won by more than 13. Both prediction markets favor her, more Iowans identify as Republican than Democratic, and she started October with $6.9 million in cash to Turek's $3.6 million. Her attack on Turek's attendance is also accurate: he was present for only 42% of floor votes this year, even if he says he was campaigning."
+      },
+      {
+        "persona": "Mercer",
+        "position": "This race is a genuine toss-up, and anyone who tells you otherwise is selling a narrative, not a record.",
+        "argument": "The polls are close to a tie: the five-poll average has Hinson at 46.4% and Turek at 45.6%, and of the five polls in it, three have Hinson ahead and two have Turek ahead, all by 3 points or less. Markets lean Hinson at 58 to 59 cents, but no record shows why traders think so. Iowa's polls missed Republicans badly in 2020 and 2024, and Fox's own Republican pollster points to the state's partisan makeup. Money cuts both ways: Turek raised more than four times what Hinson did, but he burned through it, and Hinson began October with $6.9 million to his $3.6 million. Both campaigns also bent the facts. Hinson's 42% attendance attack is true, though it counts floor votes only and Turek was campaigning. Her Medicaid claim is false. Turek's 'shadow lobbyist' line is misleading, and so is his 110,000 figure, which includes ACA subsidies that weren't in that vote.",
+        "concedes": "The Hinson-leaning case is strong. Iowa polls underestimated Republicans by wide margins in 2020 and 2024, more Iowans identify as Republican than Democrat, and both major prediction markets price her as the favorite. Turek's small poll leads sit inside the margins of error. If the past pattern holds, Hinson is the likelier winner."
+      },
+      {
+        "persona": "Vex",
+        "position": "The money and the markets say Hinson is the quiet favorite, while the polls that the press keeps calling a tie have a track record of flattering Republicans' opponents.",
+        "argument": "Both big prediction markets, where people put real money behind their views, price Hinson at roughly 58 to 59 percent. Iowa polls have missed the Republican number before: in 2020 the final average had Ernst up 0.4 points and she won by about 6.6, and in 2024 the last Selzer poll had Harris up 3 in a state Trump carried by more than 13. The current polling average has Hinson slightly ahead, and Fox's own Republican pollster points to the state's partisan makeup, with more voters identifying as Republicans than Democrats. Meanwhile NBC framed the first debate around Trump and mentioned Turek's missed votes only as Hinson's accusation, though PolitiFact had already rated a version of that attack True on Sept. 30. I can't show that markets are pricing in the polling misses, since no one knows why traders favor Hinson, and I won't pretend otherwise.",
+        "concedes": "Turek has real strengths. He leads among independents 51 to 31 in the Marist poll, Trump's approval in Iowa is underwater at 44 to 53, and he raised more than four times what Hinson did last quarter. Two of the five polls in 270toWin's average had him ahead, and so did a Fox poll with a Republican co-pollster, so calling this a toss-up is fair. Past misses don't guarantee a repeat, because pollsters adjust and errors can run either way. PolitiFact called Turek's claim that Hinson voted against ending the Iran war mostly accurate, which hurts her on his best issue."
+      }
+    ],
+    "consensus": "All four analysts accept the record: the polls are close to a tie, both markets favor Hinson, Iowa polls underestimated Republicans in 2020 and 2024, and Turek outraised Hinson more than 4 to 1 last quarter while she kept more cash.",
+    "stillUnknown": [
+      "Why traders favor Hinson. Markets don't explain themselves. Iowa's past polling misses and its Republican lean are plausible reasons, but no one can show that's what is moving prices.",
+      "Whether 2026 polls repeat the 2020 and 2024 misses. Pollsters adjust their methods after misses, and a polling error can run in either direction.",
+      "How much outside groups have spent in total. Raw FEC independent-expenditure filings include amendments and repeat estimates, so we don't report a single total.",
+      "How much Turek's spending edge has narrowed. His campaign spent most of what it raised by Sept. 30, and the next reports, covering Oct. 1–14, are due Oct. 22.",
+      "The exact current RealClearPolitics and Silver Bulletin averages. Both sites blocked our requests, so those figures come from Wikipedia's compilation, not the sites themselves."
+    ],
+    "body": [
+      "Iowa's Senate seat is open because Republican Sen. Joni Ernst is retiring. The major-party nominees are Republican Rep. Ashley Hinson and Democratic state Rep. Josh Turek; Libertarian Thomas Laehn is also running. Election Day is Nov. 3.",
+      "The polls can't separate them. 270toWin's average of the five most recent polls, through Oct. 20, has Hinson at 46.4% and Turek at 45.6%. Three of those five have Hinson ahead: NPA Polling (Oct. 8–12) 47% to 44%, Trafalgar (Oct. 13–15) 46% to 44% and co/efficient (Oct. 15–19) 48% to 45%. Two have Turek ahead: Marist (Oct. 8–11) 48% to 45% among likely voters and YouGov (Oct. 6–12) 47% to 46%. Every lead is 3 points or less. Other averages differ on who is ahead: Wikipedia's compilation lists RealClearPolitics at Hinson +0.1 and Silver Bulletin at Turek +1.1 as of Oct. 19. The Cook Political Report has rated the race a toss-up since Aug. 20.",
+      "The betting markets are less torn. As of 10 PM ET on Oct. 20, Kalshi priced a Hinson win at 59 cents on the dollar and a Turek win at 44 cents; Polymarket had Hinson at 58% and Turek at 42%. Markets show what traders expect, not what will happen, and they don't explain themselves.",
+      "Why might traders lean Hinson? One possible reason: Iowa polls have missed Republican strength before. In 2020, the final 270toWin average had Ernst ahead by less than half a point; she won 51.8% to 45.2%. In 2024, the final Des Moines Register/Selzer Iowa Poll had Kamala Harris up 3, and Donald Trump won Iowa by more than 13. Fox News also reported that more Iowans identify as Republicans than as Democrats, and its Republican pollster, Daron Shaw, said \"recent history and the state's partisan makeup suggest Hinson can pull this out.\" Most voters in Marist's poll agree with the traders: 59% of likely voters said they expect Hinson to win.",
+      "Why might traders be wrong? Marist found Turek ahead 51% to 31% among independents who are likely to vote, and Trump's approval among Iowa likely voters at 44%, with 53% disapproving. Pollsters change their methods after a miss, and a polling error can run in either direction.",
+      "Then there's the money. FEC reports filed Oct. 15 show Turek's campaign took in $13.9 million from July 1 to Sept. 30, more than four times the $3.25 million Hinson's campaign took in. But Turek also spent $12.6 million to Hinson's $3.1 million, so Hinson started October with $6.9 million in the bank to his $3.6 million.",
+      "The attacks have been fact-checked. PolitiFact, which rated a similar version True, confirmed Hinson's line that Turek was present for only 42% of Iowa House floor votes this year; he missed 261 of 445, which he says was because he was campaigning. It called Turek's charge that Hinson's husband was a \"shadow lobbyist\" misleading, and called his charge that she voted for the Iran war seven times mostly accurate: she voted against six War Powers resolutions to end it, and the seventh vote was about Lebanon. It found the law did not remove immigrants here illegally from Medicaid, since they were largely ineligible already, so reversing it would not put them \"back on\"; Hinson's campaign argued the law's provider-tax limits could lead some states to drop them from state-funded coverage. It also found Turek's \"110,000 Iowans\" health care figure counted more than that vote did.",
+      "What to watch: the campaigns' next FEC reports, covering Oct. 1–14, are due Oct. 22. They will show whether Turek's spending edge has kept up or whether Hinson's cash cushion is paying for a late push."
+    ],
+    "stat": {
+      "value": "59%",
+      "label": "Kalshi's price on Republican Ashley Hinson winning Iowa's Senate race, 10 PM ET Oct. 20 (Polymarket: 58%). 270toWin's poll average has her up 0.8."
+    },
+    "tldr": {
+      "what": "Iowa elects a new senator on Nov. 3 to replace retiring Republican Joni Ernst. 270toWin's polling average has Rep. Ashley Hinson (R) at 46.4% and state Rep. Josh Turek (D) at 45.6%, but Kalshi and Polymarket put Hinson's chances at 59% and 58%.",
+      "why": "If you vote in Iowa, the polls say your race is close enough that turnout could decide it. And a 59% favorite is not a sure thing: by the market's own math, she loses about 4 times in 10.",
+      "truth": "Confirmed: the polls are close to a tie, both markets favor Hinson, and Iowa polls underestimated Republicans in 2020 and 2024. True: Hinson's attack that Turek showed up for 42% of floor votes. False: her Medicaid claim. Misleading: Turek's \"shadow lobbyist\" attack. Unknown: why traders favor her."
+    },
+    "newAngle": "None of the coverage above compares the two campaigns' new FEC reports: Turek took in $13.9 million from July through September, more than four times Hinson's $3.25 million, yet Hinson started October with nearly twice his cash. The coverage also cites the markets without setting them against Iowa's 2020 and 2024 polling misses.",
+    "seo": {
+      "title": "Iowa Senate 2026: Polls Near a Tie, Markets Favor Hinson",
+      "description": "Hinson leads Turek by 0.8 points in 270toWin's Iowa Senate polling average, but Kalshi gives her 59%. What may explain the gap, and what the FEC money shows.",
+      "keywords": [
+        "Iowa Senate race 2026",
+        "Hinson vs Turek poll",
+        "Ashley Hinson",
+        "Josh Turek",
+        "Iowa Senate odds",
+        "Kalshi Iowa Senate",
+        "Polymarket Iowa Senate"
+      ],
+      "faq": [
+        {
+          "q": "Who is winning the Iowa Senate race?",
+          "a": "Nobody clearly. 270toWin's average of the five latest polls, through Oct. 20, has Republican Ashley Hinson at 46.4% and Democrat Josh Turek at 45.6%. Three of those five polls have Hinson ahead; two have Turek ahead."
+        },
+        {
+          "q": "What do betting markets say about Iowa's Senate race?",
+          "a": "As of 10 PM ET Oct. 20, Kalshi priced a Hinson win at 59 cents and Polymarket at 58%. Markets show what traders expect, not facts."
+        },
+        {
+          "q": "Why do markets favor Hinson if the polls are close to a tie?",
+          "a": "Traders don't say. Iowa polls underestimated Republicans in 2020 and 2024, and Fox reports more Iowans identify as Republicans, which may be part of it. That reasoning is unconfirmed."
+        },
+        {
+          "q": "How much have Hinson and Turek raised?",
+          "a": "From July 1 to Sept. 30, Turek's campaign took in $13.9 million and Hinson's $3.25 million. Hinson had $6.9 million cash on Sept. 30 to Turek's $3.6 million."
+        },
+        {
+          "q": "When is the Iowa Senate election?",
+          "a": "Election Day is Nov. 3, 2026. The seat is open because Republican Sen. Joni Ernst is retiring."
+        }
+      ]
+    },
+    "social": {
+      "headlineVariants": [
+        {
+          "text": "Iowa's Senate Polls Are Close to a Tie. Traders Still Give the Republican 59%.",
+          "score": 88,
+          "rationale": "Sets up the polls-vs-markets gap with two specific numbers."
+        },
+        {
+          "text": "Turek Outraised Hinson 4-to-1 Last Quarter. She Still Has Nearly Twice His Cash.",
+          "score": 80,
+          "rationale": "Leads with the unreported FEC angle, but skips the polls and markets."
+        },
+        {
+          "text": "Iowa's Senate Race Is a Coin Flip in the Polls. Not in the Betting Markets.",
+          "score": 74,
+          "rationale": "Plain contrast with no motive implied; drops the numbers."
+        }
+      ],
+      "xPost": "Iowa Senate: 270toWin's polling average has Hinson (R) up 0.8 over Turek (D). Kalshi gives her 59%. Why? Traders don't say. In 2020, Iowa polls had Ernst up 0.4; she won by 6.6. But Turek took in $13.9M last quarter to her $3.25M.",
+      "thread": [
+        "Iowa's open Senate seat is a coin flip in the polls: 270toWin's average has Republican Ashley Hinson at 46.4% and Democrat Josh Turek at 45.6%. Of the five polls in it, three have Hinson ahead and two have Turek ahead.",
+        "Betting markets aren't torn. As of 10 PM ET Oct. 20, Kalshi priced a Hinson win at 59 cents and Polymarket at 58%. Markets show expectations, not facts.",
+        "One possible reason: Iowa polls have missed Republicans before. The final 2020 average had Ernst up 0.4; she won 51.8% to 45.2%. In 2024, the final Selzer poll had Harris up 3; Trump won Iowa by more than 13.",
+        "The case against: Marist has Turek up 51-31 with independents and Trump at 44% approval among Iowa likely voters. Turek's campaign took in $13.9M from July to September, more than 4x Hinson's $3.25M.",
+        "But Turek spent $12.6M, so Hinson entered October with $6.9M cash to his $3.6M. Next FEC reports, covering Oct. 1–14, are due Oct. 22."
+      ],
+      "shortVideoHook": "Iowa's Senate polls are about tied. So why do bettors give the Republican 59%? Traders don't say, but look at 2020.",
+      "shareCardText": "270toWin average: Hinson +0.8. Kalshi: Hinson 59%. Iowa's Senate race, explained."
+    },
+    "review": {
+      "approvedBy": "Plumb",
+      "approvedAt": "2026-10-21T02:26:40.946Z",
+      "notes": "Round 1's fixes were made correctly and the core story checks out against the pollsters' own releases, 270toWin, the markets and the FEC filings, but a few wording fixes are still needed: the draft leaves out the Libertarian candidate, a debate turn says Turek has a \"cash edge\" when Hinson has more cash, and one sentence in the polls paragraph now reads in the wrong order.",
+      "edition": "night"
+    }
+  },
+  {
     "slug": "dhs-california-noncitizen-voter-list-189-discrepancies-17000-more",
     "category": "courts",
     "kicker": "VOTER ROLLS · CALIFORNIA",
