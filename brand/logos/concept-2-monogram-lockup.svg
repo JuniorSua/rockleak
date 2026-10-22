@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 300" width="1200" height="300" role="img" aria-label="RockLeak - Cracked R lockup">
+<title>RockLeak - Cracked R lockup</title>
+<defs><mask id="c2-crack" maskUnits="userSpaceOnUse" x="0" y="0" width="512" height="512"><rect width="512" height="512" fill="#fff"/><polyline points="302,40 284,108 296,150 268,212 252,244 264,266 248,300" fill="none" stroke="#000" stroke-width="12" stroke-linejoin="miter" stroke-miterlimit="10"/></mask></defs>
+<g transform="translate(101.57 34) scale(0.45)">
+<path d="M118,94 L140,72 L316,72 L382,124 L382,200 L336,252 L410,440 L312,440 L251.38,286 L214,286 L214,440 L140,440 L118,418 Z M214,146 V214 H290 L308,196 V164 L290,146 Z" fill="#0B0D10" fill-rule="evenodd" mask="url(#c2-crack)"/>
+<path d="M243,304 C248.7,318.25 262,328.7 262,343.9 A19,19 0 0 1 224,343.9 C224,328.7 237.3,318.25 243,304 Z" fill="#E5252A"/>
+</g>
+<rect x="370.57" y="76" width="4" height="148" fill="#0B0D10" opacity="0.28"/>
+<g transform="translate(411.57 94) scale(1.12)">
+<path d="M0,0 H38 C57,0,68,11,68,29 C68,42,61,51,50,55 L70,100 H46 L28,58 H22 V100 H0 Z M22,19 V40 H37 C43.5,40,46.5,36,46.5,29.5 C46.5,23,43.5,19,37,19 Z M76,50 A42,51,0,1,1,160,50 A42,51,0,1,1,76,50 Z M98,50 A20,32,0,1,0,138,50 A20,32,0,1,0,98,50 Z M245.27,29 A42,51,0,1,0,245.27,71 L222.09,71 A20,32,0,1,1,222.09,29 Z M252.27,0 L274.27,0 L274.27,38 L299.27,0 L324.27,0 L297.95,40 L327.27,100 L302.27,100 L283.61,61.81 L274.27,76 L274.27,100 L252.27,100 Z" fill="#0B0D10"/>
+<path d="M333.27,0 H355.27 V81 H389.27 V100 H333.27 Z M393.27,0 H449.27 V19 H415.27 V40.5 H445.27 V59.5 H415.27 V81 H451.27 V100 H393.27 Z M482.27,0 L508.27,0 L535.27,100 L512.27,100 L507.14,81 L483.4,81 L478.27,100 L455.27,100 Z M495.27,37.04 L488.53,62 L502.01,62 Z M538.27,0 L560.27,0 L560.27,38 L585.27,0 L610.27,0 L583.95,40 L613.27,100 L588.27,100 L569.61,61.81 L560.27,76 L560.27,100 L538.27,100 Z" fill="#2E6FF2"/>
+</g>
+</svg>

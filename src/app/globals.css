@@ -1,0 +1,80 @@
+@import "tailwindcss";
+
+/* Calm, modern newsroom: white space, black type, one accent. */
+@theme inline {
+  --color-ink: #0b0d10;
+  --color-ink-2: #1c2027;
+  --color-paper: #f6f6f4;
+  --color-rule: #e6e6e3;
+  --color-muted: #6b7079;
+  --color-accent: #1f4fd6;
+  --color-signal: #c8331f;
+  --color-amber: #b7791f;
+  --color-leak: #1f4fd6;
+
+  --color-lean-left: #3b6fd8;
+  --color-lean-lean-left: #8fb0ee;
+  --color-lean-center: #8a8f99;
+  --color-lean-lean-right: #e9a2a2;
+  --color-lean-right: #c94a4a;
+
+  --font-sans: var(--font-inter);
+  --font-serif: var(--font-serif-display);
+  --font-mono: var(--font-jetbrains);
+}
+
+body {
+  background: #ffffff;
+  color: var(--color-ink);
+  font-family: var(--font-inter), system-ui, sans-serif;
+}
+
+/* Small uppercase label above headlines. */
+.kicker {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.headline {
+  font-family: var(--font-headline), "Arial Narrow", sans-serif;
+  font-weight: 700;
+  letter-spacing: -0.005em;
+  line-height: 1.06;
+}
+
+.dek {
+  font-family: var(--font-serif-display), Georgia, serif;
+  color: #4d525a;
+  line-height: 1.5;
+}
+
+.byline {
+  font-size: 0.75rem;
+  color: var(--color-muted);
+}
+
+.mono {
+  font-family: var(--font-jetbrains), monospace;
+}
+
+/* The oil-sheen rule: the brand's one decorative device. */
+.sheen {
+  background: linear-gradient(90deg, #4c6bff 0%, #19bfb2 50%, #9563f5 100%);
+}
+
+.prose-rl p + p {
+  margin-top: 1.15em;
+}
+
+details > summary {
+  list-style: none;
+  cursor: pointer;
+}
+details > summary::-webkit-details-marker {
+  display: none;
+}
+details[open] .chev {
+  transform: rotate(90deg);
+}

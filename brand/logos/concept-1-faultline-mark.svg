@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512" role="img" aria-label="RockLeak - Fault Line mark">
+<title>RockLeak - Fault Line mark</title>
+<defs><clipPath id="c1-rock"><path d="M150,58 L330,42 L440,138 L458,262 L376,352 L262,392 L140,348 L60,250 L78,140 Z"/></clipPath></defs>
+<path d="M150,58 L330,42 L440,138 L458,262 L376,352 L262,392 L140,348 L60,250 L78,140 Z" fill="#171A20"/>
+<path d="M150,58 L330,42 L232,128 Z" fill="#48515D"/>
+<path d="M78,140 L150,58 L232,128 Z" fill="#343B45"/>
+<path d="M330,42 L350,162 L232,128 Z" fill="#343B45"/>
+<path d="M330,42 L440,138 L350,162 Z" fill="#242930"/>
+<path d="M78,140 L232,128 L176,238 Z" fill="#242930"/>
+<path d="M60,250 L78,140 L176,238 Z" fill="#343B45"/>
+<path d="M232,128 L350,162 L326,262 Z" fill="#242930"/>
+<path d="M232,128 L326,262 L176,238 Z" fill="#171A20"/>
+<path d="M60,250 L176,238 L140,348 Z" fill="#171A20"/>
+<path d="M176,238 L326,262 L240,322 Z" fill="#171A20"/>
+<path d="M176,238 L240,322 L140,348 Z" fill="#0B0D10"/>
+<path d="M140,348 L240,322 L262,392 Z" fill="#0B0D10"/>
+<path d="M350,162 L440,138 L458,262 Z" fill="#171A20"/>
+<path d="M350,162 L458,262 L326,262 Z" fill="#171A20"/>
+<path d="M326,262 L458,262 L376,352 Z" fill="#0B0D10"/>
+<path d="M326,262 L376,352 L240,322 Z" fill="#0B0D10"/>
+<path d="M240,322 L376,352 L262,392 Z" fill="#0B0D10"/>
+<g clip-path="url(#c1-rock)">
+<path d="M226,24 L205,138 L271,226 L237,318 L261,396 L263,396 L251,318 L297,226 L243,138 L278,24 Z" fill="#2E6FF2"/>
+<path d="M241.08,24 L216.02,138 L278.54,226 L241.06,318 L261.58,396 L262.42,396 L246.94,318 L289.46,226 L231.98,138 L262.92,24 Z" fill="#9CC0FF"/>
+</g>
+<path d="M262,408 C268.9,425.25 285,437.9 285,456.3 A23,23 0 0 1 239,456.3 C239,437.9 255.1,425.25 262,408 Z" fill="#2E6FF2"/>
+</svg>

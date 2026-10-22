@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512" role="img" aria-label="RockLeak - Blueprint Leak favicon">
+<title>RockLeak - Blueprint Leak favicon</title>
+<defs><linearGradient id="c6s-oil" x1="0" y1="0" x2="0.25" y2="1"><stop offset="0" stop-color="#3A414C"/><stop offset="0.45" stop-color="#15181D"/><stop offset="1" stop-color="#050608"/></linearGradient><linearGradient id="c6s-sheen" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4C6BFF"/><stop offset="0.5" stop-color="#19BFB2"/><stop offset="1" stop-color="#9563F5"/></linearGradient><clipPath id="c6s-shell"><path d="M158,288 A98,116 0 0 1 354,288 Z"/></clipPath></defs>
+<g clip-path="url(#c6s-shell)"><path d="M138,228 L138,142 L374,142 L374,228 L274,228 C273.5,232.33 271,246.37 271,254 C271,261.63 276.5,266.68 274,273.76 C271.5,280.84 262,296.5 256,296.5 C250,296.5 240.5,280.84 238,273.76 C235.5,266.68 241,261.63 241,254 C241,246.37 238.5,232.33 238,228 Z" fill="url(#c6s-oil)"/></g>
+<g fill="none" stroke="#0B0D10"><path d="M104,396 L408,396" stroke-width="30"/><path d="M164,314 L164,382" stroke-width="24"/><path d="M207,314 L207,382" stroke-width="24"/><path d="M305,314 L305,382" stroke-width="24"/><path d="M348,314 L348,382" stroke-width="24"/><path d="M132,302 L380,302" stroke-width="30"/><path d="M158,276 A98,116 0 0 1 354,276" stroke-width="30" transform="translate(0 12)"/></g>
+<g fill="none" stroke="#0B0D10"><path d="M256,124 L256,162" stroke-width="24"/></g>
+<ellipse cx="248" cy="270" rx="4" ry="7" transform="rotate(0 248 270)" fill="#FFFFFF" opacity="0.85"/>
+</svg>
