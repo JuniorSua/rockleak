@@ -1,5 +1,447 @@
 [
   {
+    "slug": "north-carolina-mail-ballot-rejections-sealing-rule-1936",
+    "category": "midterms",
+    "kicker": "NORTH CAROLINA · MAIL VOTING",
+    "headline": "Did North Carolina's New Rule Double Its Mail-Ballot Rejections?",
+    "dek": "A rule that took effect Sept. 4 spoils any mail ballot whose inner envelope isn't sealed. Rejections are up, but not double. Voters whose ballot was set aside get a new one, and can vote in person through 3 p.m. Oct. 31 or on Election Day, Nov. 3.",
+    "publishedAt": "2026-10-22T02:25:12.269Z",
+    "status": "developing",
+    "agreementScore": 94,
+    "bottomLine": "More North Carolina mail ballots are being set aside, but not twice as many as 2022 by the state's own count, and a voter whose ballot is set aside can still vote in person if there's time; those caught by Oct. 30 also get a new ballot by mail. The thing to do if you voted by mail: check BallotTrax, and seal both envelopes.",
+    "coreFacts": [
+      {
+        "text": "On Sept. 4, 2026, the day North Carolina began mailing absentee ballots, the State Board of Elections issued an updated Numbered Memo 2021-03 on a 3-2 party-line vote, its three Republican members for and its two Democrats against. Under it, if a ballot arrives with the inner \"container-return\" envelope unsealed, or outside that envelope, the county must spoil it (it is not counted) and mail the voter a new ballot package with a notice explaining the problem and the option to vote in person. Under the 2024 version of the memo, such a ballot was counted if the outer envelope was sealed.",
+        "verdict": "confirmed",
+        "sources": [
+          {
+            "label": "Memorandum Opinion and Order, N.C. Alliance for Retired Americans v. N.C. State Board of Elections, No. 1:26cv965 (M.D.N.C., Oct. 19, 2026), pp. 4-7",
+            "url": "https://www.democracydocket.com/wp-content/uploads/2026/10/Memorandum-Opinion-And-Order-Oct.-19-2026.pdf",
+            "tier": "primary"
+          },
+          {
+            "label": "NC Newsline: A federal judge lets North Carolina's new absentee ballot rules stand (Oct. 20, 2026)",
+            "url": "https://ncnewsline.com/2026/10/20/a-federal-judge-lets-north-carolinas-new-absentee-ballot-rules-stand/",
+            "tier": "outlet"
+          },
+          {
+            "label": "Courthouse News: Federal judge shoots down request to halt mail-in ballot changes in North Carolina (Oct. 19, 2026)",
+            "url": "https://www.courthousenews.com/federal-judge-shoots-down-request-to-halt-mail-in-ballot-changes-in-north-carolina/",
+            "tier": "outlet"
+          },
+          {
+            "label": "The Daily Tar Heel: State Board of Elections updates absentee ballot rules (Sept. 7, 2026)",
+            "url": "https://dailytarheel.com/480455/city-state/city-north-carolina-election-rules-update/",
+            "tier": "outlet"
+          }
+        ]
+      },
+      {
+        "text": "The change did not start in September. After litigation brought by the North Carolina Republican Party and the RNC, the State Board ruled on Feb. 2, 2026 that its 2024 guidance accepting ballots not sealed in the container-return envelope was \"not correct,\" citing chain-of-custody concerns. It proposed new absentee rules on April 13 and adopted them in July. Those rules drew enough objections to require legislative approval, and the General Assembly will not meet on them until after the 2026 election; the Sept. 4 memo applied the sealing change anyway. State law requires a voter to seal the ballot in the container-return envelope.",
+        "verdict": "confirmed",
+        "sources": [
+          {
+            "label": "Memorandum Opinion and Order, No. 1:26cv965 (M.D.N.C., Oct. 19, 2026), pp. 3-6",
+            "url": "https://www.democracydocket.com/wp-content/uploads/2026/10/Memorandum-Opinion-And-Order-Oct.-19-2026.pdf",
+            "tier": "primary"
+          }
+        ]
+      },
+      {
+        "text": "On Oct. 19, U.S. District Judge Thomas D. Schroeder denied a request by the North Carolina Alliance for Retired Americans, North Carolina Asian Americans Together, Down Home North Carolina and two voters to block the sealing rule and a signature-review rule; the North Carolina Republican Party and the RNC joined the case to defend the rules. He wrote that changing the rules \"is infeasible at this stage in the midst of voting,\" called the plaintiffs' 18-day wait to sue significant, and wrote that a voter who fails to seal a ballot \"has an opportunity to correct a mistake, and is not barred from participating in early voting or voting on election day.\" The ruling is a preliminary decision; the case itself continues.",
+        "verdict": "confirmed",
+        "sources": [
+          {
+            "label": "Memorandum Opinion and Order, No. 1:26cv965 (M.D.N.C., Oct. 19, 2026)",
+            "url": "https://www.democracydocket.com/wp-content/uploads/2026/10/Memorandum-Opinion-And-Order-Oct.-19-2026.pdf",
+            "tier": "primary"
+          },
+          {
+            "label": "NC Newsline (Oct. 20, 2026)",
+            "url": "https://ncnewsline.com/2026/10/20/a-federal-judge-lets-north-carolinas-new-absentee-ballot-rules-stand/",
+            "tier": "outlet"
+          },
+          {
+            "label": "The Federalist: GOP Foils Dems' Election Integrity Shenanigans In North Carolina (Oct. 21, 2026)",
+            "url": "https://thefederalist.com/2026/10/21/gop-foils-dems-election-integrity-shenanigans-in-north-carolina/",
+            "tier": "outlet"
+          }
+        ]
+      },
+      {
+        "text": "The State Board's daily absentee file dated Oct. 21, 2026 lists, statewide, 156,092 mail ballots sent, 47,183 accepted, 1,936 \"received, not counted\" and 106,973 not yet returned. The same file dated Oct. 15 listed 1,400 received but not counted. Mecklenburg (346) and Wake (315) counties have the most.",
+        "verdict": "confirmed",
+        "sources": [
+          {
+            "label": "NC State Board of Elections, absentee_spoiled_outstanding file, Oct. 21, 2026 (columns abs_sent, abs_accepted, abs_received_not_counted, abs_outstanding; summed across 100 counties)",
+            "url": "https://s3.amazonaws.com/dl.ncsbe.gov/ENRS/2026_11_03/absentee_spoiled_outstanding_20261103_20261021.zip",
+            "tier": "primary"
+          },
+          {
+            "label": "NC State Board of Elections, absentee_spoiled_outstanding file, Oct. 15, 2026",
+            "url": "https://s3.amazonaws.com/dl.ncsbe.gov/ENRS/2026_11_03/absentee_spoiled_outstanding_20261103_20261015.zip",
+            "tier": "primary"
+          }
+        ]
+      },
+      {
+        "text": "State Board spokesperson Jason Tyson said preliminary data show a \"slight increase\" in rejected mail ballots: a 3.1% spoiled-ballot rate this year versus 2.6% at the same stage in 2022. The U.S. Election Assistance Commission put North Carolina's final 2022 mail-ballot rejection rate at about 2.2%. The board expects this year's final rate to be slightly higher than that.",
+        "verdict": "confirmed",
+        "sources": [
+          {
+            "label": "WRAL: More NC mail-in ballots are being rejected. What voters can do about it (Oct. 21, 2026)",
+            "url": "https://www.wral.com/news/nccapitol/absentee-mail-ballots-rejected-higher-percentage-state-board-of-elections-stein-october-2026/",
+            "tier": "outlet"
+          },
+          {
+            "label": "The News & Observer (via Yahoo): Warning of surge in rejected mail ballots, NC Gov. Stein urges in-person voting (Oct. 21, 2026)",
+            "url": "https://www.yahoo.com/news/politics/articles/warning-surge-rejected-mail-ballots-194731744.html",
+            "tier": "outlet"
+          }
+        ]
+      },
+      {
+        "text": "Mecklenburg County officials told The News & Observer they had rejected 257 mail ballots for sealing reasons, about 4.6% of mail ballots there, and that 60 of those voters had since returned a new ballot or voted early in person. Guilford County's rate was about 2% and Johnston County's 4%, the paper reported.",
+        "verdict": "likely",
+        "sources": [
+          {
+            "label": "The News & Observer (via Yahoo), Oct. 21, 2026",
+            "url": "https://www.yahoo.com/news/politics/articles/warning-surge-rejected-mail-ballots-194731744.html",
+            "tier": "outlet"
+          }
+        ]
+      },
+      {
+        "text": "Mail is a small slice of this year's vote. The State Board's Oct. 21 file lists 879,081 early in-person ballots, and its absentee_spoiled_outstanding file lists 49,119 returned mail ballots (47,183 accepted, 1,936 not counted). Mail-ballot requests were down 33% from the same point in 2022, WRAL reported, citing State Board data.",
+        "verdict": "confirmed",
+        "sources": [
+          {
+            "label": "NC State Board of Elections, absentee_20261103 file (ballot_req_type counts), Oct. 21, 2026",
+            "url": "https://s3.amazonaws.com/dl.ncsbe.gov/ENRS/2026_11_03/absentee_20261103.zip",
+            "tier": "primary"
+          },
+          {
+            "label": "NC State Board of Elections, absentee_spoiled_outstanding file, Oct. 21, 2026",
+            "url": "https://s3.amazonaws.com/dl.ncsbe.gov/ENRS/2026_11_03/absentee_spoiled_outstanding_20261103_20261021.zip",
+            "tier": "primary"
+          },
+          {
+            "label": "WRAL: NC mail-in ballot requests plunge 33% as deadline looms (Oct. 19-20, 2026)",
+            "url": "https://www.wral.com/news/local/nc-mail-in-ballot-requests-plunge-as-deadline-looms-whats-behind-the-decline-oct-2026/",
+            "tier": "outlet"
+          }
+        ]
+      },
+      {
+        "text": "In-person early voting runs through 3 p.m. Saturday, Oct. 31, at any early voting site in the voter's county. Mail ballots must be received by 7:30 p.m. on Election Day, Nov. 3. On Election Day, in-person voters must vote at their assigned precinct. Voters can track a mail ballot on the State Board's BallotTrax site. If a sealing problem is found on or after the Saturday before Election Day, staff must contact the voter that day, tell them there isn't time to mail a new ballot, and tell them they may vote in person if there is still time.",
+        "verdict": "confirmed",
+        "sources": [
+          {
+            "label": "NC State Board of Elections: Voter dates and deadlines",
+            "url": "https://www.ncsbe.gov/event-terms/voter-dates-deadlines",
+            "tier": "primary"
+          },
+          {
+            "label": "Memorandum Opinion and Order, No. 1:26cv965, pp. 7-8 (quoting the 2026 Numbered Memo)",
+            "url": "https://www.democracydocket.com/wp-content/uploads/2026/10/Memorandum-Opinion-And-Order-Oct.-19-2026.pdf",
+            "tier": "primary"
+          },
+          {
+            "label": "WRAL (Oct. 21, 2026)",
+            "url": "https://www.wral.com/news/nccapitol/absentee-mail-ballots-rejected-higher-percentage-state-board-of-elections-stein-october-2026/",
+            "tier": "outlet"
+          }
+        ]
+      }
+    ],
+    "claims": [
+      {
+        "claim": "The State Board's \"last-minute changes to voting by mail are leading to thousands more absentee ballots being rejected this election - at a rejection rate twice as high as in 2022.\"",
+        "claimant": "Gov. Josh Stein (D), on X, Oct. 20",
+        "verdict": "misleading",
+        "explanation": "More ballots are being rejected, but the State Board's own comparison is 3.1% this year versus 2.6% at the same stage in 2022, not double. The 'twice as high' figure traces to a Democracy Docket report comparing two advocacy groups' roughly 3% estimate from 27 of 100 counties with the nationwide rejection rate for all of 2022; the Election Assistance Commission puts 2022's final rate at about 2.2%. Statewide, the board's Oct. 21 file lists 1,936 mail ballots received but not counted in total so far. The memo was issued the day ballots went out, but the board had ruled in February that the old practice was wrong.",
+        "sources": [
+          {
+            "label": "The News & Observer (via Yahoo), Oct. 21, 2026",
+            "url": "https://www.yahoo.com/news/politics/articles/warning-surge-rejected-mail-ballots-194731744.html",
+            "tier": "outlet"
+          },
+          {
+            "label": "WRAL, Oct. 21, 2026",
+            "url": "https://www.wral.com/news/nccapitol/absentee-mail-ballots-rejected-higher-percentage-state-board-of-elections-stein-october-2026/",
+            "tier": "outlet"
+          },
+          {
+            "label": "NC State Board of Elections daily file, Oct. 21, 2026",
+            "url": "https://s3.amazonaws.com/dl.ncsbe.gov/ENRS/2026_11_03/absentee_spoiled_outstanding_20261103_20261021.zip",
+            "tier": "primary"
+          },
+          {
+            "label": "Democracy Docket (Oct. 20, 2026)",
+            "url": "https://www.democracydocket.com/news-alerts/exclusive-thousands-of-mail-ballots-set-to-be-rejected-after-gop-imposed-strict-new-rules-data-shows/",
+            "tier": "outlet"
+          }
+        ]
+      },
+      {
+        "claim": "\"If the trends hold, we're looking at thousands of votes that could be spoiled because of this new guidance.\"",
+        "claimant": "Sailor Jones, Common Cause North Carolina",
+        "verdict": "likely",
+        "explanation": "Thousands of spoiled ballots by Election Day is plausible: 1,936 were already listed as received but not counted on Oct. 21, with about 107,000 mail ballots still out. But not all are for sealing (missing ID or witness information also count), and a spoiled ballot is not automatically a lost vote: the voter gets a new ballot and can vote early or on Election Day. In Mecklenburg, 60 of 257 voters had done so as of Oct. 21.",
+        "sources": [
+          {
+            "label": "Democracy Docket: Exclusive: Thousands of North Carolina ballots set to be rejected (Oct. 20, 2026)",
+            "url": "https://www.democracydocket.com/news-alerts/exclusive-thousands-of-mail-ballots-set-to-be-rejected-after-gop-imposed-strict-new-rules-data-shows/",
+            "tier": "outlet"
+          },
+          {
+            "label": "NC State Board of Elections daily file, Oct. 21, 2026",
+            "url": "https://s3.amazonaws.com/dl.ncsbe.gov/ENRS/2026_11_03/absentee_spoiled_outstanding_20261103_20261021.zip",
+            "tier": "primary"
+          },
+          {
+            "label": "The News & Observer (via Yahoo), Oct. 21, 2026",
+            "url": "https://www.yahoo.com/news/politics/articles/warning-surge-rejected-mail-ballots-194731744.html",
+            "tier": "outlet"
+          }
+        ]
+      },
+      {
+        "claim": "\"Democrats and their allies tried to gut basic ballot safeguards in the middle of an election, and the RNC stopped them.\"",
+        "claimant": "RNC Chairman Joe Gruters",
+        "verdict": "misleading",
+        "explanation": "The lawsuit, brought by retiree, Asian American and rural voter groups represented by the Democratic-aligned Elias Law Group, did ask a judge to block the rules after voting had started, and state law does require ballots to be sealed in the inner envelope. But the RNC was one of several defendants: the State Board also opposed the request, and the judge decided it. And the strict sealing rule itself took effect on Sept. 4, the day ballots went out; under the 2024 guidance, these ballots were counted.",
+        "sources": [
+          {
+            "label": "The Federalist (Oct. 21, 2026), quoting Gruters",
+            "url": "https://thefederalist.com/2026/10/21/gop-foils-dems-election-integrity-shenanigans-in-north-carolina/",
+            "tier": "outlet"
+          },
+          {
+            "label": "Memorandum Opinion and Order, No. 1:26cv965",
+            "url": "https://www.democracydocket.com/wp-content/uploads/2026/10/Memorandum-Opinion-And-Order-Oct.-19-2026.pdf",
+            "tier": "primary"
+          }
+        ]
+      },
+      {
+        "claim": "Rejections are up only slightly: a 3.1% spoiled-ballot rate versus 2.6% at this point in 2022.",
+        "claimant": "NC State Board of Elections spokesperson Jason Tyson",
+        "verdict": "likely",
+        "explanation": "This is the board's own preliminary figure and the most complete statewide comparison available. The board has not published how it calculates it. In its Oct. 21 daily file, 1,936 ballots received but not counted out of 49,119 returned (47,183 accepted plus 1,936 not counted) works out to about 3.9%, so the method matters.",
+        "sources": [
+          {
+            "label": "WRAL, Oct. 21, 2026",
+            "url": "https://www.wral.com/news/nccapitol/absentee-mail-ballots-rejected-higher-percentage-state-board-of-elections-stein-october-2026/",
+            "tier": "outlet"
+          },
+          {
+            "label": "NC State Board of Elections daily file, Oct. 21, 2026",
+            "url": "https://s3.amazonaws.com/dl.ncsbe.gov/ENRS/2026_11_03/absentee_spoiled_outstanding_20261103_20261021.zip",
+            "tier": "primary"
+          }
+        ]
+      }
+    ],
+    "coverage": [
+      {
+        "outlet": "New York Times",
+        "lean": "lean-left",
+        "headline": "New Rules in North Carolina Threaten Thousands of Mail Ballots",
+        "url": "https://www.nytimes.com/2026/10/21/us/politics/north-carolina-senate-mail-ballot-rejections.html",
+        "framing": "Leads on county officials rejecting ballots over unsealed inner envelopes and voting rights groups urging voters to fix their ballots or vote another way."
+      },
+      {
+        "outlet": "The News & Observer",
+        "lean": "lean-left",
+        "headline": "Warning of surge in rejected mail ballots, NC Gov. Stein urges in-person voting",
+        "url": "https://www.yahoo.com/news/politics/articles/warning-surge-rejected-mail-ballots-194731744.html",
+        "framing": "Puts Stein's 'twice as high' claim next to the State Board's 3.1% vs 2.6% figures and county numbers, and notes it could not verify the advocacy groups' data."
+      },
+      {
+        "outlet": "WRAL",
+        "lean": "center",
+        "headline": "More NC mail-in ballots are being rejected. What voters can do about it",
+        "url": "https://www.wral.com/news/nccapitol/absentee-mail-ballots-rejected-higher-percentage-state-board-of-elections-stein-october-2026/",
+        "framing": "A service story: the board's numbers, the EAC's 2022 rate, and how to check and fix a ballot."
+      },
+      {
+        "outlet": "Courthouse News",
+        "lean": "center",
+        "headline": "Federal judge shoots down request to halt mail-in ballot changes in North Carolina",
+        "url": "https://www.courthousenews.com/federal-judge-shoots-down-request-to-halt-mail-in-ballot-changes-in-north-carolina/",
+        "framing": "Straight court story: the judge found the burden modest and the request too late, and gives the plaintiffs' argument that most voters with spoiled ballots don't recast them."
+      },
+      {
+        "outlet": "NC Newsline",
+        "lean": "lean-left",
+        "headline": "A federal judge lets North Carolina's new absentee ballot rules stand",
+        "url": "https://ncnewsline.com/2026/10/20/a-federal-judge-lets-north-carolinas-new-absentee-ballot-rules-stand/",
+        "framing": "Explains the rule and the ruling, including the judge's 'Mickey Mouse' line on the signature rule."
+      },
+      {
+        "outlet": "Democracy Docket",
+        "lean": "left",
+        "headline": "Exclusive: Thousands of North Carolina ballots set to be rejected after GOP imposed strict new rules, data shows",
+        "url": "https://www.democracydocket.com/news-alerts/exclusive-thousands-of-mail-ballots-set-to-be-rejected-after-gop-imposed-strict-new-rules-data-shows/",
+        "framing": "Frames the rules as GOP-imposed and leads on advocacy groups' 27-county data; discloses that its founder's law firm represents the plaintiffs."
+      },
+      {
+        "outlet": "The Federalist",
+        "lean": "right",
+        "headline": "GOP Foils Dems' Election Integrity Shenanigans In North Carolina",
+        "url": "https://thefederalist.com/2026/10/21/gop-foils-dems-election-integrity-shenanigans-in-north-carolina/",
+        "framing": "Frames the ruling as a win for election integrity and the RNC, stressing the plaintiffs' late filing."
+      }
+    ],
+    "xPulse": {
+      "summary": "Gov. Josh Stein's Oct. 20 post on X ('It's infuriating... Don't let them take away your vote') drove much of the day's coverage and was amplified by Democracy Docket. On the right, the reaction centered on the RNC's statement calling the ruling a win for ballot safeguards. Posts are leads, not proof.",
+      "trending": [
+        "Stein: rejection rate 'twice as high as in 2022'",
+        "Seal both envelopes",
+        "RNC: 'basic ballot safeguards'"
+      ]
+    },
+    "markets": [
+      {
+        "platform": "Kalshi",
+        "question": "Kalshi · North Carolina Senate · Roy Cooper",
+        "probability": 0.96,
+        "url": "https://kalshi.com/markets/senatenc",
+        "asOf": "2026-10-21T22:00:00-04:00"
+      }
+    ],
+    "debate": [
+      {
+        "persona": "Grant",
+        "position": "The law says seal the ballot, the board corrected a bad rule after a lawsuit, a federal judge let it stand, and the 'twice as high' alarm doesn't hold up.",
+        "argument": "State law requires voters to seal the ballot in the container-return envelope. The State Board itself ruled in February that its 2024 guidance was 'not correct' because of chain-of-custody concerns. The rule was not sprung in September. It was proposed in April and adopted in July. The board's own numbers show a 3.1% spoiled rate against 2.6% at this point in 2022, which is a 'slight increase' and nowhere near double. A spoiled ballot is not a lost vote, because the voter gets a new ballot and a notice, and Judge Schroeder wrote that such a voter 'is not barred from participating in early voting or voting on election day.' Mail is also a small slice of this election: 49,119 returned mail ballots against 879,081 early in-person ballots, with early voting open through Oct. 31.",
+        "concedes": "The numbers are moving the wrong way and the timing is bad. The count of ballots received but not counted rose from 1,400 on Oct. 15 to 1,936 on Oct. 21, about 107,000 mail ballots are still out, and the memo was issued the day ballots went out. A spoiled ballot only helps the voter if they notice and act. In Mecklenburg, only 60 of 257 rejected voters are confirmed to have voted again, and statewide nobody knows how many have. Voters caught on or after the Saturday before Election Day may have no time to get a new ballot by mail."
+      },
+      {
+        "persona": "Rosa",
+        "position": "A rule that tosses ballots over an unsealed envelope, adopted as voting began, puts the cost of the state's mistake on ordinary voters, and we should watch it closely.",
+        "argument": "The strict sealing rule took effect Sept. 4, the day ballots went out, and under the 2024 guidance these same ballots were counted. Ballots received but not counted rose from 1,400 on Oct. 15 to 1,936 on Oct. 21, with about 107,000 mail ballots still out. Mecklenburg County says it rejected 257 ballots for sealing reasons, about 4.6% of its mail ballots, and only 60 of those voters are known to have voted again. The record does not show what happened to the other 197. The state does not publish how many rejected voters have recovered, and it has not explained why its 3.1% rate differs from the roughly 3.9% implied by its own daily file. Any ballots caught from Oct. 31 on may have no time for a replacement, so a mistake in an envelope could cost someone their vote.",
+        "concedes": "The change did not come out of nowhere. State law requires voters to seal the ballot in the container-return envelope, and the State Board ruled in February, after litigation, that its 2024 guidance was not correct. The judge also found that a voter with a spoiled ballot can fix it or vote in person. The State Board's own comparison, 3.1% against 2.6%, is a slight rise, not the doubling the governor claimed. Mail ballots are also a small share of the vote: 49,119 returned, against 879,081 early in-person ballots."
+      },
+      {
+        "persona": "Mercer",
+        "position": "Both parties are spinning a real but modest problem: rejections are up, the rule change has a paper trail going back to February, and neither 'twice as high' nor 'the RNC saved the election' holds up against the record.",
+        "argument": "The State Board ruled in February that its 2024 guidance was 'not correct' and adopted the new rules in July. The Sept. 4 memo was the last step in a process that ran for months, so it was not a surprise move. But the strict sealing rule did take effect the day ballots went out, and ballots that were counted under the 2024 guidance now get spoiled. The board's own preliminary comparison is 3.1% versus 2.6% at the same point in 2022. That is an increase, not a doubling, and the Election Assistance Commission put 2022's final rate at about 2.2%. The board's daily file lists 1,936 ballots received but not counted out of 49,119 returned, which works out to about 3.9%. The board has not explained why its figure is lower, so the method needs to be published. Mail is also a small share of the vote: 49,119 returned mail ballots against 879,081 early in-person ballots. Judge Schroeder denied the request to block the rules. That is a preliminary ruling, and the case continues. The RNC joined the case to defend the rules, but the State Board also opposed the request. The judge decided it, and the RNC did not.",
+        "concedes": "The critics are right that this is not trivial for the voters affected. The count of ballots received but not counted rose from 1,400 on Oct. 15 to 1,936 on Oct. 21, and about 107,000 mail ballots are still out. Some problems will surface on or after Oct. 31, when there is no time to mail a replacement. A spoiled ballot is recoverable only if the voter notices and acts. Mecklenburg County reports that only 60 of 257 affected voters had done so."
+      },
+      {
+        "persona": "Vex",
+        "position": "Both parties are spinning a rule change the state's own board admitted was coming since February, and the voters stuck in the middle are the ones who get lost in the noise.",
+        "argument": "Stein says rejections are twice as high as in 2022. The board's own numbers say 3.1% versus 2.6%, so that claim doesn't hold up on the evidence we have. The RNC says it stopped Democrats from gutting safeguards. But the State Board also opposed the request, and the judge made the call. The sealing rule took effect Sept. 4, when ballots went out, and ballots that would have counted under the 2024 guidance are now spoiled. Nobody can tell you how many of the 1,936 uncounted ballots are sealing cases, because the daily file does not break that out. The board's 3.1% figure also doesn't match its own file, which works out to about 3.9%, and the board has not said how it gets its number. Both sides are selling a story. The public data is thinner than either claims.",
+        "concedes": "The rule is real and it does cost some voters. Ballots that counted under the 2024 guidance are now set aside, and 1,936 were listed as received but not counted on Oct. 21, up from 1,400 on Oct. 15. The sealing requirement is also in state law, the board itself ruled in February that the old practice was not correct, and the judge found a voter can fix the mistake or vote in person. Still, with about 107,000 mail ballots out, thousands of spoiled ballots by Election Day is plausible, and voters caught on or after Oct. 31 may have no time to fix it."
+      }
+    ],
+    "consensus": "All four analysts accept that the sealing rule took effect Sept. 4 after a process that began in February, that a federal judge declined to block it on Oct. 19, that the state's file lists 1,936 mail ballots received but not counted, and that the board's 3.1% vs 2.6% comparison shows a rise, not a doubling.",
+    "stillUnknown": [
+      "How many of the 1,936 voters whose mail ballots were not counted have already voted again by mail or in person. The board does not publish this statewide; in Mecklenburg it was 60 of 257 as of Oct. 21.",
+      "How many of the 1,936 were set aside for an unsealed envelope rather than other problems such as missing ID or witness information. The daily file does not break this down.",
+      "Why the board's 3.1% rate differs from the ratio in its own daily file (about 3.9%). The board has not published its method.",
+      "How many ballots will be caught on or after Saturday, Oct. 31, when there is no time to mail a new one.",
+      "Whether the plaintiffs will appeal Judge Schroeder's ruling to the Fourth Circuit."
+    ],
+    "body": [
+      "On Sept. 4, the day North Carolina began mailing absentee ballots, the State Board of Elections changed how counties treat one common mistake. If a ballot arrives with its inner envelope unsealed, or loose outside it, the county now spoils it: the ballot isn't counted, and the voter is mailed a new ballot with a notice explaining what went wrong and that they can vote in person instead. Under the 2024 guidance, the same ballot was counted as long as the outer envelope was sealed. The board adopted the change 3-2 along party lines, its three Republicans for and its two Democrats against.",
+      "The change didn't come out of nowhere. After a lawsuit by the North Carolina Republican Party and the RNC, the board ruled on Feb. 2 that its 2024 guidance was \"not correct,\" citing chain-of-custody concerns, and it adopted new rules in July. State law says a voter must seal the ballot in that inner envelope. But the July rules drew enough objections to be sent to the legislature, which won't take them up until after the election, so the Sept. 4 memo is what put the change in place.",
+      "A retirees' group, an Asian American group, a rural voters' group and two voters sued to block the rule. On Oct. 19, U.S. District Judge Thomas D. Schroeder said no. He wrote that changing the rules \"is infeasible at this stage in the midst of voting,\" called the plaintiffs' 18-day wait to sue significant, and said a voter who fails to seal a ballot \"has an opportunity to correct a mistake, and is not barred from participating in early voting or voting on election day.\" It was a preliminary ruling. The case goes on.",
+      "Then came the numbers fight. On Oct. 20, Gov. Josh Stein posted that the rules are causing \"thousands more\" rejections \"at a rejection rate twice as high as in 2022.\" The State Board's spokesperson, Jason Tyson, said its preliminary data show a \"slight increase\": 3.1% this year against 2.6% at the same point in 2022. The News & Observer traced Stein's figures to a Democracy Docket report, which compared two advocacy groups' estimate of about 3% from 27 of the state's 100 counties with the nationwide rejection rate for all of 2022. The federal Election Assistance Commission puts North Carolina's final 2022 rate at about 2.2%.",
+      "The board's own daily file gives the statewide count. As of Oct. 21 it lists 156,092 mail ballots sent, 47,183 accepted, 1,936 received but not counted, and 106,973 not yet returned. Six days earlier, the not-counted column stood at 1,400. Mecklenburg (346) and Wake (315) have the most. The file doesn't say why each ballot was set aside: a missing ID or witness information also counts, not just a seal. Divided the simple way, 1,936 out of all returned ballots is about 3.9%, higher than the board's 3.1%. The board hasn't published its method.",
+      "A ballot set aside isn't automatically a lost vote, but the voter has to act. Mecklenburg County officials told The News & Observer they had rejected 257 ballots for sealing, about 4.6% of their mail ballots, and that 60 of those voters had since returned a new ballot or voted in person. Nobody publishes that figure statewide.",
+      "Mail is a small slice of this election. The board's Oct. 21 file lists 879,081 early in-person votes and 49,119 returned mail ballots, and mail requests were down 33% from 2022, WRAL reported. The risk grows near the end: if a sealing problem is found on or after Saturday, Oct. 31, there's no time to mail a new ballot. Staff must contact the voter that day and tell them they can still vote in person if there's time.",
+      "Both sides are spinning. RNC Chairman Joe Gruters said \"Democrats and their allies tried to gut basic ballot safeguards in the middle of an election, and the RNC stopped them.\" The suit did come after voting began, and the RNC did help defend the rule, but the State Board also opposed the suit, the judge decided it, and the stricter rule itself took effect the day ballots went out. Stein's \"twice as high\" doesn't match the board's numbers. Common Cause's warning that \"thousands\" of ballots could be spoiled by Election Day is plausible, with about 107,000 mail ballots still out."
+    ],
+    "stat": {
+      "value": "1,936",
+      "label": "North Carolina mail ballots listed as received but not counted in the State Board's Oct. 21 file, up from 1,400 on Oct. 15."
+    },
+    "tldr": {
+      "what": "North Carolina no longer counts a mail ballot whose inner envelope isn't sealed. The voter is mailed a new one instead. A federal judge refused to block the rule on Oct. 19, and the state's Oct. 21 file lists 1,936 mail ballots received but not counted.",
+      "why": "If you voted by mail in North Carolina, check your ballot on the State Board's BallotTrax site. If it was set aside, return the new ballot by 7:30 p.m. Nov. 3, or vote in person at any early voting site in your county until 3 p.m. Oct. 31, or at your assigned precinct on Election Day.",
+      "truth": "Likely: rejections are up but not double, 3.1% vs 2.6% at this point in 2022, by the State Board's own count; its daily file implies a higher rate, about 3.9%. Misleading: Gov. Stein's claim that the rate is twice 2022's, and the RNC chair's claim that the RNC stopped Democrats from gutting safeguards. Unknown: how many affected voters have voted again."
+    },
+    "question": {
+      "text": "Did North Carolina's New Rule Double Its Mail-Ballot Rejections?",
+      "answer": "no",
+      "short": "Not by the State Board's count: 3.1% of mail ballots spoiled so far, vs 2.6% at this point in 2022. Up, not double. Its Oct. 21 file lists 1,936 ballots received but not counted.",
+      "askedBy": "Raised by Gov. Josh Stein on X on Oct. 20 ('twice as high as in 2022'); put to the State Board by The News & Observer and WRAL."
+    },
+    "newAngle": "None of the coverage RockLeak could open (The News & Observer, WRAL, Courthouse News, NC Newsline, Democracy Docket, The Federalist) gives the statewide count in the State Board's own daily file: 1,936 mail ballots received but not counted as of Oct. 21, up from 1,400 on Oct. 15. That is about 3.9% of returned ballots, higher than the board's 3.1%, and neither the board nor the coverage explains how the board calculates its figure.",
+    "seo": {
+      "title": "NC Mail Ballot Rejections: Did the New Rule Double Them?",
+      "description": "North Carolina now spoils mail ballots with an unsealed inner envelope. The state's numbers, the court ruling, and how to fix a rejected ballot before Nov. 3.",
+      "keywords": [
+        "North Carolina mail ballot rejected",
+        "NC absentee ballot inner envelope sealed",
+        "North Carolina absentee ballot new rules 2026",
+        "BallotTrax North Carolina",
+        "NC early voting last day 2026",
+        "how to fix rejected absentee ballot North Carolina",
+        "Numbered Memo 2021-03"
+      ],
+      "faq": [
+        {
+          "q": "What happens if I didn't seal the inner envelope of my North Carolina mail ballot?",
+          "a": "Under the State Board's Sept. 4 rule, the ballot isn't counted. If the problem is found by Friday, Oct. 30, your county must mail you a new ballot with a notice explaining it. You can also vote in person during early voting or on Election Day."
+        },
+        {
+          "q": "How do I check whether my mail ballot was accepted?",
+          "a": "Use the State Board of Elections' BallotTrax site, or call your county board of elections."
+        },
+        {
+          "q": "What are the deadlines?",
+          "a": "In-person early voting runs until 3 p.m. Saturday, Oct. 31, at any early voting site in your county. Mail ballots must be received by 7:30 p.m. on Election Day, Nov. 3."
+        },
+        {
+          "q": "Are rejections really twice as high as in 2022?",
+          "a": "Not by the State Board's count: 3.1% of mail ballots spoiled so far this year versus 2.6% at the same point in 2022. Its Oct. 21 file lists 1,936 mail ballots received but not counted."
+        },
+        {
+          "q": "Did a court block the new rule?",
+          "a": "No. On Oct. 19, U.S. District Judge Thomas D. Schroeder denied a request to block it, saying a change now is infeasible in the midst of voting. The case continues."
+        }
+      ]
+    },
+    "social": {
+      "headlineVariants": [
+        {
+          "text": "Did North Carolina's New Rule Double Its Mail-Ballot Rejections?",
+          "score": 84,
+          "rationale": "Asks the question the governor raised and answers it from the board's numbers right underneath."
+        },
+        {
+          "text": "North Carolina Has Set Aside 1,936 Mail Ballots. Here's How Voters Can Fix Theirs.",
+          "score": 79,
+          "rationale": "Concrete number plus service, but the count isn't broken down by reason."
+        },
+        {
+          "text": "An Unsealed Envelope Now Voids a North Carolina Mail Ballot. A Judge Let the Rule Stand.",
+          "score": 72,
+          "rationale": "Clear and confirmed, but no number."
+        }
+      ],
+      "xPost": "Did North Carolina's new mail-ballot rule double rejections, as Gov. Stein says? Not by the State Board's count: 3.1% vs 2.6% at this point in 2022. 1,936 ballots not counted so far. If yours was set aside, you get a new one, or vote in person by Oct. 31 or on Nov. 3.",
+      "thread": [
+        "Since Sept. 4, North Carolina spoils any mail ballot whose inner envelope isn't sealed. The voter gets a new ballot. Under the 2024 guidance, those ballots counted if the outer envelope was sealed. A federal judge refused to block the rule on Oct. 19.",
+        "Gov. Stein says rejections are 'twice as high as in 2022.' The State Board says 3.1% vs 2.6% at the same point in 2022: up, not double. The 'double' traces to a 27-county advocacy estimate compared with the nationwide 2022 rate.",
+        "The board's own daily file: 1,936 mail ballots received but not counted as of Oct. 21, up from 1,400 on Oct. 15. It doesn't say how many were for the seal versus missing ID or witness info.",
+        "If you voted by mail in North Carolina: check BallotTrax. If your ballot was set aside, return the new one by 7:30 p.m. Nov. 3 or vote in person at any early voting site in your county until 3 p.m. Oct. 31, or at your assigned precinct on Election Day."
+      ],
+      "shortVideoHook": "In North Carolina, forgetting to seal one envelope now means your mail ballot doesn't count. The governor says rejections doubled. The state's own numbers say otherwise.",
+      "shareCardText": "1,936 NC mail ballots set aside so far. Up from 2022, not double. Check BallotTrax; if needed, vote in person by Oct. 31 or on Nov. 3."
+    },
+    "review": {
+      "approvedBy": "Plumb",
+      "approvedAt": "2026-10-22T02:25:09.571Z",
+      "notes": "All 17 round-1 fixes went in correctly and the story holds against the record: North Carolina's mail-ballot rejections are up but not doubled by the State Board's own numbers, and the rule's partisan adoption and legal path are now stated plainly; five small wording fixes remain, mainly one wrong division in the ledger and voter instructions that should say Election Day voting happens at your own precinct.",
+      "edition": "night"
+    }
+  },
+  {
     "slug": "democrats-sue-trump-voter-lists-nevada-16000-185-dhs",
     "category": "courts",
     "kicker": "VOTING · 2026 MIDTERMS",
