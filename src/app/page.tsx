@@ -2,7 +2,6 @@ import Link from "next/link";
 import { Suspense } from "react";
 import { Countdown } from "@/components/countdown";
 import { DropItem } from "@/components/drop-item";
-import { NextDrop } from "@/components/next-drop";
 import { RaceTable } from "@/components/race-table";
 import { dayHeading, etDay } from "@/lib/format";
 import { allStories } from "@/lib/stories";
@@ -26,7 +25,7 @@ export default function Home() {
           record. Every drop tells you what happened, why it matters to you, and what&apos;s actually true.
         </p>
         <p className="mono mt-5 text-[0.7rem] uppercase tracking-wider text-muted">
-          <NextDrop />
+          Archive · The newsroom ran Oct. 20–22, 2026. No new drops.
         </p>
       </section>
 

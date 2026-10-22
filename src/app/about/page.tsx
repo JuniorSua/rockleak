@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 };
 
 const STEPS = [
-  ["We pick what matters.", "Three times a day, at 9 AM, 5 PM and 10 PM ET, we look at what every side is talking about and pick the one story you actually need. Some days that's nothing, so we post nothing."],
+  ["We pick what matters.", "Three times a day, at 9 AM, 5 PM and 10 PM ET, we look at what every side is talking about and pick the one story you actually need. Some days that's nothing, so we post nothing. (This site is now an archive: the newsroom ran Oct. 20–22, 2026.)"],
   ["We check it.", "Every fact goes back to its source: court filings, campaign-finance records, votes, official statements. If we can't source it, we don't say it."],
   ["Someone neutral signs off.", "Plumb, our standards editor, didn't write the story and has no side. Plumb swaps the parties to test for double standards, then approves the story, sends it back, or kills it."],
 ];
